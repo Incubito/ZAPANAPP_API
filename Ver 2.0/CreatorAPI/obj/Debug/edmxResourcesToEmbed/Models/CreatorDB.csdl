@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CreatorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BaseApp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="AppName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AppCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="BaseMenus" Relationship="Self.FK_BaseMenus_BaseApps" FromRole="BaseApps" ToRole="BaseMenus" />
+    <NavigationProperty Name="BaseScreens" Relationship="Self.FK_BaseScreens_BaseApps" FromRole="BaseApps" ToRole="BaseScreens" />
+  </EntityType>
+  <EntityType Name="BaseContent">
+    <Key>
+      <PropertyRef Name="BaseContentID" />
+    </Key>
+    <Property Name="BaseContentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BaseSubMenuID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="LibraryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BaseSubMenu" Relationship="Self.FK_BaseContent_BaseSubMenus1" FromRole="BaseContent" ToRole="BaseSubMenus" />
+    <NavigationProperty Name="Category" Relationship="CreatorModel.FK_BaseContent_Categories" FromRole="BaseContent" ToRole="Category" />
+    <NavigationProperty Name="Library" Relationship="CreatorModel.FK_BaseContent_Library" FromRole="BaseContent" ToRole="Library" />
+  </EntityType>
+  <EntityType Name="BaseMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BaseAppID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RedColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GreenColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BlueColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FontFamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaseApp" Relationship="Self.FK_BaseMenus_BaseApps" FromRole="BaseMenus" ToRole="BaseApps" />
+    <NavigationProperty Name="BaseSubMenus" Relationship="Self.FK_BaseSubMenus_BaseMenus" FromRole="BaseMenus" ToRole="BaseSubMenus" />
+  </EntityType>
+  <EntityType Name="BaseScreenContent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BaseScreenID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaseScreen" Relationship="Self.FK_BaseScreenContent_BaseScreens" FromRole="BaseScreenContent" ToRole="BaseScreens" />
+  </EntityType>
+  <EntityType Name="BaseScreen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BaseAppID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Design" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaseApp" Relationship="Self.FK_BaseScreens_BaseApps" FromRole="BaseScreens" ToRole="BaseApps" />
+    <NavigationProperty Name="BaseScreenContents" Relationship="Self.FK_BaseScreenContent_BaseScreens" FromRole="BaseScreens" ToRole="BaseScreenContent" />
+  </EntityType>
+  <EntityType Name="BaseSubMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BaseMenuID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaseContents" Relationship="Self.FK_BaseContent_BaseSubMenus1" FromRole="BaseSubMenus" ToRole="BaseContent" />
+    <NavigationProperty Name="BaseMenu" Relationship="Self.FK_BaseSubMenus_BaseMenus" FromRole="BaseSubMenus" ToRole="BaseMenus" />
+  </EntityType>
+  <Association Name="FK_BaseMenus_BaseApps">
+    <End Role="BaseApps" Type="Self.BaseApp" Multiplicity="1" />
+    <End Role="BaseMenus" Type="Self.BaseMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseApps">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaseMenus">
+        <PropertyRef Name="BaseAppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaseScreens_BaseApps">
+    <End Role="BaseApps" Type="Self.BaseApp" Multiplicity="1" />
+    <End Role="BaseScreens" Type="Self.BaseScreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseApps">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaseScreens">
+        <PropertyRef Name="BaseAppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaseContent_BaseSubMenus1">
+    <End Role="BaseSubMenus" Type="Self.BaseSubMenu" Multiplicity="1" />
+    <End Role="BaseContent" Type="Self.BaseContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseSubMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaseContent">
+        <PropertyRef Name="BaseSubMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaseSubMenus_BaseMenus">
+    <End Role="BaseMenus" Type="Self.BaseMenu" Multiplicity="1" />
+    <End Role="BaseSubMenus" Type="Self.BaseSubMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaseSubMenus">
+        <PropertyRef Name="BaseMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaseScreenContent_BaseScreens">
+    <End Role="BaseScreens" Type="Self.BaseScreen" Multiplicity="0..1" />
+    <End Role="BaseScreenContent" Type="Self.BaseScreenContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaseScreens">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaseScreenContent">
+        <PropertyRef Name="BaseScreenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CreatorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BaseApps" EntityType="Self.BaseApp" />
+    <EntitySet Name="BaseContents" EntityType="Self.BaseContent" />
+    <EntitySet Name="BaseMenus" EntityType="Self.BaseMenu" />
+    <EntitySet Name="BaseScreenContents" EntityType="Self.BaseScreenContent" />
+    <EntitySet Name="BaseScreens" EntityType="Self.BaseScreen" />
+    <EntitySet Name="BaseSubMenus" EntityType="Self.BaseSubMenu" />
+    <AssociationSet Name="FK_BaseMenus_BaseApps" Association="Self.FK_BaseMenus_BaseApps">
+      <End Role="BaseApps" EntitySet="BaseApps" />
+      <End Role="BaseMenus" EntitySet="BaseMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaseScreens_BaseApps" Association="Self.FK_BaseScreens_BaseApps">
+      <End Role="BaseApps" EntitySet="BaseApps" />
+      <End Role="BaseScreens" EntitySet="BaseScreens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaseContent_BaseSubMenus1" Association="Self.FK_BaseContent_BaseSubMenus1">
+      <End Role="BaseSubMenus" EntitySet="BaseSubMenus" />
+      <End Role="BaseContent" EntitySet="BaseContents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaseSubMenus_BaseMenus" Association="Self.FK_BaseSubMenus_BaseMenus">
+      <End Role="BaseMenus" EntitySet="BaseMenus" />
+      <End Role="BaseSubMenus" EntitySet="BaseSubMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaseScreenContent_BaseScreens" Association="Self.FK_BaseScreenContent_BaseScreens">
+      <End Role="BaseScreens" EntitySet="BaseScreens" />
+      <End Role="BaseScreenContent" EntitySet="BaseScreenContents" />
+    </AssociationSet>
+    <EntitySet Name="Categories" EntityType="CreatorModel.Category" />
+    <EntitySet Name="Libraries" EntityType="CreatorModel.Library" />
+    <AssociationSet Name="FK_BaseContent_Categories" Association="CreatorModel.FK_BaseContent_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="BaseContent" EntitySet="BaseContents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaseContent_Library" Association="CreatorModel.FK_BaseContent_Library">
+      <End Role="Library" EntitySet="Libraries" />
+      <End Role="BaseContent" EntitySet="BaseContents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaseContents" Relationship="CreatorModel.FK_BaseContent_Categories" FromRole="Category" ToRole="BaseContent" />
+  </EntityType>
+  <EntityType Name="Library">
+    <Key>
+      <PropertyRef Name="LibraryID" />
+    </Key>
+    <Property Name="LibraryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Filename" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaseContents" Relationship="CreatorModel.FK_BaseContent_Library" FromRole="Library" ToRole="BaseContent" />
+  </EntityType>
+  <Association Name="FK_BaseContent_Categories">
+    <End Type="CreatorModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="CreatorModel.BaseContent" Role="BaseContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="BaseContent">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaseContent_Library">
+    <End Type="CreatorModel.Library" Role="Library" Multiplicity="1" />
+    <End Type="CreatorModel.BaseContent" Role="BaseContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Library">
+        <PropertyRef Name="LibraryID" />
+      </Principal>
+      <Dependent Role="BaseContent">
+        <PropertyRef Name="LibraryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

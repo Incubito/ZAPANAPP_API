@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CreatorModelStoreContainer" CdmEntityContainer="CreatorEntities">
+    <EntitySetMapping Name="Apps">
+      <EntityTypeMapping TypeName="CreatorModel.Apps">
+        <MappingFragment StoreEntitySet="Apps">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="AppCode" ColumnName="AppCode" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assessments">
+      <EntityTypeMapping TypeName="CreatorModel.Assessments">
+        <MappingFragment StoreEntitySet="Assessments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MobileConnectionsID" ColumnName="MobileConnectionsID" />
+          <ScalarProperty Name="AssessmentDate" ColumnName="AssessmentDate" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CreatorModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientApps">
+      <EntityTypeMapping TypeName="CreatorModel.ClientApps">
+        <MappingFragment StoreEntitySet="ClientApps">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientContent">
+      <EntityTypeMapping TypeName="CreatorModel.ClientContent">
+        <MappingFragment StoreEntitySet="ClientContent">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientSubMenuID" ColumnName="ClientSubMenuID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientMenus">
+      <EntityTypeMapping TypeName="CreatorModel.ClientMenus">
+        <MappingFragment StoreEntitySet="ClientMenus">
+          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientRequests">
+      <EntityTypeMapping TypeName="CreatorModel.ClientRequests">
+        <MappingFragment StoreEntitySet="ClientRequests">
+          <ScalarProperty Name="ClientRequestID" ColumnName="ClientRequestID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="CreatorModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ContactNr" ColumnName="ContactNr" />
+          <ScalarProperty Name="Helpline" ColumnName="Helpline" />
+          <ScalarProperty Name="VatNr" ColumnName="VatNr" />
+          <ScalarProperty Name="BillingAdress1" ColumnName="BillingAdress1" />
+          <ScalarProperty Name="BillingAdress2" ColumnName="BillingAdress2" />
+          <ScalarProperty Name="BillingAdress3" ColumnName="BillingAdress3" />
+          <ScalarProperty Name="BillilngAdress4" ColumnName="BillilngAdress4" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientScreenContent">
+      <EntityTypeMapping TypeName="CreatorModel.ClientScreenContent">
+        <MappingFragment StoreEntitySet="ClientScreenContent">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientScreenID" ColumnName="ClientScreenID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientScreens">
+      <EntityTypeMapping TypeName="CreatorModel.ClientScreens">
+        <MappingFragment StoreEntitySet="ClientScreens">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+          <ScalarProperty Name="FontID" ColumnName="FontID" />
+          <ScalarProperty Name="ColoursID" ColumnName="ColoursID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Design" ColumnName="Design" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientSubMenus">
+      <EntityTypeMapping TypeName="CreatorModel.ClientSubMenus">
+        <MappingFragment StoreEntitySet="ClientSubMenus">
+          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientMenuID" ColumnName="ClientMenuID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colours">
+      <EntityTypeMapping TypeName="CreatorModel.Colours">
+        <MappingFragment StoreEntitySet="Colours">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FontRed" ColumnName="FontRed" />
+          <ScalarProperty Name="FontGreen" ColumnName="FontGreen" />
+          <ScalarProperty Name="FontBlue" ColumnName="FontBlue" />
+          <ScalarProperty Name="LineRed" ColumnName="LineRed" />
+          <ScalarProperty Name="LineGreen" ColumnName="LineGreen" />
+          <ScalarProperty Name="LineBlue" ColumnName="LineBlue" />
+          <ScalarProperty Name="BackgroundRed" ColumnName="BackgroundRed" />
+          <ScalarProperty Name="BackgroundGreen" ColumnName="BackgroundGreen" />
+          <ScalarProperty Name="BackgroundBlue" ColumnName="BackgroundBlue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConnectionsLog">
+      <EntityTypeMapping TypeName="CreatorModel.ConnectionsLog">
+        <MappingFragment StoreEntitySet="ConnectionsLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="ConnectionIdentifier" ColumnName="ConnectionIdentifier" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InstalledFonts">
+      <EntityTypeMapping TypeName="CreatorModel.InstalledFonts">
+        <MappingFragment StoreEntitySet="InstalledFonts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Library">
+      <EntityTypeMapping TypeName="CreatorModel.Library">
+        <MappingFragment StoreEntitySet="Library">
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="Preview" ColumnName="Preview" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MobileConnections">
+      <EntityTypeMapping TypeName="CreatorModel.MobileConnections">
+        <MappingFragment StoreEntitySet="MobileConnections">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+          <ScalarProperty Name="EmailAdress" ColumnName="EmailAdress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Activation" ColumnName="Activation" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="DateConnected" ColumnName="DateConnected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TemplateSelection">
+      <EntityTypeMapping TypeName="CreatorModel.TemplateSelection">
+        <MappingFragment StoreEntitySet="TemplateSelection">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+          <ScalarProperty Name="TemplateType" ColumnName="TemplateType" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrustedEmailDomains">
+      <EntityTypeMapping TypeName="CreatorModel.TrustedEmailDomains">
+        <MappingFragment StoreEntitySet="TrustedEmailDomains">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsageTracker">
+      <EntityTypeMapping TypeName="CreatorModel.UsageTracker">
+        <MappingFragment StoreEntitySet="UsageTracker">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MobileConnectionsID" ColumnName="MobileConnectionsID" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zendesk">
+      <EntityTypeMapping TypeName="CreatorModel.Zendesk">
+        <MappingFragment StoreEntitySet="Zendesk">
+          <ScalarProperty Name="AccountKey" ColumnName="AccountKey" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientZendesk">
+      <EntityTypeMapping TypeName="CreatorModel.ClientZendesk">
+        <MappingFragment StoreEntitySet="ClientZendesk">
+          <ScalarProperty Name="ZendeskID" ColumnName="ZendeskID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientSettings">
+      <EntityTypeMapping TypeName="CreatorModel.ClientSettings">
+        <MappingFragment StoreEntitySet="ClientSettings">
+          <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+          <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

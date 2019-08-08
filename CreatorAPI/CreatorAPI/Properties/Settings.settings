@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CreatorAPI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ServerPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">E:\AppsBuilder\Elements</Value>
+    </Setting>
+    <Setting Name="ExternalDocs" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">E:\AppsBuilder\Externals</Value>
+    </Setting>
+    <Setting Name="Library" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">E:\AppsBuilder\Library</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

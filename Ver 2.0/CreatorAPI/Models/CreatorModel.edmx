@@ -1,0 +1,1469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CreatorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppName" Type="varchar" MaxLength="50" />
+          <Property Name="AppCode" Type="varchar" MaxLength="50" />
+          <Property Name="LinkReference" Type="varchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Assessments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MobileConnectionsID" Type="int" Nullable="false" />
+          <Property Name="AssessmentDate" Type="datetime" />
+          <Property Name="Question" Type="int" />
+          <Property Name="Answer" Type="int" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClientApps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="LinkReference" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ClientContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientSubMenuID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="LibraryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientAppID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="ImageReference" Type="varchar(max)" />
+          <Property Name="HeadingReference" Type="varchar(max)" />
+          <Property Name="LinkReference" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ClientRequests">
+          <Key>
+            <PropertyRef Name="ClientRequestID" />
+          </Key>
+          <Property Name="ClientRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Contents" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNr" Type="varchar" MaxLength="50" />
+          <Property Name="Helpline" Type="varchar" MaxLength="25" />
+          <Property Name="VatNr" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAdress1" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAdress2" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAdress3" Type="varchar" MaxLength="50" />
+          <Property Name="BillilngAdress4" Type="varchar" MaxLength="50" />
+          <Property Name="LinkReference" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ClientScreenContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientScreenID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="ImageReference" Type="varchar(max)" />
+          <Property Name="LinkReference" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ClientScreens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientAppID" Type="int" Nullable="false" />
+          <Property Name="FontID" Type="int" />
+          <Property Name="ColoursID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Design" Type="varchar" MaxLength="50" />
+          <Property Name="LinkReference" Type="varchar(max)" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="ClientSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="SettingKey" Type="varchar" MaxLength="50" />
+          <Property Name="SettingValue" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClientSubMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientMenuID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="ImageReference" Type="varchar(max)" />
+          <Property Name="HeadingReference" Type="varchar(max)" />
+          <Property Name="LinkReference" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ClientZendesk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ZendeskID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colours">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FontRed" Type="int" />
+          <Property Name="FontGreen" Type="int" />
+          <Property Name="FontBlue" Type="int" />
+          <Property Name="LineRed" Type="int" />
+          <Property Name="LineGreen" Type="int" />
+          <Property Name="LineBlue" Type="int" />
+          <Property Name="BackgroundRed" Type="int" />
+          <Property Name="BackgroundGreen" Type="int" />
+          <Property Name="BackgroundBlue" Type="int" />
+        </EntityType>
+        <EntityType Name="ConnectionsLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UUID" Type="varchar(max)" />
+          <Property Name="ConnectionIdentifier" Type="varchar" MaxLength="150" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="InstalledFonts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Library">
+          <Key>
+            <PropertyRef Name="LibraryID" />
+          </Key>
+          <Property Name="LibraryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Filename" Type="varchar" MaxLength="250" />
+          <Property Name="Keywords" Type="varchar" MaxLength="250" />
+          <Property Name="Preview" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MobileConnections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientAppID" Type="int" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Cellphone" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAdress" Type="varchar" MaxLength="150" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Activation" Type="bit" />
+          <Property Name="UUID" Type="varchar" MaxLength="150" />
+          <Property Name="DateConnected" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TemplateSelection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientAppID" Type="int" Nullable="false" />
+          <Property Name="TemplateType" Type="varchar" MaxLength="50" />
+          <Property Name="ClientID" Type="int" />
+        </EntityType>
+        <EntityType Name="TrustedEmailDomains">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="DomainName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UsageTracker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MobileConnectionsID" Type="int" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Zendesk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="AccountKey" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Assessments_MobileConnections">
+          <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="1" />
+          <End Role="Assessments" Type="Self.Assessments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MobileConnections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Assessments">
+              <PropertyRef Name="MobileConnectionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientApps_Apps">
+          <End Role="Apps" Type="Self.Apps" Multiplicity="1" />
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientApps">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientApps_Clients1">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientApps">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientContent_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="ClientContent" Type="Self.ClientContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ClientContent">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientContent_ClientSubMenus">
+          <End Role="ClientSubMenus" Type="Self.ClientSubMenus" Multiplicity="1" />
+          <End Role="ClientContent" Type="Self.ClientContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSubMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientContent">
+              <PropertyRef Name="ClientSubMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientContent_Library1">
+          <End Role="Library" Type="Self.Library" Multiplicity="1" />
+          <End Role="ClientContent" Type="Self.ClientContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Library">
+              <PropertyRef Name="LibraryID" />
+            </Principal>
+            <Dependent Role="ClientContent">
+              <PropertyRef Name="LibraryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientMenus_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="ClientMenus" Type="Self.ClientMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientMenus">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientRequests_Clients1">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ClientRequests" Type="Self.ClientRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientRequests">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreenContent_ClientScreens1">
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="0..1" />
+          <End Role="ClientScreenContent" Type="Self.ClientScreenContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientScreens">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreenContent">
+              <PropertyRef Name="ClientScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreens_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreens">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreens_Colours1">
+          <End Role="Colours" Type="Self.Colours" Multiplicity="0..1" />
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colours">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreens">
+              <PropertyRef Name="ColoursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreens_InstalledFonts1">
+          <End Role="InstalledFonts" Type="Self.InstalledFonts" Multiplicity="0..1" />
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstalledFonts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreens">
+              <PropertyRef Name="FontID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSettings_ClientSettings">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="ClientSettings" Type="Self.ClientSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientSettings">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSubMenus_ClientMenus">
+          <End Role="ClientMenus" Type="Self.ClientMenus" Multiplicity="1" />
+          <End Role="ClientSubMenus" Type="Self.ClientSubMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientSubMenus">
+              <PropertyRef Name="ClientMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientZendesk_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ClientZendesk" Type="Self.ClientZendesk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientZendesk">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientZendesk_Zendesk">
+          <End Role="Zendesk" Type="Self.Zendesk" Multiplicity="1" />
+          <End Role="ClientZendesk" Type="Self.ClientZendesk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zendesk">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientZendesk">
+              <PropertyRef Name="ZendeskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MobileConnections_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MobileConnections">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplateSelection_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="TemplateSelection" Type="Self.TemplateSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplateSelection">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrustedEmailDomains_Clients1">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="TrustedEmailDomains" Type="Self.TrustedEmailDomains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TrustedEmailDomains">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsageTracker_MobileConnections">
+          <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="1" />
+          <End Role="UsageTracker" Type="Self.UsageTracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MobileConnections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsageTracker">
+              <PropertyRef Name="MobileConnectionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CreatorModelStoreContainer">
+          <EntitySet Name="Apps" EntityType="Self.Apps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assessments" EntityType="Self.Assessments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientApps" EntityType="Self.ClientApps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientContent" EntityType="Self.ClientContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientMenus" EntityType="Self.ClientMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientRequests" EntityType="Self.ClientRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientScreenContent" EntityType="Self.ClientScreenContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientScreens" EntityType="Self.ClientScreens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSettings" EntityType="Self.ClientSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSubMenus" EntityType="Self.ClientSubMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientZendesk" EntityType="Self.ClientZendesk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colours" EntityType="Self.Colours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectionsLog" EntityType="Self.ConnectionsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstalledFonts" EntityType="Self.InstalledFonts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Library" EntityType="Self.Library" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobileConnections" EntityType="Self.MobileConnections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateSelection" EntityType="Self.TemplateSelection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrustedEmailDomains" EntityType="Self.TrustedEmailDomains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsageTracker" EntityType="Self.UsageTracker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zendesk" EntityType="Self.Zendesk" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Assessments_MobileConnections" Association="Self.FK_Assessments_MobileConnections">
+            <End Role="MobileConnections" EntitySet="MobileConnections" />
+            <End Role="Assessments" EntitySet="Assessments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientApps_Apps" Association="Self.FK_ClientApps_Apps">
+            <End Role="Apps" EntitySet="Apps" />
+            <End Role="ClientApps" EntitySet="ClientApps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientApps_Clients1" Association="Self.FK_ClientApps_Clients1">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientApps" EntitySet="ClientApps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientContent_Categories1" Association="Self.FK_ClientContent_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ClientContent" EntitySet="ClientContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientContent_ClientSubMenus" Association="Self.FK_ClientContent_ClientSubMenus">
+            <End Role="ClientSubMenus" EntitySet="ClientSubMenus" />
+            <End Role="ClientContent" EntitySet="ClientContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientContent_Library1" Association="Self.FK_ClientContent_Library1">
+            <End Role="Library" EntitySet="Library" />
+            <End Role="ClientContent" EntitySet="ClientContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientMenus_ClientApps1" Association="Self.FK_ClientMenus_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="ClientMenus" EntitySet="ClientMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientRequests_Clients1" Association="Self.FK_ClientRequests_Clients1">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientRequests" EntitySet="ClientRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreenContent_ClientScreens1" Association="Self.FK_ClientScreenContent_ClientScreens1">
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+            <End Role="ClientScreenContent" EntitySet="ClientScreenContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreens_ClientApps1" Association="Self.FK_ClientScreens_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreens_Colours1" Association="Self.FK_ClientScreens_Colours1">
+            <End Role="Colours" EntitySet="Colours" />
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreens_InstalledFonts1" Association="Self.FK_ClientScreens_InstalledFonts1">
+            <End Role="InstalledFonts" EntitySet="InstalledFonts" />
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSettings_ClientSettings" Association="Self.FK_ClientSettings_ClientSettings">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientSettings" EntitySet="ClientSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSubMenus_ClientMenus" Association="Self.FK_ClientSubMenus_ClientMenus">
+            <End Role="ClientMenus" EntitySet="ClientMenus" />
+            <End Role="ClientSubMenus" EntitySet="ClientSubMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientZendesk_Clients" Association="Self.FK_ClientZendesk_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientZendesk_Zendesk" Association="Self.FK_ClientZendesk_Zendesk">
+            <End Role="Zendesk" EntitySet="Zendesk" />
+            <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MobileConnections_ClientApps1" Association="Self.FK_MobileConnections_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="MobileConnections" EntitySet="MobileConnections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplateSelection_ClientApps1" Association="Self.FK_TemplateSelection_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="TemplateSelection" EntitySet="TemplateSelection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrustedEmailDomains_Clients1" Association="Self.FK_TrustedEmailDomains_Clients1">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="TrustedEmailDomains" EntitySet="TrustedEmailDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsageTracker_MobileConnections" Association="Self.FK_UsageTracker_MobileConnections">
+            <End Role="MobileConnections" EntitySet="MobileConnections" />
+            <End Role="UsageTracker" EntitySet="UsageTracker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CreatorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientApps_Apps" FromRole="Apps" ToRole="ClientApps" />
+        </EntityType>
+        <EntityType Name="Assessments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MobileConnectionsID" Type="Int32" Nullable="false" />
+          <Property Name="AssessmentDate" Type="DateTime" Precision="3" />
+          <Property Name="Question" Type="Int32" />
+          <Property Name="Answer" Type="Int32" />
+          <NavigationProperty Name="MobileConnections" Relationship="CreatorModel.FK_Assessments_MobileConnections" FromRole="Assessments" ToRole="MobileConnections" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientContent" Relationship="Self.FK_ClientContent_Categories1" FromRole="Categories" ToRole="ClientContent" />
+        </EntityType>
+        <EntityType Name="ClientApps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Apps" Relationship="Self.FK_ClientApps_Apps" FromRole="ClientApps" ToRole="Apps" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_ClientApps_Clients1" FromRole="ClientApps" ToRole="Clients" />
+          <NavigationProperty Name="ClientMenus" Relationship="Self.FK_ClientMenus_ClientApps1" FromRole="ClientApps" ToRole="ClientMenus" />
+          <NavigationProperty Name="ClientScreens" Relationship="Self.FK_ClientScreens_ClientApps1" FromRole="ClientApps" ToRole="ClientScreens" />
+          <NavigationProperty Name="MobileConnections" Relationship="Self.FK_MobileConnections_ClientApps1" FromRole="ClientApps" ToRole="MobileConnections" />
+          <NavigationProperty Name="TemplateSelection" Relationship="Self.FK_TemplateSelection_ClientApps1" FromRole="ClientApps" ToRole="TemplateSelection" />
+        </EntityType>
+        <EntityType Name="ClientContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientSubMenuID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="LibraryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_ClientContent_Categories1" FromRole="ClientContent" ToRole="Categories" />
+          <NavigationProperty Name="ClientSubMenus" Relationship="Self.FK_ClientContent_ClientSubMenus" FromRole="ClientContent" ToRole="ClientSubMenus" />
+          <NavigationProperty Name="Library" Relationship="Self.FK_ClientContent_Library1" FromRole="ClientContent" ToRole="Library" />
+        </EntityType>
+        <EntityType Name="ClientMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientAppID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientMenus_ClientApps1" FromRole="ClientMenus" ToRole="ClientApps" />
+          <NavigationProperty Name="ClientSubMenus" Relationship="Self.FK_ClientSubMenus_ClientMenus" FromRole="ClientMenus" ToRole="ClientSubMenus" />
+          <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ClientRequests">
+          <Key>
+            <PropertyRef Name="ClientRequestID" />
+          </Key>
+          <Property Name="ClientRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_ClientRequests_Clients1" FromRole="ClientRequests" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Helpline" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="VatNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAdress1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAdress2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAdress3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BillilngAdress4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientApps_Clients1" FromRole="Clients" ToRole="ClientApps" />
+          <NavigationProperty Name="ClientRequests" Relationship="Self.FK_ClientRequests_Clients1" FromRole="Clients" ToRole="ClientRequests" />
+          <NavigationProperty Name="TrustedEmailDomains" Relationship="Self.FK_TrustedEmailDomains_Clients1" FromRole="Clients" ToRole="TrustedEmailDomains" />
+          <NavigationProperty Name="ClientZendesk" Relationship="CreatorModel.FK_ClientZendesk_Clients" FromRole="Clients" ToRole="ClientZendesk" />
+          <NavigationProperty Name="ClientSettings" Relationship="CreatorModel.FK_ClientSettings_ClientSettings" FromRole="Clients" ToRole="ClientSettings" />
+        </EntityType>
+        <EntityType Name="ClientScreenContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientScreenID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientScreens" Relationship="Self.FK_ClientScreenContent_ClientScreens1" FromRole="ClientScreenContent" ToRole="ClientScreens" />
+        </EntityType>
+        <EntityType Name="ClientScreens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientAppID" Type="Int32" Nullable="false" />
+          <Property Name="FontID" Type="Int32" />
+          <Property Name="ColoursID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Design" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientScreens_ClientApps1" FromRole="ClientScreens" ToRole="ClientApps" />
+          <NavigationProperty Name="ClientScreenContent" Relationship="Self.FK_ClientScreenContent_ClientScreens1" FromRole="ClientScreens" ToRole="ClientScreenContent" />
+          <NavigationProperty Name="Colours" Relationship="Self.FK_ClientScreens_Colours1" FromRole="ClientScreens" ToRole="Colours" />
+          <NavigationProperty Name="InstalledFonts" Relationship="Self.FK_ClientScreens_InstalledFonts1" FromRole="ClientScreens" ToRole="InstalledFonts" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ClientSubMenus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientMenuID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LinkReference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientContent" Relationship="Self.FK_ClientContent_ClientSubMenus" FromRole="ClientSubMenus" ToRole="ClientContent" />
+          <NavigationProperty Name="ClientMenus" Relationship="Self.FK_ClientSubMenus_ClientMenus" FromRole="ClientSubMenus" ToRole="ClientMenus" />
+          <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Colours">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FontRed" Type="Int32" />
+          <Property Name="FontGreen" Type="Int32" />
+          <Property Name="FontBlue" Type="Int32" />
+          <Property Name="LineRed" Type="Int32" />
+          <Property Name="LineGreen" Type="Int32" />
+          <Property Name="LineBlue" Type="Int32" />
+          <Property Name="BackgroundRed" Type="Int32" />
+          <Property Name="BackgroundGreen" Type="Int32" />
+          <Property Name="BackgroundBlue" Type="Int32" />
+          <NavigationProperty Name="ClientScreens" Relationship="Self.FK_ClientScreens_Colours1" FromRole="Colours" ToRole="ClientScreens" />
+        </EntityType>
+        <EntityType Name="ConnectionsLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionIdentifier" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InstalledFonts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientScreens" Relationship="Self.FK_ClientScreens_InstalledFonts1" FromRole="InstalledFonts" ToRole="ClientScreens" />
+        </EntityType>
+        <EntityType Name="Library">
+          <Key>
+            <PropertyRef Name="LibraryID" />
+          </Key>
+          <Property Name="LibraryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Filename" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Preview" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientContent" Relationship="Self.FK_ClientContent_Library1" FromRole="Library" ToRole="ClientContent" />
+          <Property Name="Keywords" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MobileConnections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientAppID" Type="Int32" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activation" Type="Boolean" />
+          <Property Name="UUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DateConnected" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ClientApps" Relationship="Self.FK_MobileConnections_ClientApps1" FromRole="MobileConnections" ToRole="ClientApps" />
+          <NavigationProperty Name="UsageTracker" Relationship="Self.FK_UsageTracker_MobileConnections" FromRole="MobileConnections" ToRole="UsageTracker" />
+          <NavigationProperty Name="Assessments" Relationship="CreatorModel.FK_Assessments_MobileConnections" FromRole="MobileConnections" ToRole="Assessments" />
+        </EntityType>
+        <EntityType Name="TemplateSelection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientAppID" Type="Int32" Nullable="false" />
+          <Property Name="TemplateType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClientID" Type="Int32" />
+          <NavigationProperty Name="ClientApps" Relationship="Self.FK_TemplateSelection_ClientApps1" FromRole="TemplateSelection" ToRole="ClientApps" />
+        </EntityType>
+        <EntityType Name="TrustedEmailDomains">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="DomainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_TrustedEmailDomains_Clients1" FromRole="TrustedEmailDomains" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="UsageTracker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MobileConnectionsID" Type="Int32" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MobileConnections" Relationship="Self.FK_UsageTracker_MobileConnections" FromRole="UsageTracker" ToRole="MobileConnections" />
+        </EntityType>
+        <Association Name="FK_ClientApps_Apps">
+          <End Role="Apps" Type="Self.Apps" Multiplicity="1" />
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientApps">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientContent_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="ClientContent" Type="Self.ClientContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ClientContent">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientApps_Clients1">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientApps">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientMenus_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="ClientMenus" Type="Self.ClientMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientMenus">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreens_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreens">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MobileConnections_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MobileConnections">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplateSelection_ClientApps1">
+          <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="1" />
+          <End Role="TemplateSelection" Type="Self.TemplateSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientApps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplateSelection">
+              <PropertyRef Name="ClientAppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientContent_ClientSubMenus">
+          <End Role="ClientSubMenus" Type="Self.ClientSubMenus" Multiplicity="1" />
+          <End Role="ClientContent" Type="Self.ClientContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientSubMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientContent">
+              <PropertyRef Name="ClientSubMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientContent_Library1">
+          <End Role="Library" Type="Self.Library" Multiplicity="1" />
+          <End Role="ClientContent" Type="Self.ClientContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Library">
+              <PropertyRef Name="LibraryID" />
+            </Principal>
+            <Dependent Role="ClientContent">
+              <PropertyRef Name="LibraryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSubMenus_ClientMenus">
+          <End Role="ClientMenus" Type="Self.ClientMenus" Multiplicity="1" />
+          <End Role="ClientSubMenus" Type="Self.ClientSubMenus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMenus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientSubMenus">
+              <PropertyRef Name="ClientMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientRequests_Clients1">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ClientRequests" Type="Self.ClientRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientRequests">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrustedEmailDomains_Clients1">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="TrustedEmailDomains" Type="Self.TrustedEmailDomains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="TrustedEmailDomains">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreenContent_ClientScreens1">
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="0..1" />
+          <End Role="ClientScreenContent" Type="Self.ClientScreenContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientScreens">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreenContent">
+              <PropertyRef Name="ClientScreenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreens_Colours1">
+          <End Role="Colours" Type="Self.Colours" Multiplicity="0..1" />
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colours">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreens">
+              <PropertyRef Name="ColoursID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientScreens_InstalledFonts1">
+          <End Role="InstalledFonts" Type="Self.InstalledFonts" Multiplicity="0..1" />
+          <End Role="ClientScreens" Type="Self.ClientScreens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InstalledFonts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientScreens">
+              <PropertyRef Name="FontID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsageTracker_MobileConnections">
+          <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="1" />
+          <End Role="UsageTracker" Type="Self.UsageTracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MobileConnections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UsageTracker">
+              <PropertyRef Name="MobileConnectionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CreatorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apps" EntityType="Self.Apps" />
+          <EntitySet Name="Assessments" EntityType="Self.Assessments" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="ClientApps" EntityType="Self.ClientApps" />
+          <EntitySet Name="ClientContent" EntityType="Self.ClientContent" />
+          <EntitySet Name="ClientMenus" EntityType="Self.ClientMenus" />
+          <EntitySet Name="ClientRequests" EntityType="Self.ClientRequests" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="ClientScreenContent" EntityType="Self.ClientScreenContent" />
+          <EntitySet Name="ClientScreens" EntityType="Self.ClientScreens" />
+          <EntitySet Name="ClientSubMenus" EntityType="Self.ClientSubMenus" />
+          <EntitySet Name="Colours" EntityType="Self.Colours" />
+          <EntitySet Name="ConnectionsLog" EntityType="Self.ConnectionsLog" />
+          <EntitySet Name="InstalledFonts" EntityType="Self.InstalledFonts" />
+          <EntitySet Name="Library" EntityType="Self.Library" />
+          <EntitySet Name="MobileConnections" EntityType="Self.MobileConnections" />
+          <EntitySet Name="TemplateSelection" EntityType="Self.TemplateSelection" />
+          <EntitySet Name="TrustedEmailDomains" EntityType="Self.TrustedEmailDomains" />
+          <EntitySet Name="UsageTracker" EntityType="Self.UsageTracker" />
+          <AssociationSet Name="FK_ClientApps_Apps" Association="Self.FK_ClientApps_Apps">
+            <End Role="Apps" EntitySet="Apps" />
+            <End Role="ClientApps" EntitySet="ClientApps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientContent_Categories1" Association="Self.FK_ClientContent_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="ClientContent" EntitySet="ClientContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientApps_Clients1" Association="Self.FK_ClientApps_Clients1">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientApps" EntitySet="ClientApps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientMenus_ClientApps1" Association="Self.FK_ClientMenus_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="ClientMenus" EntitySet="ClientMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreens_ClientApps1" Association="Self.FK_ClientScreens_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MobileConnections_ClientApps1" Association="Self.FK_MobileConnections_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="MobileConnections" EntitySet="MobileConnections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplateSelection_ClientApps1" Association="Self.FK_TemplateSelection_ClientApps1">
+            <End Role="ClientApps" EntitySet="ClientApps" />
+            <End Role="TemplateSelection" EntitySet="TemplateSelection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientContent_ClientSubMenus" Association="Self.FK_ClientContent_ClientSubMenus">
+            <End Role="ClientSubMenus" EntitySet="ClientSubMenus" />
+            <End Role="ClientContent" EntitySet="ClientContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientContent_Library1" Association="Self.FK_ClientContent_Library1">
+            <End Role="Library" EntitySet="Library" />
+            <End Role="ClientContent" EntitySet="ClientContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSubMenus_ClientMenus" Association="Self.FK_ClientSubMenus_ClientMenus">
+            <End Role="ClientMenus" EntitySet="ClientMenus" />
+            <End Role="ClientSubMenus" EntitySet="ClientSubMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientRequests_Clients1" Association="Self.FK_ClientRequests_Clients1">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientRequests" EntitySet="ClientRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrustedEmailDomains_Clients1" Association="Self.FK_TrustedEmailDomains_Clients1">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="TrustedEmailDomains" EntitySet="TrustedEmailDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreenContent_ClientScreens1" Association="Self.FK_ClientScreenContent_ClientScreens1">
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+            <End Role="ClientScreenContent" EntitySet="ClientScreenContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreens_Colours1" Association="Self.FK_ClientScreens_Colours1">
+            <End Role="Colours" EntitySet="Colours" />
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientScreens_InstalledFonts1" Association="Self.FK_ClientScreens_InstalledFonts1">
+            <End Role="InstalledFonts" EntitySet="InstalledFonts" />
+            <End Role="ClientScreens" EntitySet="ClientScreens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsageTracker_MobileConnections" Association="Self.FK_UsageTracker_MobileConnections">
+            <End Role="MobileConnections" EntitySet="MobileConnections" />
+            <End Role="UsageTracker" EntitySet="UsageTracker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assessments_MobileConnections" Association="CreatorModel.FK_Assessments_MobileConnections">
+            <End Role="MobileConnections" EntitySet="MobileConnections" />
+            <End Role="Assessments" EntitySet="Assessments" />
+          </AssociationSet>
+          <EntitySet Name="Zendesk" EntityType="CreatorModel.Zendesk" />
+          <EntitySet Name="ClientZendesk" EntityType="CreatorModel.ClientZendesk" />
+          <AssociationSet Name="FK_ClientZendesk_Clients" Association="CreatorModel.FK_ClientZendesk_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientZendesk_Zendesk" Association="CreatorModel.FK_ClientZendesk_Zendesk">
+            <End Role="Zendesk" EntitySet="Zendesk" />
+            <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+          </AssociationSet>
+          <EntitySet Name="ClientSettings" EntityType="CreatorModel.ClientSettings" />
+          <AssociationSet Name="FK_ClientSettings_ClientSettings" Association="CreatorModel.FK_ClientSettings_ClientSettings">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ClientSettings" EntitySet="ClientSettings" />
+          </AssociationSet>
+          </EntityContainer>
+        <Association Name="FK_Assessments_MobileConnections">
+          <End Type="CreatorModel.MobileConnections" Role="MobileConnections" Multiplicity="1" />
+          <End Type="CreatorModel.Assessments" Role="Assessments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MobileConnections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Assessments">
+              <PropertyRef Name="MobileConnectionsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Zendesk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClientZendesk" Relationship="CreatorModel.FK_ClientZendesk_Zendesk" FromRole="Zendesk" ToRole="ClientZendesk" />
+        </EntityType>
+        <EntityType Name="ClientZendesk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="ZendeskID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="CreatorModel.FK_ClientZendesk_Clients" FromRole="ClientZendesk" ToRole="Clients" />
+          <NavigationProperty Name="Zendesk" Relationship="CreatorModel.FK_ClientZendesk_Zendesk" FromRole="ClientZendesk" ToRole="Zendesk" />
+        </EntityType>
+        <Association Name="FK_ClientZendesk_Clients">
+          <End Type="CreatorModel.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="CreatorModel.ClientZendesk" Role="ClientZendesk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientZendesk">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientZendesk_Zendesk">
+          <End Type="CreatorModel.Zendesk" Role="Zendesk" Multiplicity="1" />
+          <End Type="CreatorModel.ClientZendesk" Role="ClientZendesk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zendesk">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientZendesk">
+              <PropertyRef Name="ZendeskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClientSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="SettingKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="CreatorModel.FK_ClientSettings_ClientSettings" FromRole="ClientSettings" ToRole="Clients" />
+        </EntityType>
+        <Association Name="FK_ClientSettings_ClientSettings">
+          <End Type="CreatorModel.Clients" Role="Clients" Multiplicity="0..1" />
+          <End Type="CreatorModel.ClientSettings" Role="ClientSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ClientSettings">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CreatorModelStoreContainer" CdmEntityContainer="CreatorEntities">
+          <EntitySetMapping Name="Apps">
+            <EntityTypeMapping TypeName="CreatorModel.Apps">
+              <MappingFragment StoreEntitySet="Apps">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="AppCode" ColumnName="AppCode" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assessments">
+            <EntityTypeMapping TypeName="CreatorModel.Assessments">
+              <MappingFragment StoreEntitySet="Assessments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MobileConnectionsID" ColumnName="MobileConnectionsID" />
+                <ScalarProperty Name="AssessmentDate" ColumnName="AssessmentDate" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CreatorModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientApps">
+            <EntityTypeMapping TypeName="CreatorModel.ClientApps">
+              <MappingFragment StoreEntitySet="ClientApps">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientContent">
+            <EntityTypeMapping TypeName="CreatorModel.ClientContent">
+              <MappingFragment StoreEntitySet="ClientContent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientSubMenuID" ColumnName="ClientSubMenuID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientMenus">
+            <EntityTypeMapping TypeName="CreatorModel.ClientMenus">
+              <MappingFragment StoreEntitySet="ClientMenus">
+                <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientRequests">
+            <EntityTypeMapping TypeName="CreatorModel.ClientRequests">
+              <MappingFragment StoreEntitySet="ClientRequests">
+                <ScalarProperty Name="ClientRequestID" ColumnName="ClientRequestID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CreatorModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactNr" ColumnName="ContactNr" />
+                <ScalarProperty Name="Helpline" ColumnName="Helpline" />
+                <ScalarProperty Name="VatNr" ColumnName="VatNr" />
+                <ScalarProperty Name="BillingAdress1" ColumnName="BillingAdress1" />
+                <ScalarProperty Name="BillingAdress2" ColumnName="BillingAdress2" />
+                <ScalarProperty Name="BillingAdress3" ColumnName="BillingAdress3" />
+                <ScalarProperty Name="BillilngAdress4" ColumnName="BillilngAdress4" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientScreenContent">
+            <EntityTypeMapping TypeName="CreatorModel.ClientScreenContent">
+              <MappingFragment StoreEntitySet="ClientScreenContent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientScreenID" ColumnName="ClientScreenID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientScreens">
+            <EntityTypeMapping TypeName="CreatorModel.ClientScreens">
+              <MappingFragment StoreEntitySet="ClientScreens">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+                <ScalarProperty Name="FontID" ColumnName="FontID" />
+                <ScalarProperty Name="ColoursID" ColumnName="ColoursID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Design" ColumnName="Design" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSubMenus">
+            <EntityTypeMapping TypeName="CreatorModel.ClientSubMenus">
+              <MappingFragment StoreEntitySet="ClientSubMenus">
+                <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientMenuID" ColumnName="ClientMenuID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+                <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colours">
+            <EntityTypeMapping TypeName="CreatorModel.Colours">
+              <MappingFragment StoreEntitySet="Colours">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FontRed" ColumnName="FontRed" />
+                <ScalarProperty Name="FontGreen" ColumnName="FontGreen" />
+                <ScalarProperty Name="FontBlue" ColumnName="FontBlue" />
+                <ScalarProperty Name="LineRed" ColumnName="LineRed" />
+                <ScalarProperty Name="LineGreen" ColumnName="LineGreen" />
+                <ScalarProperty Name="LineBlue" ColumnName="LineBlue" />
+                <ScalarProperty Name="BackgroundRed" ColumnName="BackgroundRed" />
+                <ScalarProperty Name="BackgroundGreen" ColumnName="BackgroundGreen" />
+                <ScalarProperty Name="BackgroundBlue" ColumnName="BackgroundBlue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectionsLog">
+            <EntityTypeMapping TypeName="CreatorModel.ConnectionsLog">
+              <MappingFragment StoreEntitySet="ConnectionsLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UUID" ColumnName="UUID" />
+                <ScalarProperty Name="ConnectionIdentifier" ColumnName="ConnectionIdentifier" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstalledFonts">
+            <EntityTypeMapping TypeName="CreatorModel.InstalledFonts">
+              <MappingFragment StoreEntitySet="InstalledFonts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Library">
+            <EntityTypeMapping TypeName="CreatorModel.Library">
+              <MappingFragment StoreEntitySet="Library">
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="Preview" ColumnName="Preview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileConnections">
+            <EntityTypeMapping TypeName="CreatorModel.MobileConnections">
+              <MappingFragment StoreEntitySet="MobileConnections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+                <ScalarProperty Name="EmailAdress" ColumnName="EmailAdress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Activation" ColumnName="Activation" />
+                <ScalarProperty Name="UUID" ColumnName="UUID" />
+                <ScalarProperty Name="DateConnected" ColumnName="DateConnected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateSelection">
+            <EntityTypeMapping TypeName="CreatorModel.TemplateSelection">
+              <MappingFragment StoreEntitySet="TemplateSelection">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
+                <ScalarProperty Name="TemplateType" ColumnName="TemplateType" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrustedEmailDomains">
+            <EntityTypeMapping TypeName="CreatorModel.TrustedEmailDomains">
+              <MappingFragment StoreEntitySet="TrustedEmailDomains">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsageTracker">
+            <EntityTypeMapping TypeName="CreatorModel.UsageTracker">
+              <MappingFragment StoreEntitySet="UsageTracker">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MobileConnectionsID" ColumnName="MobileConnectionsID" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zendesk">
+            <EntityTypeMapping TypeName="CreatorModel.Zendesk">
+              <MappingFragment StoreEntitySet="Zendesk">
+                <ScalarProperty Name="AccountKey" ColumnName="AccountKey" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientZendesk">
+            <EntityTypeMapping TypeName="CreatorModel.ClientZendesk">
+              <MappingFragment StoreEntitySet="ClientZendesk">
+                <ScalarProperty Name="ZendeskID" ColumnName="ZendeskID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSettings">
+            <EntityTypeMapping TypeName="CreatorModel.ClientSettings">
+              <MappingFragment StoreEntitySet="ClientSettings">
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
