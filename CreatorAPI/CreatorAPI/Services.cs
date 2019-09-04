@@ -333,13 +333,13 @@ namespace CreatorAPI
                     }
 
                     // Delete removed item types
-                    var itemsToDelete = vALINFOEntities.VerificationProducts.Where(x => !itemTypes.Select(i => i.Code).Contains(x.ItemCode));
+                    //var itemsToDelete = vALINFOEntities.VerificationProducts.Where(x => !itemTypes.Select(i => i.Code).Contains(x.ItemCode));
 
-                    foreach (var itd in itemsToDelete)
-                    {
-                        itd.IsArchived = true;
-                        itd.IsActive = false;
-                    }
+                    //foreach (var itd in itemsToDelete)
+                    //{
+                    //    itd.IsArchived = true;
+                    //    itd.IsActive = false;
+                    //}
 
                     // Save changes
                     vALINFOEntities.SaveChanges();

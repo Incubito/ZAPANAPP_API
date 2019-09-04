@@ -64,6 +64,7 @@ namespace CreatorAPI.Controllers
                     candidate.Firstname = Firstname;
                     candidate.Surname = Surname;
                     candidate.IDNumber = Idnumber;
+                     candidate.Cellphone = "0760619183";
                     candidate.ClientID = client.ClientID;
                     candidate.AppUserID = User.Identity.GetUserName();
                     vALINFOEntities.Candidates.Add(candidate);
@@ -86,6 +87,7 @@ namespace CreatorAPI.Controllers
                     ItemTypeViewModel itemTypeViewModel = new ItemTypeViewModel();
                     itemTypeViewModel.Code = "IDALG";
                     itemTypeViewModel.Name = "MIE ID Validation";
+                    itemTypeViewModel.IsActive = true;
 
                     List<ItemTypeViewModel> itemTypeViewModelList = new List<ItemTypeViewModel>();
                     itemTypeViewModelList.Add(itemTypeViewModel);
@@ -106,7 +108,7 @@ namespace CreatorAPI.Controllers
                         Source = Constants.MieRequestSource,
                         RemoteCaptureDate = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'ffK"),
                         RemoteSendDate = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'ffK"),
-                        ContactNumber = candidate.Cellphone,
+                        ContactNumber = "",
                         RemoteRequest = localRequest.RequestID.ToString(),
                         PrerequisiteGroupList = new PrerequisiteGroupList(),
                         ItemList = new ItemList() { Item = new List<MieItem>() }
@@ -150,20 +152,14 @@ namespace CreatorAPI.Controllers
                                 vALINFOEntities.SaveChanges();
                             }
 
-                            var item = vALINFOEntities.VerificationProducts.Where(x => x.ItemCode == itemTypeViewModelList.ToList().First().Code);
-                            var type = item != null ? item.Select(x => x.Type) : null;
-                            var typename = type != null ? ((ProductType)Convert.ToInt32(type)).ToString() : "";
-
-
-
-
+                         
                             candidate.VettingStatus = 1;
 
                             candidate.DateModified = DateTime.UtcNow.AddHours(2);
 
+                            vALINFOEntities.SaveChanges();
 
 
-                            return string.Empty;
                         }
                         else
                         {
@@ -205,9 +201,9 @@ namespace CreatorAPI.Controllers
         private decimal GetProductAmount(string code, int category, int clientID, int? packageID = null)
         {
             CreatorAPI.ExternalModel.VALINFOEntities vALINFOEntities = new ExternalModel.VALINFOEntities();
-            var product = vALINFOEntities.VerificationProducts.Where(x => x.ItemCode == code);
-            if (product != null)
+            var product = vALINFOEntities.VerificationProducts.Where(x => x.ItemCode == code);            if (product != null)
             {
+
                 var clientPricing = vALINFOEntities.ProductPriceEntries.Where(x => (x.VerificationProduct.ItemCode == code) && (x.ClientID == clientID));
                 return clientPricing != null ? clientPricing.Select(x => x.Price).Single() : product.Select(x => x.SellingPrice.Value).Single();
             }

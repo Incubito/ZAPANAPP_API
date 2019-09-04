@@ -39,7 +39,7 @@ namespace CreatorAPI.Controllers
                 vALINFOEntities.SaveChanges();
 
 
-             /*   var localRequest = new ExternalModel.MieRequest()
+               var localRequest = new ExternalModel.MieRequest()
                 {
                     CandidateID = candidate.CandidateID,
                     ClientID = candidate.ClientID,
@@ -53,8 +53,8 @@ namespace CreatorAPI.Controllers
                 {
 
                     ItemTypeViewModel itemTypeViewModel = new ItemTypeViewModel();
-                    itemTypeViewModel.Code = "IDALG";
-                    itemTypeViewModel.Name = "MIE ID Validation";
+                    itemTypeViewModel.Code = "TUSAID";
+                    itemTypeViewModel.Name = "ID Verification";
 
                     List<ItemTypeViewModel> itemTypeViewModelList = new List<ItemTypeViewModel>();
                     itemTypeViewModelList.Add(itemTypeViewModel);
@@ -158,7 +158,7 @@ namespace CreatorAPI.Controllers
                 {
 
 
-                }*/
+                }
                  result = "success";
             }
             catch (Exception ex)
