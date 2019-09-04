@@ -1,0 +1,2458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.kroll.co.za/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.kroll.co.za/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.kroll.co.za/">
+      <s:element name="GetGreeting">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetGreetingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGreetingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoLoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoAuthenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoAuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoAuthenticateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetClients">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetClientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetClientsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutBranch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutBranchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutBranchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAgentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgentList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAgentListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAgentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutAgent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutAgentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutAgentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoUpdateAgent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoUpdateAgentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoUpdateAgentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetClientTree">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetClientTreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetClientTreeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetItemTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetItemTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetItemTypesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetItemTypeGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetItemTypeGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetItemTypeGroupsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetItemType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetItemTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetItemTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetTablesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetTablesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetTableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionAnswers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionAnswersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuestionAnswersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionnaireKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionnaireKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuestionnaireKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemAnswers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemAnswersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemAnswersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutFinger">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutFingerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutFingerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequests">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetRequestsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAddInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAddInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAddInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAddInfoSpecific">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAddInfoSpecificResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAddInfoSpecificResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutAddInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutAddInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutAddInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetHostedFingers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetHostedFingersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetHostedFingersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoChangePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoRequestReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoRequestReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoRequestReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetParameter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetParameterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCountries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCountriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetCountriesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetZones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetZonesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetZonesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCompanyInformation">
+        <s:complexType />
+      </s:element>
+      <s:element name="ksoGetCompanyInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetCompanyInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoForgotPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoForgotPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoForgotPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAFISMapping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAFISMappingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAFISMappingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAFISInput">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAFISInputResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAFISInputResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetParameterTextByCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetParameterTextByCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetParameterTextByCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCompanyUnprotected">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCompanyUnprotectedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetCompanyUnprotectedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetCompanyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetPrerequisites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetPrerequisitesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetPrerequisitesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequestProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequestPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetRequestPropertiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetClientProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetClientPropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetClientPropertiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgentNotifications">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetAgentNotificationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetAgentNotificationsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutAgentNotification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutAgentNotificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutAgentNotificationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetStagedInquiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetStagedInquiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetStagedInquiryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutRequestRedirect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoPutRequestRedirectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoPutRequestRedirectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequestRedirect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetRequestRedirectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetRequestRedirectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoCloneRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoCloneRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoCloneRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPrepaidPoolTotals">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPrepaidPoolTotalsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPrepaidPoolTotalsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMetaInput">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMetaInputResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMetaInputResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetDuplicateInquiries">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ksoGetDuplicateInquiriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ksoGetDuplicateInquiriesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSimilar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSimilarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSimilarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadFingerprintCapture">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadFingerprintCaptureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadFingerprintCaptureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFingerprintCapture">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFingerprintCaptureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveFingerprintCaptureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFingerprintCaptureHostingKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFingerprintCaptureHostingKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFingerprintCaptureHostingKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFingerprintCaptureStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aLogonXml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aArgument" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFingerprintCaptureStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFingerprintCaptureStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetGreetingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGreeting" />
+  </wsdl:message>
+  <wsdl:message name="GetGreetingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGreetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoLogin" />
+  </wsdl:message>
+  <wsdl:message name="ksoLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoAuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoAuthenticate" />
+  </wsdl:message>
+  <wsdl:message name="ksoAuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoAuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetClientsSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetClients" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetClientsSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutBranchSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutBranch" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutBranchSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentsSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAgents" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentsSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAgentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentListSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAgentList" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentListSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAgentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAgent" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutAgentSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutAgent" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutAgentSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoUpdateAgentSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoUpdateAgent" />
+  </wsdl:message>
+  <wsdl:message name="ksoUpdateAgentSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoUpdateAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetClientTreeSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetClientTree" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetClientTreeSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetClientTreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetItemTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetItemTypes" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetItemTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetItemTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetItemTypeGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetItemTypeGroups" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetItemTypeGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetItemTypeGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetItemTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetItemType" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetItemTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetItemTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetTables" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetTableSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetTable" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetTableSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionAnswersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuestionAnswers" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionAnswersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuestionAnswersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionnaireKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuestionnaireKey" />
+  </wsdl:message>
+  <wsdl:message name="GetQuestionnaireKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuestionnaireKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemAnswersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystemAnswers" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemAnswersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemAnswersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutRequest" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutFingerSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutFinger" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutFingerSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutFingerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestsSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetRequests" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestsSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetRequest" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAddInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAddInfo" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAddInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAddInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAddInfoSpecificSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAddInfoSpecific" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAddInfoSpecificSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAddInfoSpecificResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutAddInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutAddInfo" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutAddInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutAddInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetHostedFingersSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetHostedFingers" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetHostedFingersSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetHostedFingersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ksoChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoRequestReportSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoRequestReport" />
+  </wsdl:message>
+  <wsdl:message name="ksoRequestReportSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoRequestReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetParameter" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCountriesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetCountries" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCountriesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetZonesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetZones" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetZonesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCompanyInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetCompanyInformation" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCompanyInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetCompanyInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoForgotPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoForgotPassword" />
+  </wsdl:message>
+  <wsdl:message name="ksoForgotPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoForgotPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAFISMappingSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAFISMapping" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAFISMappingSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAFISMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAFISInputSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAFISInput" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAFISInputSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAFISInputResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetParameterTextByCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetParameterTextByCode" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetParameterTextByCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetParameterTextByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCompanyUnprotectedSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetCompanyUnprotected" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCompanyUnprotectedSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetCompanyUnprotectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetCompany" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetPrerequisitesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetPrerequisites" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetPrerequisitesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetPrerequisitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetRequestProperties" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetRequestPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetClientPropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetClientProperties" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetClientPropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetClientPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentNotificationsSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetAgentNotifications" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetAgentNotificationsSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetAgentNotificationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutAgentNotificationSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutAgentNotification" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutAgentNotificationSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutAgentNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetStagedInquirySoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetStagedInquiry" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetStagedInquirySoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetStagedInquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutRequestRedirectSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoPutRequestRedirect" />
+  </wsdl:message>
+  <wsdl:message name="ksoPutRequestRedirectSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoPutRequestRedirectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestRedirectSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetRequestRedirect" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetRequestRedirectSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetRequestRedirectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoCloneRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoCloneRequest" />
+  </wsdl:message>
+  <wsdl:message name="ksoCloneRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoCloneRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPrepaidPoolTotalsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPrepaidPoolTotals" />
+  </wsdl:message>
+  <wsdl:message name="GetPrepaidPoolTotalsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPrepaidPoolTotalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMetaInputSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMetaInput" />
+  </wsdl:message>
+  <wsdl:message name="GetMetaInputSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMetaInputResponse" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetDuplicateInquiriesSoapIn">
+    <wsdl:part name="parameters" element="tns:ksoGetDuplicateInquiries" />
+  </wsdl:message>
+  <wsdl:message name="ksoGetDuplicateInquiriesSoapOut">
+    <wsdl:part name="parameters" element="tns:ksoGetDuplicateInquiriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSimilarSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSimilar" />
+  </wsdl:message>
+  <wsdl:message name="FindSimilarSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSimilarResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadFingerprintCaptureSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadFingerprintCapture" />
+  </wsdl:message>
+  <wsdl:message name="LoadFingerprintCaptureSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadFingerprintCaptureResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveFingerprintCaptureSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFingerprintCapture" />
+  </wsdl:message>
+  <wsdl:message name="SaveFingerprintCaptureSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFingerprintCaptureResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFingerprintCaptureHostingKeySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFingerprintCaptureHostingKey" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFingerprintCaptureHostingKeySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFingerprintCaptureHostingKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFingerprintCaptureStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFingerprintCaptureStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFingerprintCaptureStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFingerprintCaptureStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="epcvServiceSoap">
+    <wsdl:operation name="GetGreeting">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a welcome greeting.</wsdl:documentation>
+      <wsdl:input message="tns:GetGreetingSoapIn" />
+      <wsdl:output message="tns:GetGreetingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks that the user is valid and returns the user full profile</wsdl:documentation>
+      <wsdl:input message="tns:ksoLoginSoapIn" />
+      <wsdl:output message="tns:ksoLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoAuthenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate the user and returns the environmenrt data.</wsdl:documentation>
+      <wsdl:input message="tns:ksoAuthenticateSoapIn" />
+      <wsdl:output message="tns:ksoAuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClients">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of clients for the login user</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetClientsSoapIn" />
+      <wsdl:output message="tns:ksoGetClientsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutBranch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a new branch</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutBranchSoapIn" />
+      <wsdl:output message="tns:ksoPutBranchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgents">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of agents for the login user</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAgentsSoapIn" />
+      <wsdl:output message="tns:ksoGetAgentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgentList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of agents for the Administrator</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAgentListSoapIn" />
+      <wsdl:output message="tns:ksoGetAgentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the currently logged in agent</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAgentSoapIn" />
+      <wsdl:output message="tns:ksoGetAgentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAgent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update certain SS access for a given agent</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutAgentSoapIn" />
+      <wsdl:output message="tns:ksoPutAgentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoUpdateAgent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update certain SS access for a given agent</wsdl:documentation>
+      <wsdl:input message="tns:ksoUpdateAgentSoapIn" />
+      <wsdl:output message="tns:ksoUpdateAgentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClientTree">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a hierarchichal list of clients for the login user</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetClientTreeSoapIn" />
+      <wsdl:output message="tns:ksoGetClientTreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available item types</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetItemTypesSoapIn" />
+      <wsdl:output message="tns:ksoGetItemTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemTypeGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available item type Groups for specific client</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetItemTypeGroupsSoapIn" />
+      <wsdl:output message="tns:ksoGetItemTypeGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available item types</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetItemTypeSoapIn" />
+      <wsdl:output message="tns:ksoGetItemTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetTables">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of tables</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetTablesSoapIn" />
+      <wsdl:output message="tns:ksoGetTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetTable">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a table by key</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetTableSoapIn" />
+      <wsdl:output message="tns:ksoGetTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionAnswers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns available data for candidate</wsdl:documentation>
+      <wsdl:input message="tns:GetQuestionAnswersSoapIn" />
+      <wsdl:output message="tns:GetQuestionAnswersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionnaireKey">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns questionnaire key for a candidate</wsdl:documentation>
+      <wsdl:input message="tns:GetQuestionnaireKeySoapIn" />
+      <wsdl:output message="tns:GetQuestionnaireKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemAnswers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns questionnaire answers that have mapped system codes</wsdl:documentation>
+      <wsdl:input message="tns:GetSystemAnswersSoapIn" />
+      <wsdl:output message="tns:GetSystemAnswersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submit kso Request</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutRequestSoapIn" />
+      <wsdl:output message="tns:ksoPutRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutFinger">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submit Fingerprint for a Request</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutFingerSoapIn" />
+      <wsdl:output message="tns:ksoPutFingerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequests">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Search for Requests</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetRequestsSoapIn" />
+      <wsdl:output message="tns:ksoGetRequestsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a single Request</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetRequestSoapIn" />
+      <wsdl:output message="tns:ksoGetRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAddInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all additional information requests for specified agent</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAddInfoSoapIn" />
+      <wsdl:output message="tns:ksoGetAddInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAddInfoSpecific">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get specific additional information requests for specified agent</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAddInfoSpecificSoapIn" />
+      <wsdl:output message="tns:ksoGetAddInfoSpecificSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAddInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Put additional information requests for specified agent</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutAddInfoSoapIn" />
+      <wsdl:output message="tns:ksoPutAddInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetHostedFingers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Search for Hosted fingerprints</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetHostedFingersSoapIn" />
+      <wsdl:output message="tns:ksoGetHostedFingersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoChangePassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Changes a password for an agent.</wsdl:documentation>
+      <wsdl:input message="tns:ksoChangePasswordSoapIn" />
+      <wsdl:output message="tns:ksoChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoRequestReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request a pdf report be emailed to you</wsdl:documentation>
+      <wsdl:input message="tns:ksoRequestReportSoapIn" />
+      <wsdl:output message="tns:ksoRequestReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetParameter">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request kso parameter</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetParameterSoapIn" />
+      <wsdl:output message="tns:ksoGetParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCountries">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of all Countries</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetCountriesSoapIn" />
+      <wsdl:output message="tns:ksoGetCountriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetZones">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return list of all Zones and their associated Cost Types</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetZonesSoapIn" />
+      <wsdl:output message="tns:ksoGetZonesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompanyInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the company information</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetCompanyInformationSoapIn" />
+      <wsdl:output message="tns:ksoGetCompanyInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoForgotPassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send password via email</wsdl:documentation>
+      <wsdl:input message="tns:ksoForgotPasswordSoapIn" />
+      <wsdl:output message="tns:ksoForgotPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAFISMapping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get AFIS Mapping</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAFISMappingSoapIn" />
+      <wsdl:output message="tns:ksoGetAFISMappingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAFISInput">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get AFIS Input</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAFISInputSoapIn" />
+      <wsdl:output message="tns:ksoGetAFISInputSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetParameterTextByCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns parameter text for the specified code</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetParameterTextByCodeSoapIn" />
+      <wsdl:output message="tns:ksoGetParameterTextByCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompanyUnprotected">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the company information (excluding protected information)</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetCompanyUnprotectedSoapIn" />
+      <wsdl:output message="tns:ksoGetCompanyUnprotectedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompany">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the company information</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetCompanySoapIn" />
+      <wsdl:output message="tns:ksoGetCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetPrerequisites">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return the client's prerequisites</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetPrerequisitesSoapIn" />
+      <wsdl:output message="tns:ksoGetPrerequisitesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequestProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Request Properties</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetRequestPropertiesSoapIn" />
+      <wsdl:output message="tns:ksoGetRequestPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClientProperties">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Client Properties</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetClientPropertiesSoapIn" />
+      <wsdl:output message="tns:ksoGetClientPropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgentNotifications">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns agent notifications</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetAgentNotificationsSoapIn" />
+      <wsdl:output message="tns:ksoGetAgentNotificationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAgentNotification">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns agent notifications</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutAgentNotificationSoapIn" />
+      <wsdl:output message="tns:ksoPutAgentNotificationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetStagedInquiry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns staged inquiry details</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetStagedInquirySoapIn" />
+      <wsdl:output message="tns:ksoGetStagedInquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutRequestRedirect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns http redirect to complete request</wsdl:documentation>
+      <wsdl:input message="tns:ksoPutRequestRedirectSoapIn" />
+      <wsdl:output message="tns:ksoPutRequestRedirectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequestRedirect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns http redirect to view report or to complete request</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetRequestRedirectSoapIn" />
+      <wsdl:output message="tns:ksoGetRequestRedirectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoCloneRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Clone a given Inquiry for re-checking</wsdl:documentation>
+      <wsdl:input message="tns:ksoCloneRequestSoapIn" />
+      <wsdl:output message="tns:ksoCloneRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrepaidPoolTotals">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns prepaid totals available for this client</wsdl:documentation>
+      <wsdl:input message="tns:GetPrepaidPoolTotalsSoapIn" />
+      <wsdl:output message="tns:GetPrepaidPoolTotalsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMetaInput">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns Meta Input</wsdl:documentation>
+      <wsdl:input message="tns:GetMetaInputSoapIn" />
+      <wsdl:output message="tns:GetMetaInputSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetDuplicateInquiries">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns duplicate inquiry details</wsdl:documentation>
+      <wsdl:input message="tns:ksoGetDuplicateInquiriesSoapIn" />
+      <wsdl:output message="tns:ksoGetDuplicateInquiriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSimilar">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns top (n) list of items simliar to text passed in</wsdl:documentation>
+      <wsdl:input message="tns:FindSimilarSoapIn" />
+      <wsdl:output message="tns:FindSimilarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadFingerprintCapture">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Loads a captured fingerprint</wsdl:documentation>
+      <wsdl:input message="tns:LoadFingerprintCaptureSoapIn" />
+      <wsdl:output message="tns:LoadFingerprintCaptureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFingerprintCapture">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save captured fingerprint </wsdl:documentation>
+      <wsdl:input message="tns:SaveFingerprintCaptureSoapIn" />
+      <wsdl:output message="tns:SaveFingerprintCaptureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFingerprintCaptureHostingKey">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update captured fingerprint hosting key</wsdl:documentation>
+      <wsdl:input message="tns:UpdateFingerprintCaptureHostingKeySoapIn" />
+      <wsdl:output message="tns:UpdateFingerprintCaptureHostingKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFingerprintCaptureStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update captured fingerprint status</wsdl:documentation>
+      <wsdl:input message="tns:UpdateFingerprintCaptureStatusSoapIn" />
+      <wsdl:output message="tns:UpdateFingerprintCaptureStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="epcvServiceSoap" type="tns:epcvServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetGreeting">
+      <soap:operation soapAction="http://www.kroll.co.za/GetGreeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoLogin">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoAuthenticate">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoAuthenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClients">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutBranch">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgents">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAgents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgentList">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAgentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgent">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAgent">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoUpdateAgent">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoUpdateAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClientTree">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetClientTree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemTypes">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetItemTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemTypeGroups">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetItemTypeGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemType">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetItemType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetTables">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetTable">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionAnswers">
+      <soap:operation soapAction="http://www.kroll.co.za/GetQuestionAnswers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionnaireKey">
+      <soap:operation soapAction="http://www.kroll.co.za/GetQuestionnaireKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemAnswers">
+      <soap:operation soapAction="http://www.kroll.co.za/GetSystemAnswers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutRequest">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutFinger">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutFinger" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequests">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequest">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAddInfo">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAddInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAddInfoSpecific">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAddInfoSpecific" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAddInfo">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutAddInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetHostedFingers">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetHostedFingers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoChangePassword">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoRequestReport">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoRequestReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetParameter">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCountries">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetZones">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompanyInformation">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetCompanyInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoForgotPassword">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoForgotPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAFISMapping">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAFISMapping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAFISInput">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAFISInput" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetParameterTextByCode">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetParameterTextByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompanyUnprotected">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetCompanyUnprotected" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompany">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetPrerequisites">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetPrerequisites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequestProperties">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetRequestProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClientProperties">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetClientProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgentNotifications">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetAgentNotifications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAgentNotification">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutAgentNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetStagedInquiry">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetStagedInquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutRequestRedirect">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoPutRequestRedirect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequestRedirect">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetRequestRedirect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoCloneRequest">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoCloneRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrepaidPoolTotals">
+      <soap:operation soapAction="http://www.kroll.co.za/GetPrepaidPoolTotals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMetaInput">
+      <soap:operation soapAction="http://www.kroll.co.za/GetMetaInput" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetDuplicateInquiries">
+      <soap:operation soapAction="http://www.kroll.co.za/ksoGetDuplicateInquiries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSimilar">
+      <soap:operation soapAction="http://www.kroll.co.za/FindSimilar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadFingerprintCapture">
+      <soap:operation soapAction="http://www.kroll.co.za/LoadFingerprintCapture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFingerprintCapture">
+      <soap:operation soapAction="http://www.kroll.co.za/SaveFingerprintCapture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFingerprintCaptureHostingKey">
+      <soap:operation soapAction="http://www.kroll.co.za/UpdateFingerprintCaptureHostingKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFingerprintCaptureStatus">
+      <soap:operation soapAction="http://www.kroll.co.za/UpdateFingerprintCaptureStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="epcvServiceSoap12" type="tns:epcvServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetGreeting">
+      <soap12:operation soapAction="http://www.kroll.co.za/GetGreeting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoLogin">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoAuthenticate">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoAuthenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClients">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetClients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutBranch">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgents">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAgents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgentList">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAgentList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgent">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAgent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAgent">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutAgent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoUpdateAgent">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoUpdateAgent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClientTree">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetClientTree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemTypes">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetItemTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemTypeGroups">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetItemTypeGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetItemType">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetItemType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetTables">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetTable">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionAnswers">
+      <soap12:operation soapAction="http://www.kroll.co.za/GetQuestionAnswers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionnaireKey">
+      <soap12:operation soapAction="http://www.kroll.co.za/GetQuestionnaireKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemAnswers">
+      <soap12:operation soapAction="http://www.kroll.co.za/GetSystemAnswers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutRequest">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutFinger">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutFinger" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequests">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequest">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAddInfo">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAddInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAddInfoSpecific">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAddInfoSpecific" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAddInfo">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutAddInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetHostedFingers">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetHostedFingers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoChangePassword">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoRequestReport">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoRequestReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetParameter">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetParameter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCountries">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetCountries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetZones">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetZones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompanyInformation">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetCompanyInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoForgotPassword">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoForgotPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAFISMapping">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAFISMapping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAFISInput">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAFISInput" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetParameterTextByCode">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetParameterTextByCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompanyUnprotected">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetCompanyUnprotected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetCompany">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetPrerequisites">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetPrerequisites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequestProperties">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetRequestProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetClientProperties">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetClientProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetAgentNotifications">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetAgentNotifications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutAgentNotification">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutAgentNotification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetStagedInquiry">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetStagedInquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoPutRequestRedirect">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoPutRequestRedirect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetRequestRedirect">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetRequestRedirect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoCloneRequest">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoCloneRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrepaidPoolTotals">
+      <soap12:operation soapAction="http://www.kroll.co.za/GetPrepaidPoolTotals" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMetaInput">
+      <soap12:operation soapAction="http://www.kroll.co.za/GetMetaInput" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ksoGetDuplicateInquiries">
+      <soap12:operation soapAction="http://www.kroll.co.za/ksoGetDuplicateInquiries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSimilar">
+      <soap12:operation soapAction="http://www.kroll.co.za/FindSimilar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadFingerprintCapture">
+      <soap12:operation soapAction="http://www.kroll.co.za/LoadFingerprintCapture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFingerprintCapture">
+      <soap12:operation soapAction="http://www.kroll.co.za/SaveFingerprintCapture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFingerprintCaptureHostingKey">
+      <soap12:operation soapAction="http://www.kroll.co.za/UpdateFingerprintCaptureHostingKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFingerprintCaptureStatus">
+      <soap12:operation soapAction="http://www.kroll.co.za/UpdateFingerprintCaptureStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="epcvService">
+    <wsdl:port name="epcvServiceSoap" binding="tns:epcvServiceSoap">
+      <soap:address location="https://www.mie.co.za/secure/services/epcvRequest/epcvRequest.asmx" />
+    </wsdl:port>
+    <wsdl:port name="epcvServiceSoap12" binding="tns:epcvServiceSoap12">
+      <soap12:address location="https://www.mie.co.za/secure/services/epcvRequest/epcvRequest.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="51306db3-1d6d-4c3f-be7a-c225ebacf79f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="epcvRequestWCF.xsd" MetadataType="Schema" ID="cb345831-ad69-4298-91ab-adb89bf3c124" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd2" />
+    <MetadataFile FileName="epcvRequestWCF1.xsd" MetadataType="Schema" ID="3a6f1455-d45e-4d06-8988-4e581d214191" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd0" />
+    <MetadataFile FileName="epcvRequestWCF.wsdl" MetadataType="Wsdl" ID="58aaa270-e0f8-4499-9453-0318c8b6d022" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?wsdl" />
+    <MetadataFile FileName="epcvRequestWCF.disco" MetadataType="Disco" ID="03dac3c4-4fd0-4a1d-ae40-e43d1c0e3d09" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?disco" />
+    <MetadataFile FileName="epcvRequestWCF2.xsd" MetadataType="Schema" ID="ca00cb88-8db1-4c85-b15a-3b09946f45b3" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd1" />
+    <MetadataFile FileName="epcvRequestWCF3.xsd" MetadataType="Schema" ID="8b01f97a-f31a-4c4a-8b6d-c3c0c8f64b08" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd3" />
+    <MetadataFile FileName="epcvRequestWCF1.wsdl" MetadataType="Wsdl" ID="48ecdce5-2917-4543-9e0f-c7bb328bf01c" SourceId="1" SourceUrl="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

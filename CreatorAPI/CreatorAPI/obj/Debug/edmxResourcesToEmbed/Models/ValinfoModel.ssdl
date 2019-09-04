@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ValinfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AddInfoEntries">
+    <Key>
+      <PropertyRef Name="EntryID" />
+    </Key>
+    <Property Name="EntryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddInfoKey" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestItemID" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="Iai_key" Type="nvarchar" MaxLength="50" />
+    <Property Name="Iai_datecap" Type="nvarchar" MaxLength="50" />
+    <Property Name="Iai_note" Type="nvarchar(max)" />
+    <Property Name="Iai_directive" Type="nvarchar" MaxLength="50" />
+    <Property Name="Iai_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Crd_key" Type="nvarchar" MaxLength="50" />
+    <Property Name="Crd_asks" Type="nvarchar(max)" />
+    <Property Name="DateSubmitted" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AddInfoEntriesCompanies">
+    <Key>
+      <PropertyRef Name="EntryID" />
+    </Key>
+    <Property Name="EntryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddInfoKey" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestItemID" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="Iai_key" Type="nvarchar" MaxLength="50" />
+    <Property Name="Iai_datecap" Type="nvarchar" MaxLength="50" />
+    <Property Name="Iai_note" Type="nvarchar" MaxLength="150" />
+    <Property Name="Iai_directive" Type="nvarchar" MaxLength="50" />
+    <Property Name="Iai_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Crd_key" Type="nvarchar" MaxLength="50" />
+    <Property Name="Crd_asks" Type="nvarchar(max)" />
+    <Property Name="DateSubmitted" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AdminComments">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateID" Type="bigint" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Candidates">
+    <Key>
+      <PropertyRef Name="CandidateID" />
+    </Key>
+    <Property Name="CandidateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="ContractorID" Type="int" />
+    <Property Name="OperationID" Type="int" />
+    <Property Name="LevelID" Type="int" />
+    <Property Name="Title" Type="varchar" MaxLength="10" />
+    <Property Name="Firstname" Type="varchar" MaxLength="100" />
+    <Property Name="Surname" Type="varchar" MaxLength="100" />
+    <Property Name="MaidenName" Type="varchar" MaxLength="150" />
+    <Property Name="IDNumber" Type="varchar" MaxLength="15" />
+    <Property Name="Passport" Type="varchar" MaxLength="50" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="BirthCountry" Type="varchar" MaxLength="50" />
+    <Property Name="Image" Type="varchar" MaxLength="150" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="HasPrints" Type="bit" />
+    <Property Name="CrimCheckStatus" Type="int" />
+    <Property Name="VettingStatus" Type="int" />
+    <Property Name="QualificationStatus" Type="int" />
+    <Property Name="BackgroundScreeningStatus" Type="int" />
+    <Property Name="OverallStatus" Type="int" />
+    <Property Name="Cellphone" Type="varchar" MaxLength="50" />
+    <Property Name="AddrHome1" Type="varchar" MaxLength="150" />
+    <Property Name="AddrHome2" Type="varchar" MaxLength="150" />
+    <Property Name="AddrHomeCode" Type="varchar" MaxLength="150" />
+    <Property Name="ID_Type" Type="varchar" MaxLength="150" />
+    <Property Name="Equ_Text" Type="varchar" MaxLength="150" />
+    <Property Name="Gender" Type="varchar" MaxLength="150" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="IsLegacy" Type="bit" />
+    <Property Name="LegacyRef" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusNotes" Type="varchar(max)" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="MaritalStatus" Type="varchar" MaxLength="50" />
+    <Property Name="Dependants" Type="varchar" MaxLength="50" />
+    <Property Name="LanguagesSpoken" Type="varchar" MaxLength="50" />
+    <Property Name="PlaceOfBirth" Type="varchar" MaxLength="250" />
+    <Property Name="ContactNr" Type="varchar" MaxLength="50" />
+    <Property Name="EmailAdress" Type="varchar" MaxLength="250" />
+    <Property Name="IdentityConfirmation" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CandidateStatusEntries">
+    <Key>
+      <PropertyRef Name="StatusEnrtyID" />
+    </Key>
+    <Property Name="StatusEnrtyID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateID" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="ClientCrimCheckPriceEntries">
+    <Key>
+      <PropertyRef Name="PriceEntryID" />
+    </Key>
+    <Property Name="PriceEntryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="SalesPrice" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Category" Type="int" Nullable="false" />
+    <Property Name="AccountNumber" Type="varchar" MaxLength="150" />
+    <Property Name="UniqueCode" Type="varchar" MaxLength="150" />
+    <Property Name="RegistrationNumber" Type="varchar" MaxLength="150" />
+    <Property Name="VatNumber" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAddressLine1" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAddressLine2" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAddressLine3" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAreaCode" Type="varchar" MaxLength="150" />
+    <Property Name="ContactName" Type="varchar" MaxLength="150" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="150" />
+    <Property Name="ContactEmail" Type="varchar" MaxLength="150" />
+    <Property Name="ReportEmail" Type="varchar" MaxLength="150" />
+    <Property Name="LogoFilename" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ClientID" Type="int" />
+  </EntityType>
+  <EntityType Name="Documents">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateID" Type="bigint" Nullable="false" />
+    <Property Name="Filename" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentsCompany">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyID" Type="bigint" Nullable="false" />
+    <Property Name="Filename" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Levels">
+    <Key>
+      <PropertyRef Name="LevelID" />
+    </Key>
+    <Property Name="LevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MieLogger">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="XML" Type="varchar(max)" />
+    <Property Name="Message" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'VALINFO.dbo.MieRecon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MieRecon">
+    <Key>
+      <PropertyRef Name="RequestID" />
+      <PropertyRef Name="CandidateID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="ClientID" />
+      <PropertyRef Name="RequestType" />
+    </Key>
+    <Property Name="RequestID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CandidateID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MieRequestID" Type="varchar" MaxLength="50" />
+    <Property Name="RequestType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestStatus" Type="varchar" MaxLength="50" />
+    <Property Name="CostPrice" Type="varchar" MaxLength="50" />
+    <Property Name="SellingPrice" Type="varchar" MaxLength="50" />
+    <Property Name="Profit" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'VALINFO.dbo.MieReconV2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MieReconV2">
+    <Key>
+      <PropertyRef Name="RequestItemID" />
+      <PropertyRef Name="CandidateID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="ClientID" />
+      <PropertyRef Name="RequestType" />
+    </Key>
+    <Property Name="RequestItemID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CandidateID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MieRequestID" Type="varchar" MaxLength="50" />
+    <Property Name="RequestType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestStatus" Type="varchar" MaxLength="50" />
+    <Property Name="CostPrice" Type="varchar" MaxLength="50" />
+    <Property Name="SellingPrice" Type="varchar" MaxLength="50" />
+    <Property Name="Profit" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MieRequestItems">
+    <Key>
+      <PropertyRef Name="RequestItemID" />
+    </Key>
+    <Property Name="RequestItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestID" Type="bigint" Nullable="false" />
+    <Property Name="ItemCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="IsPackageItem" Type="bit" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="IsComplete" Type="bit" />
+  </EntityType>
+  <EntityType Name="MieRequests">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateID" Type="bigint" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="MieRequestID" Type="bigint" />
+    <Property Name="RequestType" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" />
+    <Property Name="HasAddInfo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MieResults">
+    <Key>
+      <PropertyRef Name="ResultID" />
+    </Key>
+    <Property Name="ResultID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestID" Type="bigint" Nullable="false" />
+    <Property Name="Result" Type="varchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NotificationRecipients">
+    <Key>
+      <PropertyRef Name="RecipientID" />
+    </Key>
+    <Property Name="RecipientID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="SourceID" Type="bigint" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="NotificationType" Type="int" Nullable="false" />
+    <Property Name="AddKey" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateSent" Type="datetime" Nullable="false" />
+    <Property Name="NotificationContent" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsSent" Type="bit" />
+  </EntityType>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="OperationID" />
+    </Key>
+    <Property Name="OperationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PackageItems">
+    <Key>
+      <PropertyRef Name="PackageItemID" />
+    </Key>
+    <Property Name="PackageItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageID" Type="int" Nullable="false" />
+    <Property Name="ProductCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Type" Type="int" />
+    <Property Name="PriceSilver" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PriceGold" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PricePlatinum" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="IsArchived" Type="bit" />
+  </EntityType>
+  <EntityType Name="Sections">
+    <Key>
+      <PropertyRef Name="SectionID" />
+    </Key>
+    <Property Name="SectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="AccountNumber" Type="varchar" MaxLength="150" />
+    <Property Name="UniqueCode" Type="varchar" MaxLength="150" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="150" />
+    <Property Name="RegistrationNumber" Type="varchar" MaxLength="150" />
+    <Property Name="VatNumber" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAddressLine1" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAddressLine2" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAddressLine3" Type="varchar" MaxLength="150" />
+    <Property Name="BillingAreaCode" Type="varchar" MaxLength="150" />
+    <Property Name="ContactName" Type="varchar" MaxLength="150" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="150" />
+    <Property Name="ContactEmail" Type="varchar" MaxLength="150" />
+    <Property Name="ReportEmail" Type="varchar" MaxLength="150" />
+    <Property Name="Category" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserActions">
+    <Key>
+      <PropertyRef Name="ActionID" />
+    </Key>
+    <Property Name="ActionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandidateID" Type="bigint" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VerificationProducts">
+    <Key>
+      <PropertyRef Name="ItemCode" />
+    </Key>
+    <Property Name="ItemCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IndemnityType" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ItemPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IndemnityPrompt" Type="nvarchar(max)" />
+    <Property Name="IndemnityText" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Type" Type="int" />
+    <Property Name="HasAttributes" Type="bit" />
+    <Property Name="SilverPrice" Type="money" />
+    <Property Name="GoldPrice" Type="money" />
+    <Property Name="PlatinumPrice" Type="money" />
+    <Property Name="IsArchived" Type="bit" Nullable="false" />
+    <Property Name="SellingPrice" Type="money" />
+  </EntityType>
+  <Association Name="FK_Actions_Candidates">
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+    <End Role="UserActions" Type="Self.UserActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidates">
+        <PropertyRef Name="CandidateID" />
+      </Principal>
+      <Dependent Role="UserActions">
+        <PropertyRef Name="CandidateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AddInfoEntries_MieRequestItems">
+    <End Role="MieRequestItems" Type="Self.MieRequestItems" Multiplicity="1" />
+    <End Role="AddInfoEntries" Type="Self.AddInfoEntries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MieRequestItems">
+        <PropertyRef Name="RequestItemID" />
+      </Principal>
+      <Dependent Role="AddInfoEntries">
+        <PropertyRef Name="RequestItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AdminComments_Candidates">
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+    <End Role="AdminComments" Type="Self.AdminComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidates">
+        <PropertyRef Name="CandidateID" />
+      </Principal>
+      <Dependent Role="AdminComments">
+        <PropertyRef Name="CandidateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Levels">
+    <End Role="Levels" Type="Self.Levels" Multiplicity="0..1" />
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Levels">
+        <PropertyRef Name="LevelID" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="LevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Operations">
+    <End Role="Operations" Type="Self.Operations" Multiplicity="0..1" />
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operations">
+        <PropertyRef Name="OperationID" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="OperationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CrimCheckPriceEntries_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="ClientCrimCheckPriceEntries" Type="Self.ClientCrimCheckPriceEntries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientCrimCheckPriceEntries">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documents_Candidates">
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+    <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidates">
+        <PropertyRef Name="CandidateID" />
+      </Principal>
+      <Dependent Role="Documents">
+        <PropertyRef Name="CandidateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MieRequestItems_MieRequests">
+    <End Role="MieRequests" Type="Self.MieRequests" Multiplicity="1" />
+    <End Role="MieRequestItems" Type="Self.MieRequestItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MieRequests">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="MieRequestItems">
+        <PropertyRef Name="RequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MieRequestItems_VerificationProducts">
+    <End Role="VerificationProducts" Type="Self.VerificationProducts" Multiplicity="1" />
+    <End Role="MieRequestItems" Type="Self.MieRequestItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VerificationProducts">
+        <PropertyRef Name="ItemCode" />
+      </Principal>
+      <Dependent Role="MieRequestItems">
+        <PropertyRef Name="ItemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MieRequests_Candidates">
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+    <End Role="MieRequests" Type="Self.MieRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidates">
+        <PropertyRef Name="CandidateID" />
+      </Principal>
+      <Dependent Role="MieRequests">
+        <PropertyRef Name="CandidateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MieResults_MieRequests">
+    <End Role="MieRequests" Type="Self.MieRequests" Multiplicity="1" />
+    <End Role="MieResults" Type="Self.MieResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MieRequests">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="MieResults">
+        <PropertyRef Name="RequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPackageID_Packages">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="1" />
+    <End Role="PackageItems" Type="Self.PackageItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="PackageItems">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPackageID_VerificationProducts">
+    <End Role="VerificationProducts" Type="Self.VerificationProducts" Multiplicity="1" />
+    <End Role="PackageItems" Type="Self.PackageItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VerificationProducts">
+        <PropertyRef Name="ItemCode" />
+      </Principal>
+      <Dependent Role="PackageItems">
+        <PropertyRef Name="ProductCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sections_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Sections" Type="Self.Sections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Sections">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusEntries_Candidates">
+    <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+    <End Role="CandidateStatusEntries" Type="Self.CandidateStatusEntries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidates">
+        <PropertyRef Name="CandidateID" />
+      </Principal>
+      <Dependent Role="CandidateStatusEntries">
+        <PropertyRef Name="CandidateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ValinfoModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddInfoEntries" EntityType="Self.AddInfoEntries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AddInfoEntriesCompanies" EntityType="Self.AddInfoEntriesCompanies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminComments" EntityType="Self.AdminComments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Candidates" EntityType="Self.Candidates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CandidateStatusEntries" EntityType="Self.CandidateStatusEntries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientCrimCheckPriceEntries" EntityType="Self.ClientCrimCheckPriceEntries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentsCompany" EntityType="Self.DocumentsCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MieLogger" EntityType="Self.MieLogger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MieRequestItems" EntityType="Self.MieRequestItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MieRequests" EntityType="Self.MieRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MieResults" EntityType="Self.MieResults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationRecipients" EntityType="Self.NotificationRecipients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PackageItems" EntityType="Self.PackageItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sections" EntityType="Self.Sections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserActions" EntityType="Self.UserActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VerificationProducts" EntityType="Self.VerificationProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MieRecon" EntityType="Self.MieRecon" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MieRecon].[RequestID] AS [RequestID], 
+    [MieRecon].[CandidateID] AS [CandidateID], 
+    [MieRecon].[UserID] AS [UserID], 
+    [MieRecon].[Date] AS [Date], 
+    [MieRecon].[ClientID] AS [ClientID], 
+    [MieRecon].[MieRequestID] AS [MieRequestID], 
+    [MieRecon].[RequestType] AS [RequestType], 
+    [MieRecon].[RequestStatus] AS [RequestStatus], 
+    [MieRecon].[CostPrice] AS [CostPrice], 
+    [MieRecon].[SellingPrice] AS [SellingPrice], 
+    [MieRecon].[Profit] AS [Profit]
+    FROM [dbo].[MieRecon] AS [MieRecon]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MieReconV2" EntityType="Self.MieReconV2" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MieReconV2].[RequestItemID] AS [RequestItemID], 
+    [MieReconV2].[CandidateID] AS [CandidateID], 
+    [MieReconV2].[UserID] AS [UserID], 
+    [MieReconV2].[Date] AS [Date], 
+    [MieReconV2].[ClientID] AS [ClientID], 
+    [MieReconV2].[MieRequestID] AS [MieRequestID], 
+    [MieReconV2].[RequestType] AS [RequestType], 
+    [MieReconV2].[RequestStatus] AS [RequestStatus], 
+    [MieReconV2].[CostPrice] AS [CostPrice], 
+    [MieReconV2].[SellingPrice] AS [SellingPrice], 
+    [MieReconV2].[Profit] AS [Profit]
+    FROM [dbo].[MieReconV2] AS [MieReconV2]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Actions_Candidates" Association="Self.FK_Actions_Candidates">
+      <End Role="Candidates" EntitySet="Candidates" />
+      <End Role="UserActions" EntitySet="UserActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AddInfoEntries_MieRequestItems" Association="Self.FK_AddInfoEntries_MieRequestItems">
+      <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+      <End Role="AddInfoEntries" EntitySet="AddInfoEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AdminComments_Candidates" Association="Self.FK_AdminComments_Candidates">
+      <End Role="Candidates" EntitySet="Candidates" />
+      <End Role="AdminComments" EntitySet="AdminComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Clients" Association="Self.FK_Candidates_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Levels" Association="Self.FK_Candidates_Levels">
+      <End Role="Levels" EntitySet="Levels" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Operations" Association="Self.FK_Candidates_Operations">
+      <End Role="Operations" EntitySet="Operations" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CrimCheckPriceEntries_Clients" Association="Self.FK_CrimCheckPriceEntries_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ClientCrimCheckPriceEntries" EntitySet="ClientCrimCheckPriceEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documents_Candidates" Association="Self.FK_Documents_Candidates">
+      <End Role="Candidates" EntitySet="Candidates" />
+      <End Role="Documents" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MieRequestItems_MieRequests" Association="Self.FK_MieRequestItems_MieRequests">
+      <End Role="MieRequests" EntitySet="MieRequests" />
+      <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MieRequestItems_VerificationProducts" Association="Self.FK_MieRequestItems_VerificationProducts">
+      <End Role="VerificationProducts" EntitySet="VerificationProducts" />
+      <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MieRequests_Candidates" Association="Self.FK_MieRequests_Candidates">
+      <End Role="Candidates" EntitySet="Candidates" />
+      <End Role="MieRequests" EntitySet="MieRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MieResults_MieRequests" Association="Self.FK_MieResults_MieRequests">
+      <End Role="MieRequests" EntitySet="MieRequests" />
+      <End Role="MieResults" EntitySet="MieResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPackageID_Packages" Association="Self.FK_ProductPackageID_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="PackageItems" EntitySet="PackageItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPackageID_VerificationProducts" Association="Self.FK_ProductPackageID_VerificationProducts">
+      <End Role="VerificationProducts" EntitySet="VerificationProducts" />
+      <End Role="PackageItems" EntitySet="PackageItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sections_Clients" Association="Self.FK_Sections_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Sections" EntitySet="Sections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusEntries_Candidates" Association="Self.FK_StatusEntries_Candidates">
+      <End Role="Candidates" EntitySet="Candidates" />
+      <End Role="CandidateStatusEntries" EntitySet="CandidateStatusEntries" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

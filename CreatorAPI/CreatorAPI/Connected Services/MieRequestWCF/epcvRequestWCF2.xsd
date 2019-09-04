@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/epcvRequestWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/epcvRequestWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="InputAttributeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="Float" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="Table" />
+      <xs:enumeration value="Boolean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InputAttributeType" nillable="true" type="tns:InputAttributeType" />
+  <xs:simpleType name="InputAttributeDependencyAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Required" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InputAttributeDependencyAction" nillable="true" type="tns:InputAttributeDependencyAction" />
+  <xs:simpleType name="IndemnityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Electronic" />
+      <xs:enumeration value="Manual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IndemnityType" nillable="true" type="tns:IndemnityType" />
+  <xs:complexType name="Token">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Token" nillable="true" type="tns:Token" />
+  <xs:complexType name="ArrayOfItemTypeProxy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemTypeProxy" nillable="true" type="tns:ItemTypeProxy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItemTypeProxy" nillable="true" type="tns:ArrayOfItemTypeProxy" />
+  <xs:complexType name="ItemTypeProxy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasMetaData" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemTypeProxy" nillable="true" type="tns:ItemTypeProxy" />
+  <xs:complexType name="TokenException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TokenException" nillable="true" type="tns:TokenException" />
+  <xs:complexType name="ItemType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ItemTypeProxy">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowMultiple" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IndemnityPrompt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IndemnityText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IndemnityType" type="tns:IndemnityType" />
+          <xs:element minOccurs="0" name="InputGroupList" nillable="true" type="tns:ArrayOfInputGroup" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ItemType" nillable="true" type="tns:ItemType" />
+  <xs:complexType name="ArrayOfInputGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InputGroup" nillable="true" type="tns:InputGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInputGroup" nillable="true" type="tns:ArrayOfInputGroup" />
+  <xs:complexType name="InputGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputAttributes" nillable="true" type="tns:ArrayOfInputAttribute" />
+      <xs:element minOccurs="0" name="MultiLine" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InputGroup" nillable="true" type="tns:InputGroup" />
+  <xs:complexType name="ArrayOfInputAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InputAttribute" nillable="true" type="tns:InputAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInputAttribute" nillable="true" type="tns:ArrayOfInputAttribute" />
+  <xs:complexType name="InputAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataType" type="tns:InputAttributeType" />
+      <xs:element minOccurs="0" name="DependencyAction" type="tns:InputAttributeDependencyAction" />
+      <xs:element minOccurs="0" name="DependencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DependencyValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplaySequence" type="xs:int" />
+      <xs:element minOccurs="0" name="MinLength" type="xs:int" />
+      <xs:element minOccurs="0" name="NameLong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Required" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TableKey" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InputAttribute" nillable="true" type="tns:InputAttribute" />
+  <xs:complexType name="ArrayOfTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Table" nillable="true" type="tns:Table" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTable" nillable="true" type="tns:ArrayOfTable" />
+  <xs:complexType name="Table">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TableValues" nillable="true" type="tns:ArrayOfTableValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Table" nillable="true" type="tns:Table" />
+  <xs:complexType name="ArrayOfTableValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TableValue" nillable="true" type="tns:TableValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTableValue" nillable="true" type="tns:ArrayOfTableValue" />
+  <xs:complexType name="TableValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Default" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Key" type="xs:int" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableValue" nillable="true" type="tns:TableValue" />
+  <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgentClientKey" type="xs:int" />
+      <xs:element minOccurs="0" name="AgentKey" type="xs:int" />
+      <xs:element minOccurs="0" name="AlternateEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientKey" type="xs:int" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FingerPrintHostKey" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfRequestItem" />
+      <xs:element minOccurs="0" name="KnownAs" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaidenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Passport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemoteCaptureDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RemoteGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemoteRequest" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RemoteSendDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Request" nillable="true" type="tns:Request" />
+  <xs:complexType name="ArrayOfRequestItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RequestItem" nillable="true" type="tns:RequestItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRequestItem" nillable="true" type="tns:ArrayOfRequestItem" />
+  <xs:complexType name="RequestItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Groups" nillable="true" type="tns:ArrayOfRequestItemGroup" />
+      <xs:element minOccurs="0" name="Indemnity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemoteItemKey" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestItem" nillable="true" type="tns:RequestItem" />
+  <xs:complexType name="ArrayOfRequestItemGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RequestItemGroup" nillable="true" type="tns:RequestItemGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRequestItemGroup" nillable="true" type="tns:ArrayOfRequestItemGroup" />
+  <xs:complexType name="RequestItemGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lines" nillable="true" type="tns:ArrayOfRequestItemGroupLine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestItemGroup" nillable="true" type="tns:RequestItemGroup" />
+  <xs:complexType name="ArrayOfRequestItemGroupLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RequestItemGroupLine" nillable="true" type="tns:RequestItemGroupLine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRequestItemGroupLine" nillable="true" type="tns:ArrayOfRequestItemGroupLine" />
+  <xs:complexType name="RequestItemGroupLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attributes" nillable="true" type="tns:ArrayOfRequestItemAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestItemGroupLine" nillable="true" type="tns:RequestItemGroupLine" />
+  <xs:complexType name="ArrayOfRequestItemAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RequestItemAttribute" nillable="true" type="tns:RequestItemAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRequestItemAttribute" nillable="true" type="tns:ArrayOfRequestItemAttribute" />
+  <xs:complexType name="RequestItemAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequestItemAttribute" nillable="true" type="tns:RequestItemAttribute" />
+</xs:schema>

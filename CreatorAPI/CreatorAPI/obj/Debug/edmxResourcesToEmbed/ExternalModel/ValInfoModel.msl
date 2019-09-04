@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VALINFOModelStoreContainer" CdmEntityContainer="VALINFOEntities">
+    <EntitySetMapping Name="Candidates">
+      <EntityTypeMapping TypeName="VALINFOModel.Candidate">
+        <MappingFragment StoreEntitySet="Candidates">
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="MaidenName" ColumnName="MaidenName" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="HasPrints" ColumnName="HasPrints" />
+          <ScalarProperty Name="CrimCheckStatus" ColumnName="CrimCheckStatus" />
+          <ScalarProperty Name="VettingStatus" ColumnName="VettingStatus" />
+          <ScalarProperty Name="QualificationStatus" ColumnName="QualificationStatus" />
+          <ScalarProperty Name="BackgroundScreeningStatus" ColumnName="BackgroundScreeningStatus" />
+          <ScalarProperty Name="OverallStatus" ColumnName="OverallStatus" />
+          <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+          <ScalarProperty Name="AddrHome1" ColumnName="AddrHome1" />
+          <ScalarProperty Name="AddrHome2" ColumnName="AddrHome2" />
+          <ScalarProperty Name="AddrHomeCode" ColumnName="AddrHomeCode" />
+          <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+          <ScalarProperty Name="Equ_Text" ColumnName="Equ_Text" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsLegacy" ColumnName="IsLegacy" />
+          <ScalarProperty Name="LegacyRef" ColumnName="LegacyRef" />
+          <ScalarProperty Name="StatusNotes" ColumnName="StatusNotes" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Dependants" ColumnName="Dependants" />
+          <ScalarProperty Name="LanguagesSpoken" ColumnName="LanguagesSpoken" />
+          <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+          <ScalarProperty Name="ContactNr" ColumnName="ContactNr" />
+          <ScalarProperty Name="EmailAdress" ColumnName="EmailAdress" />
+          <ScalarProperty Name="IdentityConfirmation" ColumnName="IdentityConfirmation" />
+          <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="VALINFOModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+          <ScalarProperty Name="BillingAddressLine1" ColumnName="BillingAddressLine1" />
+          <ScalarProperty Name="BillingAddressLine2" ColumnName="BillingAddressLine2" />
+          <ScalarProperty Name="BillingAddressLine3" ColumnName="BillingAddressLine3" />
+          <ScalarProperty Name="BillingAreaCode" ColumnName="BillingAreaCode" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ReportEmail" ColumnName="ReportEmail" />
+          <ScalarProperty Name="LogoFilename" ColumnName="LogoFilename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MieRequestItems">
+      <EntityTypeMapping TypeName="VALINFOModel.MieRequestItem">
+        <MappingFragment StoreEntitySet="MieRequestItems">
+          <ScalarProperty Name="RequestItemID" ColumnName="RequestItemID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IsPackageItem" ColumnName="IsPackageItem" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MieRequests">
+      <EntityTypeMapping TypeName="VALINFOModel.MieRequest">
+        <MappingFragment StoreEntitySet="MieRequests">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="MieRequestID" ColumnName="MieRequestID" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="HasAddInfo" ColumnName="HasAddInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MieResults">
+      <EntityTypeMapping TypeName="VALINFOModel.MieResult">
+        <MappingFragment StoreEntitySet="MieResults">
+          <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductPriceEntries">
+      <EntityTypeMapping TypeName="VALINFOModel.ProductPriceEntry">
+        <MappingFragment StoreEntitySet="ProductPriceEntries">
+          <ScalarProperty Name="PriceEntryID" ColumnName="PriceEntryID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VerificationProducts">
+      <EntityTypeMapping TypeName="VALINFOModel.VerificationProduct">
+        <MappingFragment StoreEntitySet="VerificationProducts">
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IndemnityType" ColumnName="IndemnityType" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="IndemnityPrompt" ColumnName="IndemnityPrompt" />
+          <ScalarProperty Name="IndemnityText" ColumnName="IndemnityText" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="HasAttributes" ColumnName="HasAttributes" />
+          <ScalarProperty Name="SilverPrice" ColumnName="SilverPrice" />
+          <ScalarProperty Name="GoldPrice" ColumnName="GoldPrice" />
+          <ScalarProperty Name="PlatinumPrice" ColumnName="PlatinumPrice" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

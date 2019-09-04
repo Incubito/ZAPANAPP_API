@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="www.mie.co.za" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="www.mie.co.za" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="www.mie.co.za/Imports">
+      <xsd:import schemaLocation="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd2" namespace="www.mie.co.za" />
+      <xsd:import schemaLocation="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/epcvRequestWCF" />
+      <xsd:import schemaLocation="https://www.mie.co.za/secure/services/epcvRequestWCF/epcvRequestWCF.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IepcvRequestWCF_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemTypes" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemTypes_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemTypes_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q2:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemType" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemType_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System" name="detail" element="q3:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetItemType_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q4:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTables_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTables" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTables_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTables_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System" name="detail" element="q5:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTables_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q6:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTable" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTable_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/System" name="detail" element="q7:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_GetTable_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q8:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutRequest" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequest_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/System" name="detail" element="q9:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequest_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q10:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadDocument" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadDocument_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/System" name="detail" element="q11:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadDocument_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q12:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadFingerprint_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFingerprint" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadFingerprint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFingerprintResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadFingerprint_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/System" name="detail" element="q13:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_UploadFingerprint_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q14:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoText_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutAddInfoText" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutAddInfoTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoText_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/System" name="detail" element="q15:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoText_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q16:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequestDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutRequestDocument" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequestDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutRequestDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequestDocument_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/System" name="detail" element="q17:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutRequestDocument_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q18:TokenException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutAddInfoDocument" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutAddInfoDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoDocument_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/System" name="detail" element="q19:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IepcvRequestWCF_PutAddInfoDocument_TokenExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/epcvRequestWCF" name="detail" element="q20:TokenException" />
+  </wsdl:message>
+  <wsdl:portType name="IepcvRequestWCF">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetData" message="tns:IepcvRequestWCF_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetDataResponse" message="tns:IepcvRequestWCF_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemTypes">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypes" message="tns:IepcvRequestWCF_GetItemTypes_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypesResponse" message="tns:IepcvRequestWCF_GetItemTypes_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypesArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_GetItemTypes_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypesTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_GetItemTypes_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemType">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemType" message="tns:IepcvRequestWCF_GetItemType_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypeResponse" message="tns:IepcvRequestWCF_GetItemType_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypeArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_GetItemType_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetItemTypeTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_GetItemType_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTables" message="tns:IepcvRequestWCF_GetTables_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTablesResponse" message="tns:IepcvRequestWCF_GetTables_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTablesArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_GetTables_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTablesTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_GetTables_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTable">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTable" message="tns:IepcvRequestWCF_GetTable_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTableResponse" message="tns:IepcvRequestWCF_GetTable_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTableArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_GetTable_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/GetTableTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_GetTable_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutRequest">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequest" message="tns:IepcvRequestWCF_PutRequest_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestResponse" message="tns:IepcvRequestWCF_PutRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_PutRequest_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_PutRequest_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadDocument">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadDocument" message="tns:IepcvRequestWCF_UploadDocument_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadDocumentResponse" message="tns:IepcvRequestWCF_UploadDocument_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadDocumentArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_UploadDocument_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadDocumentTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_UploadDocument_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFingerprint">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadFingerprint" message="tns:IepcvRequestWCF_UploadFingerprint_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadFingerprintResponse" message="tns:IepcvRequestWCF_UploadFingerprint_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadFingerprintArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_UploadFingerprint_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/UploadFingerprintTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_UploadFingerprint_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutAddInfoText">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoText" message="tns:IepcvRequestWCF_PutAddInfoText_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoTextResponse" message="tns:IepcvRequestWCF_PutAddInfoText_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoTextArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_PutAddInfoText_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoTextTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_PutAddInfoText_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutRequestDocument">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestDocument" message="tns:IepcvRequestWCF_PutRequestDocument_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestDocumentResponse" message="tns:IepcvRequestWCF_PutRequestDocument_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestDocumentArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_PutRequestDocument_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutRequestDocumentTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_PutRequestDocument_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutAddInfoDocument">
+      <wsdl:input wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoDocument" message="tns:IepcvRequestWCF_PutAddInfoDocument_InputMessage" />
+      <wsdl:output wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoDocumentResponse" message="tns:IepcvRequestWCF_PutAddInfoDocument_OutputMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoDocumentArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IepcvRequestWCF_PutAddInfoDocument_ArgumentNullExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="www.mie.co.za/IepcvRequestWCF/PutAddInfoDocumentTokenExceptionFault" name="TokenExceptionFault" message="tns:IepcvRequestWCF_PutAddInfoDocument_TokenExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

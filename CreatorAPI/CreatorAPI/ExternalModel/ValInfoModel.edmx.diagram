@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a9d7dc3b8beb48a08055abfb7eb843d3" Name="Diagram1" ZoomLevel="96">
+        <EntityTypeShape EntityType="VALINFOModel.Candidate" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.Client" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.MieRequestItem" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.MieRequest" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.MieResult" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.ProductPriceEntry" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.VerificationProduct" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="VALINFOModel.FK_Candidates_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieRequests_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_ProductPriceIntries_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieRequestItems_MieRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieRequestItems_VerificationProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieResults_MieRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_ProductPriceIntries_VerificationProducts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
