@@ -18,6 +18,7 @@ namespace CreatorAPI.Models
         public Nullable<int> ClientID { get; set; }
         public string SettingKey { get; set; }
         public string SettingValue { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
     
         public virtual Clients Clients { get; set; }
     }

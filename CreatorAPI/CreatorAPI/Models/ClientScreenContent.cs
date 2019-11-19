@@ -20,6 +20,7 @@ namespace CreatorAPI.Models
         public string Type { get; set; }
         public string ImageReference { get; set; }
         public string LinkReference { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
     
         public virtual ClientScreens ClientScreens { get; set; }
     }

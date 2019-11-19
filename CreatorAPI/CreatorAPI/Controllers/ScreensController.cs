@@ -14,7 +14,7 @@ namespace CreatorAPI.Controllers
     {
         [Authorize]
         [Route("ScreenList")]
-        public IEnumerable<SimpleScreen> PostScreenList([FromHeader]string AppCode, [FromHeader]string CompanyCode)
+        public IEnumerable<SimpleScreen> PostScreenList([FromHeader]string AppCode, [FromHeader]string CompanyCode, [FromHeader]string DeviceSyncDate)
         {
             List<SimpleScreen> ListOfScreens = new List<SimpleScreen>();
 

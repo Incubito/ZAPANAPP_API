@@ -19,6 +19,7 @@ namespace CreatorAPI.Models
         public string Type { get; set; }
         public string Contents { get; set; }
         public string Status { get; set; }
+        public Nullable<System.DateTime> Received { get; set; }
     
         public virtual Clients Clients { get; set; }
     }

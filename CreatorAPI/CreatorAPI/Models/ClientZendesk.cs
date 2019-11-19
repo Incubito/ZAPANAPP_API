@@ -17,6 +17,7 @@ namespace CreatorAPI.Models
         public int ID { get; set; }
         public int ClientID { get; set; }
         public int ZendeskID { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
     
         public virtual Clients Clients { get; set; }
         public virtual Zendesk Zendesk { get; set; }

@@ -18,5 +18,6 @@ namespace CreatorAPI.Models
         public string UUID { get; set; }
         public string ConnectionIdentifier { get; set; }
         public string Description { get; set; }
+        public Nullable<System.DateTime> Timestamp { get; set; }
     }
 }

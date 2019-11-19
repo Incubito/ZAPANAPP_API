@@ -18,6 +18,7 @@ namespace CreatorAPI.Models
         public Categories()
         {
             this.ClientContent = new HashSet<ClientContent>();
+            this.ClientSubContent = new HashSet<ClientSubContent>();
         }
     
         public int CategoryID { get; set; }
@@ -25,5 +26,7 @@ namespace CreatorAPI.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientContent> ClientContent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientSubContent> ClientSubContent { get; set; }
     }
 }

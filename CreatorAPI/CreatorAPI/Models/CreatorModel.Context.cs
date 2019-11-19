@@ -35,7 +35,9 @@ namespace CreatorAPI.Models
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<ClientScreenContent> ClientScreenContent { get; set; }
         public virtual DbSet<ClientScreens> ClientScreens { get; set; }
+        public virtual DbSet<ClientSettings> ClientSettings { get; set; }
         public virtual DbSet<ClientSubMenus> ClientSubMenus { get; set; }
+        public virtual DbSet<ClientZendesk> ClientZendesk { get; set; }
         public virtual DbSet<Colours> Colours { get; set; }
         public virtual DbSet<ConnectionsLog> ConnectionsLog { get; set; }
         public virtual DbSet<InstalledFonts> InstalledFonts { get; set; }
@@ -45,7 +47,12 @@ namespace CreatorAPI.Models
         public virtual DbSet<TrustedEmailDomains> TrustedEmailDomains { get; set; }
         public virtual DbSet<UsageTracker> UsageTracker { get; set; }
         public virtual DbSet<Zendesk> Zendesk { get; set; }
-        public virtual DbSet<ClientZendesk> ClientZendesk { get; set; }
-        public virtual DbSet<ClientSettings> ClientSettings { get; set; }
+        public virtual DbSet<ClientSubContent> ClientSubContent { get; set; }
+        public virtual DbSet<ClientSubMenuMenus> ClientSubMenuMenus { get; set; }
+        public virtual DbSet<ClientSubSubMenus> ClientSubSubMenus { get; set; }
+        public virtual DbSet<BulkPushNotifications> BulkPushNotifications { get; set; }
+        public virtual DbSet<ClientCalendar> ClientCalendar { get; set; }
+        public virtual DbSet<ClientCalendarDetails> ClientCalendarDetails { get; set; }
+        public virtual DbSet<ClientCalendarLibrary> ClientCalendarLibrary { get; set; }
     }
 }

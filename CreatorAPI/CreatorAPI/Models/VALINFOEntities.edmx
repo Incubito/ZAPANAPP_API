@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VALINFOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Candidates">
+          <Key>
+            <PropertyRef Name="CandidateID" />
+          </Key>
+          <Property Name="CandidateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ContractorID" Type="int" />
+          <Property Name="OperationID" Type="int" />
+          <Property Name="LevelID" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="10" />
+          <Property Name="Firstname" Type="varchar" MaxLength="100" />
+          <Property Name="Surname" Type="varchar" MaxLength="100" />
+          <Property Name="MaidenName" Type="varchar" MaxLength="150" />
+          <Property Name="IDNumber" Type="varchar" MaxLength="15" />
+          <Property Name="Passport" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="BirthCountry" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="150" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="HasPrints" Type="bit" />
+          <Property Name="CrimCheckStatus" Type="int" />
+          <Property Name="VettingStatus" Type="int" />
+          <Property Name="QualificationStatus" Type="int" />
+          <Property Name="BackgroundScreeningStatus" Type="int" />
+          <Property Name="OverallStatus" Type="int" />
+          <Property Name="Cellphone" Type="varchar" MaxLength="50" />
+          <Property Name="AddrHome1" Type="varchar" MaxLength="150" />
+          <Property Name="AddrHome2" Type="varchar" MaxLength="150" />
+          <Property Name="AddrHomeCode" Type="varchar" MaxLength="150" />
+          <Property Name="ID_Type" Type="varchar" MaxLength="150" />
+          <Property Name="Equ_Text" Type="varchar" MaxLength="150" />
+          <Property Name="Gender" Type="varchar" MaxLength="150" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="IsLegacy" Type="bit" />
+          <Property Name="LegacyRef" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusNotes" Type="varchar(max)" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Dependants" Type="varchar" MaxLength="50" />
+          <Property Name="LanguagesSpoken" Type="varchar" MaxLength="50" />
+          <Property Name="PlaceOfBirth" Type="varchar" MaxLength="250" />
+          <Property Name="ContactNr" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAdress" Type="varchar" MaxLength="250" />
+          <Property Name="IdentityConfirmation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="150" />
+          <Property Name="UniqueCode" Type="varchar" MaxLength="150" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="150" />
+          <Property Name="VatNumber" Type="varchar" MaxLength="150" />
+          <Property Name="BillingAddressLine1" Type="varchar" MaxLength="150" />
+          <Property Name="BillingAddressLine2" Type="varchar" MaxLength="150" />
+          <Property Name="BillingAddressLine3" Type="varchar" MaxLength="150" />
+          <Property Name="BillingAreaCode" Type="varchar" MaxLength="150" />
+          <Property Name="ContactName" Type="varchar" MaxLength="150" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="150" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="150" />
+          <Property Name="ReportEmail" Type="varchar" MaxLength="150" />
+          <Property Name="LogoFilename" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="MieRequestItems">
+          <Key>
+            <PropertyRef Name="RequestItemID" />
+          </Key>
+          <Property Name="RequestItemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestID" Type="bigint" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="IsPackageItem" Type="bit" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="IsComplete" Type="bit" />
+        </EntityType>
+        <EntityType Name="MieRequests">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="MieRequestID" Type="bigint" />
+          <Property Name="RequestType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="HasAddInfo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductPriceEntries">
+          <Key>
+            <PropertyRef Name="PriceEntryID" />
+          </Key>
+          <Property Name="PriceEntryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VerificationProducts">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+          </Key>
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IndemnityType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ItemPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndemnityPrompt" Type="nvarchar(max)" />
+          <Property Name="IndemnityText" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="HasAttributes" Type="bit" />
+          <Property Name="SilverPrice" Type="money" />
+          <Property Name="GoldPrice" Type="money" />
+          <Property Name="PlatinumPrice" Type="money" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="SellingPrice" Type="money" />
+        </EntityType>
+        <Association Name="FK_Candidates_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MieRequestItems_MieRequests">
+          <End Role="MieRequests" Type="Self.MieRequests" Multiplicity="1" />
+          <End Role="MieRequestItems" Type="Self.MieRequestItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MieRequests">
+              <PropertyRef Name="RequestID" />
+            </Principal>
+            <Dependent Role="MieRequestItems">
+              <PropertyRef Name="RequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MieRequestItems_VerificationProducts">
+          <End Role="VerificationProducts" Type="Self.VerificationProducts" Multiplicity="1" />
+          <End Role="MieRequestItems" Type="Self.MieRequestItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VerificationProducts">
+              <PropertyRef Name="ItemCode" />
+            </Principal>
+            <Dependent Role="MieRequestItems">
+              <PropertyRef Name="ItemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MieRequests_Candidates">
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="1" />
+          <End Role="MieRequests" Type="Self.MieRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="MieRequests">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPriceIntries_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="ProductPriceEntries" Type="Self.ProductPriceEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ProductPriceEntries">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPriceIntries_VerificationProducts">
+          <End Role="VerificationProducts" Type="Self.VerificationProducts" Multiplicity="1" />
+          <End Role="ProductPriceEntries" Type="Self.ProductPriceEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VerificationProducts">
+              <PropertyRef Name="ItemCode" />
+            </Principal>
+            <Dependent Role="ProductPriceEntries">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VALINFOModelStoreContainer">
+          <EntitySet Name="Candidates" EntityType="Self.Candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MieRequestItems" EntityType="Self.MieRequestItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MieRequests" EntityType="Self.MieRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPriceEntries" EntityType="Self.ProductPriceEntries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VerificationProducts" EntityType="Self.VerificationProducts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Candidates_Clients" Association="Self.FK_Candidates_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MieRequestItems_MieRequests" Association="Self.FK_MieRequestItems_MieRequests">
+            <End Role="MieRequests" EntitySet="MieRequests" />
+            <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MieRequestItems_VerificationProducts" Association="Self.FK_MieRequestItems_VerificationProducts">
+            <End Role="VerificationProducts" EntitySet="VerificationProducts" />
+            <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MieRequests_Candidates" Association="Self.FK_MieRequests_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="MieRequests" EntitySet="MieRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPriceIntries_Clients" Association="Self.FK_ProductPriceIntries_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ProductPriceEntries" EntitySet="ProductPriceEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPriceIntries_VerificationProducts" Association="Self.FK_ProductPriceIntries_VerificationProducts">
+            <End Role="VerificationProducts" EntitySet="VerificationProducts" />
+            <End Role="ProductPriceEntries" EntitySet="ProductPriceEntries" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VALINFOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CandidateID" />
+          </Key>
+          <Property Name="CandidateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="ContractorID" Type="Int32" />
+          <Property Name="OperationID" Type="Int32" />
+          <Property Name="LevelID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MaidenName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IDNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Passport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="BirthCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HasPrints" Type="Boolean" />
+          <Property Name="CrimCheckStatus" Type="Int32" />
+          <Property Name="VettingStatus" Type="Int32" />
+          <Property Name="QualificationStatus" Type="Int32" />
+          <Property Name="BackgroundScreeningStatus" Type="Int32" />
+          <Property Name="OverallStatus" Type="Int32" />
+          <Property Name="Cellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddrHome1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AddrHome2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AddrHomeCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Equ_Text" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="IsLegacy" Type="Boolean" />
+          <Property Name="LegacyRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dependants" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAdress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdentityConfirmation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Candidates_Clients" FromRole="Candidates" ToRole="Clients" />
+          <NavigationProperty Name="MieRequests" Relationship="Self.FK_MieRequests_Candidates" FromRole="Candidates" ToRole="MieRequests" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UniqueCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="VatNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddressLine1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddressLine2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAddressLine3" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="BillingAreaCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ReportEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LogoFilename" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_Clients" FromRole="Clients" ToRole="Candidates" />
+          <NavigationProperty Name="ProductPriceEntries" Relationship="Self.FK_ProductPriceIntries_Clients" FromRole="Clients" ToRole="ProductPriceEntries" />
+        </EntityType>
+        <EntityType Name="MieRequestItem">
+          <Key>
+            <PropertyRef Name="RequestItemID" />
+          </Key>
+          <Property Name="RequestItemID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestID" Type="Int64" Nullable="false" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IsPackageItem" Type="Boolean" Nullable="false" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="IsComplete" Type="Boolean" />
+          <NavigationProperty Name="MieRequest" Relationship="Self.FK_MieRequestItems_MieRequests" FromRole="MieRequestItems" ToRole="MieRequests" />
+          <NavigationProperty Name="VerificationProduct" Relationship="Self.FK_MieRequestItems_VerificationProducts" FromRole="MieRequestItems" ToRole="VerificationProducts" />
+        </EntityType>
+        <EntityType Name="MieRequest">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="MieRequestID" Type="Int64" />
+          <Property Name="RequestType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="HasAddInfo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_MieRequests_Candidates" FromRole="MieRequests" ToRole="Candidates" />
+          <NavigationProperty Name="MieRequestItems" Relationship="Self.FK_MieRequestItems_MieRequests" FromRole="MieRequests" ToRole="MieRequestItems" />
+        </EntityType>
+        <EntityType Name="ProductPriceEntry">
+          <Key>
+            <PropertyRef Name="PriceEntryID" />
+          </Key>
+          <Property Name="PriceEntryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_ProductPriceIntries_Clients" FromRole="ProductPriceEntries" ToRole="Clients" />
+          <NavigationProperty Name="VerificationProduct" Relationship="Self.FK_ProductPriceIntries_VerificationProducts" FromRole="ProductPriceEntries" ToRole="VerificationProducts" />
+        </EntityType>
+        <EntityType Name="VerificationProduct">
+          <Key>
+            <PropertyRef Name="ItemCode" />
+          </Key>
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndemnityType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndemnityPrompt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IndemnityText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="HasAttributes" Type="Boolean" />
+          <Property Name="SilverPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GoldPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PlatinumPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="SellingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="MieRequestItems" Relationship="Self.FK_MieRequestItems_VerificationProducts" FromRole="VerificationProducts" ToRole="MieRequestItems" />
+          <NavigationProperty Name="ProductPriceEntries" Relationship="Self.FK_ProductPriceIntries_VerificationProducts" FromRole="VerificationProducts" ToRole="ProductPriceEntries" />
+        </EntityType>
+        <Association Name="FK_Candidates_Clients">
+          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MieRequests_Candidates">
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="MieRequests" Type="Self.MieRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidates">
+              <PropertyRef Name="CandidateID" />
+            </Principal>
+            <Dependent Role="MieRequests">
+              <PropertyRef Name="CandidateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPriceIntries_Clients">
+          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+          <End Role="ProductPriceEntries" Type="Self.ProductPriceEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="ProductPriceEntries">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MieRequestItems_MieRequests">
+          <End Role="MieRequests" Type="Self.MieRequest" Multiplicity="1" />
+          <End Role="MieRequestItems" Type="Self.MieRequestItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MieRequests">
+              <PropertyRef Name="RequestID" />
+            </Principal>
+            <Dependent Role="MieRequestItems">
+              <PropertyRef Name="RequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MieRequestItems_VerificationProducts">
+          <End Role="VerificationProducts" Type="Self.VerificationProduct" Multiplicity="1" />
+          <End Role="MieRequestItems" Type="Self.MieRequestItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VerificationProducts">
+              <PropertyRef Name="ItemCode" />
+            </Principal>
+            <Dependent Role="MieRequestItems">
+              <PropertyRef Name="ItemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPriceIntries_VerificationProducts">
+          <End Role="VerificationProducts" Type="Self.VerificationProduct" Multiplicity="1" />
+          <End Role="ProductPriceEntries" Type="Self.ProductPriceEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VerificationProducts">
+              <PropertyRef Name="ItemCode" />
+            </Principal>
+            <Dependent Role="ProductPriceEntries">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VALINFOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="MieRequestItems" EntityType="Self.MieRequestItem" />
+          <EntitySet Name="MieRequests" EntityType="Self.MieRequest" />
+          <EntitySet Name="ProductPriceEntries" EntityType="Self.ProductPriceEntry" />
+          <EntitySet Name="VerificationProducts" EntityType="Self.VerificationProduct" />
+          <AssociationSet Name="FK_Candidates_Clients" Association="Self.FK_Candidates_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MieRequests_Candidates" Association="Self.FK_MieRequests_Candidates">
+            <End Role="Candidates" EntitySet="Candidates" />
+            <End Role="MieRequests" EntitySet="MieRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPriceIntries_Clients" Association="Self.FK_ProductPriceIntries_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ProductPriceEntries" EntitySet="ProductPriceEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MieRequestItems_MieRequests" Association="Self.FK_MieRequestItems_MieRequests">
+            <End Role="MieRequests" EntitySet="MieRequests" />
+            <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MieRequestItems_VerificationProducts" Association="Self.FK_MieRequestItems_VerificationProducts">
+            <End Role="VerificationProducts" EntitySet="VerificationProducts" />
+            <End Role="MieRequestItems" EntitySet="MieRequestItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPriceIntries_VerificationProducts" Association="Self.FK_ProductPriceIntries_VerificationProducts">
+            <End Role="VerificationProducts" EntitySet="VerificationProducts" />
+            <End Role="ProductPriceEntries" EntitySet="ProductPriceEntries" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VALINFOModelStoreContainer" CdmEntityContainer="VALINFOEntities">
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="VALINFOModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidates">
+                <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+                <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="MaidenName" ColumnName="MaidenName" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="HasPrints" ColumnName="HasPrints" />
+                <ScalarProperty Name="CrimCheckStatus" ColumnName="CrimCheckStatus" />
+                <ScalarProperty Name="VettingStatus" ColumnName="VettingStatus" />
+                <ScalarProperty Name="QualificationStatus" ColumnName="QualificationStatus" />
+                <ScalarProperty Name="BackgroundScreeningStatus" ColumnName="BackgroundScreeningStatus" />
+                <ScalarProperty Name="OverallStatus" ColumnName="OverallStatus" />
+                <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+                <ScalarProperty Name="AddrHome1" ColumnName="AddrHome1" />
+                <ScalarProperty Name="AddrHome2" ColumnName="AddrHome2" />
+                <ScalarProperty Name="AddrHomeCode" ColumnName="AddrHomeCode" />
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="Equ_Text" ColumnName="Equ_Text" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsLegacy" ColumnName="IsLegacy" />
+                <ScalarProperty Name="LegacyRef" ColumnName="LegacyRef" />
+                <ScalarProperty Name="StatusNotes" ColumnName="StatusNotes" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Dependants" ColumnName="Dependants" />
+                <ScalarProperty Name="LanguagesSpoken" ColumnName="LanguagesSpoken" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="ContactNr" ColumnName="ContactNr" />
+                <ScalarProperty Name="EmailAdress" ColumnName="EmailAdress" />
+                <ScalarProperty Name="IdentityConfirmation" ColumnName="IdentityConfirmation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="VALINFOModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+                <ScalarProperty Name="BillingAddressLine1" ColumnName="BillingAddressLine1" />
+                <ScalarProperty Name="BillingAddressLine2" ColumnName="BillingAddressLine2" />
+                <ScalarProperty Name="BillingAddressLine3" ColumnName="BillingAddressLine3" />
+                <ScalarProperty Name="BillingAreaCode" ColumnName="BillingAreaCode" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ReportEmail" ColumnName="ReportEmail" />
+                <ScalarProperty Name="LogoFilename" ColumnName="LogoFilename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MieRequestItems">
+            <EntityTypeMapping TypeName="VALINFOModel.MieRequestItem">
+              <MappingFragment StoreEntitySet="MieRequestItems">
+                <ScalarProperty Name="RequestItemID" ColumnName="RequestItemID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsPackageItem" ColumnName="IsPackageItem" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MieRequests">
+            <EntityTypeMapping TypeName="VALINFOModel.MieRequest">
+              <MappingFragment StoreEntitySet="MieRequests">
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="MieRequestID" ColumnName="MieRequestID" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HasAddInfo" ColumnName="HasAddInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPriceEntries">
+            <EntityTypeMapping TypeName="VALINFOModel.ProductPriceEntry">
+              <MappingFragment StoreEntitySet="ProductPriceEntries">
+                <ScalarProperty Name="PriceEntryID" ColumnName="PriceEntryID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VerificationProducts">
+            <EntityTypeMapping TypeName="VALINFOModel.VerificationProduct">
+              <MappingFragment StoreEntitySet="VerificationProducts">
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IndemnityType" ColumnName="IndemnityType" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="IndemnityPrompt" ColumnName="IndemnityPrompt" />
+                <ScalarProperty Name="IndemnityText" ColumnName="IndemnityText" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="HasAttributes" ColumnName="HasAttributes" />
+                <ScalarProperty Name="SilverPrice" ColumnName="SilverPrice" />
+                <ScalarProperty Name="GoldPrice" ColumnName="GoldPrice" />
+                <ScalarProperty Name="PlatinumPrice" ColumnName="PlatinumPrice" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -14,5 +14,7 @@ namespace CreatorAPI.Models
         public string Keywords { get; set; }
 
         public string Filename { get; set; }
+
+        public string Updated { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace CreatorAPI.Controllers
 
                 CreatorEntities db = new CreatorEntities();
                 MobileConnections mobileconnection = db.MobileConnections.Single(mc => mc.UUID == TakenBy);
-
+                
                 //Question 1
                 Assessments NAQ1 = new Assessments();
                 NAQ1.MobileConnections = mobileconnection;

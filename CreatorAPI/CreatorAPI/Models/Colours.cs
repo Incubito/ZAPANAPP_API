@@ -30,6 +30,9 @@ namespace CreatorAPI.Models
         public Nullable<int> BackgroundRed { get; set; }
         public Nullable<int> BackgroundGreen { get; set; }
         public Nullable<int> BackgroundBlue { get; set; }
+        public string HexFont { get; set; }
+        public string HexBackground { get; set; }
+        public string HexLine { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientScreens> ClientScreens { get; set; }

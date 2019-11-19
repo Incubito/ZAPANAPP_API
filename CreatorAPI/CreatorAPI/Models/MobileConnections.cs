@@ -17,8 +17,8 @@ namespace CreatorAPI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MobileConnections()
         {
-            this.UsageTracker = new HashSet<UsageTracker>();
             this.Assessments = new HashSet<Assessments>();
+            this.UsageTracker = new HashSet<UsageTracker>();
         }
     
         public int ID { get; set; }
@@ -32,10 +32,10 @@ namespace CreatorAPI.Models
         public string UUID { get; set; }
         public Nullable<System.DateTime> DateConnected { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Assessments> Assessments { get; set; }
         public virtual ClientApps ClientApps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsageTracker> UsageTracker { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Assessments> Assessments { get; set; }
     }
 }

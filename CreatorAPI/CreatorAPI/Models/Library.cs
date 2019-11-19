@@ -18,16 +18,23 @@ namespace CreatorAPI.Models
         public Library()
         {
             this.ClientContent = new HashSet<ClientContent>();
+            this.ClientSubContent = new HashSet<ClientSubContent>();
+            this.ClientCalendarLibrary = new HashSet<ClientCalendarLibrary>();
         }
     
         public int LibraryID { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
         public string Filename { get; set; }
-        public string Preview { get; set; }
         public string Keywords { get; set; }
+        public string Preview { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientContent> ClientContent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientSubContent> ClientSubContent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientCalendarLibrary> ClientCalendarLibrary { get; set; }
     }
 }

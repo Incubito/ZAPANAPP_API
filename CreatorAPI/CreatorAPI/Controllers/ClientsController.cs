@@ -4,9 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using CreatorApi;
 using CreatorAPI.Models;
-using Microsoft.AspNet.Identity;
 
 namespace CreatorAPI.Controllers
 {
@@ -14,64 +12,95 @@ namespace CreatorAPI.Controllers
     public class ClientsController : ApiController
     {
         [Authorize]
-        [Route("Helpline")]
-        public string PostGetHelpline([FromHeader] string ClientCode)
+        [Route("HelplineNr")]
+        public IEnumerable<SimpleHelplineNr> PostGetHelplineNr([FromHeader] string ClientCode)
         {
-            string ClientHelpLine = "";
+            List<SimpleHelplineNr> ClientHelpLineList = new List<SimpleHelplineNr>();
             string UpperCaseCC = ClientCode.Trim().ToUpper();
 
-            CreatorEntities db = new CreatorEntities();
-            Clients client = db.Clients.Single(c => c.Code == UpperCaseCC);
+            CreatorEntities creatordb = new CreatorEntities();
+            Clients client = creatordb.Clients.Single(c => c.Code == UpperCaseCC);
 
-            ClientHelpLine = client.Helpline;
+            SimpleHelplineNr ClientHelpLine = new SimpleHelplineNr();
+            ClientHelpLine.Helpline = client.Helpline;
 
-            return ClientHelpLine;
+            ClientHelpLineList.Add(ClientHelpLine);
+
+            return ClientHelpLineList;
         }
 
         [Authorize]
         [Route("Configuration")]
-        public List<SimpleSettings> PostConfiguration([FromHeader] string ClientCode)
+        public List<SimpleSettings> PostConfiguration([FromHeader] string ClientCode, [FromHeader]string DeviceSyncDate = "1900-01-01 00:00:00")
         {
+            DateTime LastSyncDate = DateTime.Parse(DeviceSyncDate);
             string UpperCaseCC = ClientCode.Trim().ToUpper();
-            List<SimpleSettings> ListOfSettings = new List<SimpleSettings>();
 
-            CreatorEntities db = new CreatorEntities();
-            ListOfSettings = db.ClientSettings.Where(s => s.Clients.Code == UpperCaseCC).
-                                                        Select(itm => new SimpleSettings
-                                                        {
-                                                            SettingKey = itm.SettingKey,
-                                                            SettingValue = itm.SettingValue
-                                                        }).ToList();
+            List<SimpleSettings> ListOfSettings = new List<SimpleSettings>();
+            List<ActiveList> CleanupList = new List<ActiveList>();
+            CreatorEntities creatordb = new CreatorEntities();
+            ListOfSettings = creatordb.ClientSettings.Where(s => s.Clients.Code == UpperCaseCC)
+                                              .Where(csc => System.Data.Entity.SqlServer.SqlFunctions.DateDiff("MINUTE", csc.ChangeDate, LastSyncDate) < 0)
+                                              .Select(itm => new SimpleSettings
+                                               {
+                                                   SettingKey = itm.SettingKey,
+                                                   SettingValue = itm.SettingValue,
+                                                   Updated = itm.ChangeDate.ToString()
+                                              })
+                                              .ToList();
 
             return ListOfSettings;
         }
-        [Route("CandidateSave")]
 
+        [Authorize]
+        [Route("Messages")]
+        public List<SimplePN> PostMessages([FromHeader] string ClientCode, [FromHeader]string DeviceSyncDate = "1900-01-01 00:00:00")
+        {
+            DateTime LastSyncDate = DateTime.Parse(DeviceSyncDate);
+            string UpperCaseCC = ClientCode.Trim().ToUpper();
+
+            List<SimplePN> ListOfPNs = new List<SimplePN>();
+            CreatorEntities creatordb = new CreatorEntities();
+            ListOfPNs = creatordb.BulkPushNotifications.Where(s => s.Clients.Code == UpperCaseCC)
+                                                .Where(s => s.Status == "Sent")
+                                                .Where(csc => System.Data.Entity.SqlServer.SqlFunctions.DateDiff("MINUTE", csc.DateSent, LastSyncDate) < 0)
+                                                .Select(itm => new SimplePN
+                                                {
+                                                    Title = itm.Title,
+                                                    Message = itm.Message,
+                                                    DateSent = (DateTime)itm.DateSent
+                                                })
+                                                .ToList();
+
+            return ListOfPNs;
+        }
+
+        [Route("AddCandidate")]
         public string PostAddCandidate([FromHeader]string Firstname, [FromHeader]string Surname, [FromHeader] string Idnumber, [FromHeader] string CompanyName, [FromHeader] string IDVerification, [FromHeader] string CrimCheck)
         {
 
             string result = "";
             try
             {
-                CreatorEntities db = new CreatorEntities();
+                CreatorEntities creatordb = new CreatorEntities();
 
-                CreatorAPI.ExternalModel.VALINFOEntities vALINFOEntities = new ExternalModel.VALINFOEntities();
+                VALINFOEntities valinfodb = new VALINFOEntities();
                 string username = User.Identity.GetUserName().ToString();
-                CreatorAPI.ExternalModel.Client client = vALINFOEntities.Clients.Single(x => x.CompanyName == CompanyName);
-                CreatorAPI.ExternalModel.Candidate candidate = vALINFOEntities.Candidates.Where(x => x.IDNumber == Idnumber && x.ClientID == client.ClientID && x.AppUserID == username).SingleOrDefault();
+                Client client = valinfodb.Clients.Single(x => x.CompanyName == CompanyName);
+                Candidate candidate = valinfodb.Candidates.Where(x => x.IDNumber == Idnumber && x.ClientID == client.ClientID && x.AppUserID == username).SingleOrDefault();
                 if (candidate == null)
                 {
                     candidate.Firstname = Firstname;
                     candidate.Surname = Surname;
                     candidate.IDNumber = Idnumber;
-                     candidate.Cellphone = "0760619183";
+                    candidate.Cellphone = "0760619183";
                     candidate.ClientID = client.ClientID;
                     candidate.AppUserID = User.Identity.GetUserName();
-                    vALINFOEntities.Candidates.Add(candidate);
-                    vALINFOEntities.SaveChanges();
+                    valinfodb.Candidates.Add(candidate);
+                    valinfodb.SaveChanges();
                 }
 
-                var localRequest = new ExternalModel.MieRequest()
+                var localRequest = new MieRequest()
                 {
                     CandidateID = candidate.CandidateID,
                     ClientID = candidate.ClientID,
@@ -79,8 +108,8 @@ namespace CreatorAPI.Controllers
                     RequestType = 0,
                     UserID = "433a858b-3b33-4c65-92df-b8eea190ecf9"
                 };
-                vALINFOEntities.MieRequests.Add(localRequest);
-                vALINFOEntities.SaveChanges();
+                valinfodb.MieRequests.Add(localRequest);
+                valinfodb.SaveChanges();
                 if (candidate != null && Convert.ToBoolean(IDVerification))
                 {
 
@@ -116,7 +145,7 @@ namespace CreatorAPI.Controllers
                     foreach (var item in items.Select((value, i) => new { i, value }))
                     {
 
-                        var requestItem = new ExternalModel.MieRequestItem
+                        var requestItem = new MieRequestItem
                         {
                             IsPackageItem = false,
                             Amount = GetProductAmount(item.value.Code, client.Category, client.ClientID, null),
@@ -124,8 +153,8 @@ namespace CreatorAPI.Controllers
                             ItemCode = item.value.Code,
                             RequestID = localRequest.RequestID
                         };
-                        vALINFOEntities.MieRequestItems.Add(requestItem);
-                        vALINFOEntities.SaveChanges();
+                        valinfodb.MieRequestItems.Add(requestItem);
+                        valinfodb.SaveChanges();
 
                         requestModel.Request.ItemList.Item.Add(new MieItem
                         {
@@ -149,35 +178,35 @@ namespace CreatorAPI.Controllers
                             {
                                 localRequest.Status = (int)MieRequestStatus.NoResult; // No results returned yet.
                                 localRequest.MieRequestID = Convert.ToInt64(data.Request.RequestKey);
-                                vALINFOEntities.SaveChanges();
+                                valinfodb.SaveChanges();
                             }
 
-                         
+
                             candidate.VettingStatus = 1;
 
                             candidate.DateModified = DateTime.UtcNow.AddHours(2);
 
-                            vALINFOEntities.SaveChanges();
+                            valinfodb.SaveChanges();
 
 
                         }
                         else
                         {
 
-                            var itemsToDelete = vALINFOEntities.MieRequestItems.Where(x => x.RequestID == localRequest.RequestID);
-                            vALINFOEntities.MieRequestItems.RemoveRange(itemsToDelete);
-                            vALINFOEntities.MieRequests.Remove(localRequest);
-                            vALINFOEntities.SaveChanges();
+                            var itemsToDelete = valinfodb.MieRequestItems.Where(x => x.RequestID == localRequest.RequestID);
+                            valinfodb.MieRequestItems.RemoveRange(itemsToDelete);
+                            valinfodb.MieRequests.Remove(localRequest);
+                            valinfodb.SaveChanges();
                             return data.Status.Description;
                         }
                     }
                     catch (Exception ex)
                     {
 
-                        var itemsToDelete = vALINFOEntities.MieRequestItems.Where(x => x.RequestID == localRequest.RequestID);
-                        vALINFOEntities.MieRequestItems.RemoveRange(itemsToDelete);
-                        vALINFOEntities.MieRequests.Remove(localRequest);
-                        vALINFOEntities.SaveChanges();
+                        var itemsToDelete = valinfodb.MieRequestItems.Where(x => x.RequestID == localRequest.RequestID);
+                        valinfodb.MieRequestItems.RemoveRange(itemsToDelete);
+                        valinfodb.MieRequests.Remove(localRequest);
+                        valinfodb.SaveChanges();
                         return "Request failed, please try again.";
                     }
                 }
@@ -200,11 +229,11 @@ namespace CreatorAPI.Controllers
 
         private decimal GetProductAmount(string code, int category, int clientID, int? packageID = null)
         {
-            CreatorAPI.ExternalModel.VALINFOEntities vALINFOEntities = new ExternalModel.VALINFOEntities();
-            var product = vALINFOEntities.VerificationProducts.Where(x => x.ItemCode == code);            if (product != null)
+            VALINFOEntities valinfodb = new VALINFOEntities();
+            var product = valinfodb.VerificationProducts.Where(x => x.ItemCode == code); if (product != null)
             {
 
-                var clientPricing = vALINFOEntities.ProductPriceEntries.Where(x => (x.VerificationProduct.ItemCode == code) && (x.ClientID == clientID));
+                var clientPricing = valinfodb.ProductPriceEntries.Where(x => (x.VerificationProduct.ItemCode == code) && (x.ClientID == clientID));
                 return clientPricing != null ? clientPricing.Select(x => x.Price).Single() : product.Select(x => x.SellingPrice.Value).Single();
             }
             else

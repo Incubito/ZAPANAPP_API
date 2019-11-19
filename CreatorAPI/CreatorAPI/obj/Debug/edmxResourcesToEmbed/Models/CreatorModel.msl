@@ -44,6 +44,7 @@
     <EntitySetMapping Name="ClientContent">
       <EntityTypeMapping TypeName="CreatorModel.ClientContent">
         <MappingFragment StoreEntitySet="ClientContent">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ClientSubMenuID" ColumnName="ClientSubMenuID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
@@ -54,11 +55,17 @@
     <EntitySetMapping Name="ClientMenus">
       <EntityTypeMapping TypeName="CreatorModel.ClientMenus">
         <MappingFragment StoreEntitySet="ClientMenus">
-          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+          <ScalarProperty Name="ScrollPage" ColumnName="ScrollPage" />
+          <ScalarProperty Name="BottomMenu" ColumnName="BottomMenu" />
+          <ScalarProperty Name="SideMenu" ColumnName="SideMenu" />
+          <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+          <ScalarProperty Name="MenuAction" ColumnName="MenuAction" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
           <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -66,6 +73,7 @@
     <EntitySetMapping Name="ClientRequests">
       <EntityTypeMapping TypeName="CreatorModel.ClientRequests">
         <MappingFragment StoreEntitySet="ClientRequests">
+          <ScalarProperty Name="Received" ColumnName="Received" />
           <ScalarProperty Name="ClientRequestID" ColumnName="ClientRequestID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
@@ -77,6 +85,7 @@
     <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="CreatorModel.Clients">
         <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="OutOfCountry" ColumnName="OutOfCountry" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Code" ColumnName="Code" />
@@ -95,6 +104,7 @@
     <EntitySetMapping Name="ClientScreenContent">
       <EntityTypeMapping TypeName="CreatorModel.ClientScreenContent">
         <MappingFragment StoreEntitySet="ClientScreenContent">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ClientScreenID" ColumnName="ClientScreenID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -107,7 +117,6 @@
     <EntitySetMapping Name="ClientScreens">
       <EntityTypeMapping TypeName="CreatorModel.ClientScreens">
         <MappingFragment StoreEntitySet="ClientScreens">
-          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ClientAppID" ColumnName="ClientAppID" />
           <ScalarProperty Name="FontID" ColumnName="FontID" />
@@ -115,24 +124,51 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Design" ColumnName="Design" />
           <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientSettings">
+      <EntityTypeMapping TypeName="CreatorModel.ClientSettings">
+        <MappingFragment StoreEntitySet="ClientSettings">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+          <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClientSubMenus">
       <EntityTypeMapping TypeName="CreatorModel.ClientSubMenus">
         <MappingFragment StoreEntitySet="ClientSubMenus">
-          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+          <ScalarProperty Name="PopupMessage" ColumnName="PopupMessage" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ClientMenuID" ColumnName="ClientMenuID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
           <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientZendesk">
+      <EntityTypeMapping TypeName="CreatorModel.ClientZendesk">
+        <MappingFragment StoreEntitySet="ClientZendesk">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ZendeskID" ColumnName="ZendeskID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Colours">
       <EntityTypeMapping TypeName="CreatorModel.Colours">
         <MappingFragment StoreEntitySet="Colours">
+          <ScalarProperty Name="HexLine" ColumnName="HexLine" />
+          <ScalarProperty Name="HexBackground" ColumnName="HexBackground" />
+          <ScalarProperty Name="HexFont" ColumnName="HexFont" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FontRed" ColumnName="FontRed" />
           <ScalarProperty Name="FontGreen" ColumnName="FontGreen" />
@@ -149,6 +185,7 @@
     <EntitySetMapping Name="ConnectionsLog">
       <EntityTypeMapping TypeName="CreatorModel.ConnectionsLog">
         <MappingFragment StoreEntitySet="ConnectionsLog">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UUID" ColumnName="UUID" />
           <ScalarProperty Name="ConnectionIdentifier" ColumnName="ConnectionIdentifier" />
@@ -167,11 +204,12 @@
     <EntitySetMapping Name="Library">
       <EntityTypeMapping TypeName="CreatorModel.Library">
         <MappingFragment StoreEntitySet="Library">
-          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
           <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
           <ScalarProperty Name="Preview" ColumnName="Preview" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -224,27 +262,95 @@
     <EntitySetMapping Name="Zendesk">
       <EntityTypeMapping TypeName="CreatorModel.Zendesk">
         <MappingFragment StoreEntitySet="Zendesk">
-          <ScalarProperty Name="AccountKey" ColumnName="AccountKey" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountKey" ColumnName="AccountKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientSubContent">
+      <EntityTypeMapping TypeName="CreatorModel.ClientSubContent">
+        <MappingFragment StoreEntitySet="ClientSubContent">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ClientSubSubMenuID" ColumnName="ClientSubSubMenuID" />
+          <ScalarProperty Name="ClientSubContentID" ColumnName="ClientSubContentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientSubMenuMenus">
+      <EntityTypeMapping TypeName="CreatorModel.ClientSubMenuMenus">
+        <MappingFragment StoreEntitySet="ClientSubMenuMenus">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="PopupMessage" ColumnName="PopupMessage" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+          <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClientMenuID" ColumnName="ClientMenuID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ClientZendesk">
-      <EntityTypeMapping TypeName="CreatorModel.ClientZendesk">
-        <MappingFragment StoreEntitySet="ClientZendesk">
-          <ScalarProperty Name="ZendeskID" ColumnName="ZendeskID" />
+    <EntitySetMapping Name="ClientSubSubMenus">
+      <EntityTypeMapping TypeName="CreatorModel.ClientSubSubMenus">
+        <MappingFragment StoreEntitySet="ClientSubSubMenus">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="PopupMessage" ColumnName="PopupMessage" />
+          <ScalarProperty Name="LinkReference" ColumnName="LinkReference" />
+          <ScalarProperty Name="HeadingReference" ColumnName="HeadingReference" />
+          <ScalarProperty Name="ImageReference" ColumnName="ImageReference" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClientSubMenuMenusID" ColumnName="ClientSubMenuMenusID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BulkPushNotifications">
+      <EntityTypeMapping TypeName="CreatorModel.BulkPushNotifications">
+        <MappingFragment StoreEntitySet="BulkPushNotifications">
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="FireBaseID" ColumnName="FireBaseID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="NotifcationDateTime" ColumnName="NotifcationDateTime" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ClientSettings">
-      <EntityTypeMapping TypeName="CreatorModel.ClientSettings">
-        <MappingFragment StoreEntitySet="ClientSettings">
-          <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
-          <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+    <EntitySetMapping Name="ClientCalendar">
+      <EntityTypeMapping TypeName="CreatorModel.ClientCalendar">
+        <MappingFragment StoreEntitySet="ClientCalendar">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientCalendarDetails">
+      <EntityTypeMapping TypeName="CreatorModel.ClientCalendarDetails">
+        <MappingFragment StoreEntitySet="ClientCalendarDetails">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Event" ColumnName="Event" />
+          <ScalarProperty Name="ClientCalendarID" ColumnName="ClientCalendarID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientCalendarLibrary">
+      <EntityTypeMapping TypeName="CreatorModel.ClientCalendarLibrary">
+        <MappingFragment StoreEntitySet="ClientCalendarLibrary">
+          <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+          <ScalarProperty Name="LibraryID" ColumnName="LibraryID" />
+          <ScalarProperty Name="ClientCalendarDetailsID" ColumnName="ClientCalendarDetailsID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -19,9 +19,11 @@ namespace CreatorAPI.Models
         {
             this.ClientApps = new HashSet<ClientApps>();
             this.ClientRequests = new HashSet<ClientRequests>();
-            this.TrustedEmailDomains = new HashSet<TrustedEmailDomains>();
-            this.ClientZendesk = new HashSet<ClientZendesk>();
             this.ClientSettings = new HashSet<ClientSettings>();
+            this.ClientZendesk = new HashSet<ClientZendesk>();
+            this.TrustedEmailDomains = new HashSet<TrustedEmailDomains>();
+            this.BulkPushNotifications = new HashSet<BulkPushNotifications>();
+            this.ClientCalendar = new HashSet<ClientCalendar>();
         }
     
         public int ClientID { get; set; }
@@ -36,16 +38,21 @@ namespace CreatorAPI.Models
         public string BillingAdress3 { get; set; }
         public string BillilngAdress4 { get; set; }
         public string LinkReference { get; set; }
+        public string OutOfCountry { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientApps> ClientApps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientRequests> ClientRequests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrustedEmailDomains> TrustedEmailDomains { get; set; }
+        public virtual ICollection<ClientSettings> ClientSettings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientZendesk> ClientZendesk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientSettings> ClientSettings { get; set; }
+        public virtual ICollection<TrustedEmailDomains> TrustedEmailDomains { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BulkPushNotifications> BulkPushNotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientCalendar> ClientCalendar { get; set; }
     }
 }

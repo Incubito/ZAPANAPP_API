@@ -20,7 +20,7 @@
     <Property Name="AssessmentDate" Type="DateTime" Precision="3" />
     <Property Name="Question" Type="Int32" />
     <Property Name="Answer" Type="Int32" />
-    <NavigationProperty Name="MobileConnections" Relationship="CreatorModel.FK_Assessments_MobileConnections" FromRole="Assessments" ToRole="MobileConnections" />
+    <NavigationProperty Name="MobileConnections" Relationship="Self.FK_Assessments_MobileConnections" FromRole="Assessments" ToRole="MobileConnections" />
   </EntityType>
   <EntityType Name="Categories">
     <Key>
@@ -29,6 +29,7 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ClientContent" Relationship="Self.FK_ClientContent_Categories1" FromRole="Categories" ToRole="ClientContent" />
+    <NavigationProperty Name="ClientSubContent" Relationship="CreatorModel.FK_ClientSubContent_Categories" FromRole="Categories" ToRole="ClientSubContent" />
   </EntityType>
   <EntityType Name="ClientApps">
     <Key>
@@ -56,6 +57,7 @@
     <NavigationProperty Name="Categories" Relationship="Self.FK_ClientContent_Categories1" FromRole="ClientContent" ToRole="Categories" />
     <NavigationProperty Name="ClientSubMenus" Relationship="Self.FK_ClientContent_ClientSubMenus" FromRole="ClientContent" ToRole="ClientSubMenus" />
     <NavigationProperty Name="Library" Relationship="Self.FK_ClientContent_Library1" FromRole="ClientContent" ToRole="Library" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ClientMenus">
     <Key>
@@ -65,10 +67,17 @@
     <Property Name="ClientAppID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="LinkReference" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientMenus_ClientApps1" FromRole="ClientMenus" ToRole="ClientApps" />
     <NavigationProperty Name="ClientSubMenus" Relationship="Self.FK_ClientSubMenus_ClientMenus" FromRole="ClientMenus" ToRole="ClientSubMenus" />
-    <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ClientSubMenuMenus" Relationship="CreatorModel.FK_ClientSubMenuMenus_ClientMenus" FromRole="ClientMenus" ToRole="ClientSubMenuMenus" />
+    <Property Name="MenuAction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MenuOrder" Type="Int32" />
+    <Property Name="SideMenu" Type="Boolean" />
+    <Property Name="BottomMenu" Type="Boolean" />
+    <Property Name="ScrollPage" Type="Boolean" />
   </EntityType>
   <EntityType Name="ClientRequests">
     <Key>
@@ -80,13 +89,14 @@
     <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Clients" Relationship="Self.FK_ClientRequests_Clients1" FromRole="ClientRequests" ToRole="Clients" />
+    <Property Name="Received" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Clients">
     <Key>
       <PropertyRef Name="ClientID" />
     </Key>
     <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ContactNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -99,9 +109,12 @@
     <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientApps_Clients1" FromRole="Clients" ToRole="ClientApps" />
     <NavigationProperty Name="ClientRequests" Relationship="Self.FK_ClientRequests_Clients1" FromRole="Clients" ToRole="ClientRequests" />
+    <NavigationProperty Name="ClientSettings" Relationship="Self.FK_ClientSettings_ClientSettings" FromRole="Clients" ToRole="ClientSettings" />
+    <NavigationProperty Name="ClientZendesk" Relationship="Self.FK_ClientZendesk_Clients" FromRole="Clients" ToRole="ClientZendesk" />
     <NavigationProperty Name="TrustedEmailDomains" Relationship="Self.FK_TrustedEmailDomains_Clients1" FromRole="Clients" ToRole="TrustedEmailDomains" />
-    <NavigationProperty Name="ClientZendesk" Relationship="CreatorModel.FK_ClientZendesk_Clients" FromRole="Clients" ToRole="ClientZendesk" />
-    <NavigationProperty Name="ClientSettings" Relationship="CreatorModel.FK_ClientSettings_ClientSettings" FromRole="Clients" ToRole="ClientSettings" />
+    <Property Name="OutOfCountry" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BulkPushNotifications" Relationship="CreatorModel.FK_BulkPushNotifications_Clients" FromRole="Clients" ToRole="BulkPushNotifications" />
+    <NavigationProperty Name="ClientCalendar" Relationship="CreatorModel.FK_ClientCalendar_Clients" FromRole="Clients" ToRole="ClientCalendar" />
   </EntityType>
   <EntityType Name="ClientScreenContent">
     <Key>
@@ -114,6 +127,7 @@
     <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ClientScreens" Relationship="Self.FK_ClientScreenContent_ClientScreens1" FromRole="ClientScreenContent" ToRole="ClientScreens" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ClientScreens">
     <Key>
@@ -126,11 +140,22 @@
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Design" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LinkReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
     <NavigationProperty Name="ClientApps" Relationship="Self.FK_ClientScreens_ClientApps1" FromRole="ClientScreens" ToRole="ClientApps" />
     <NavigationProperty Name="ClientScreenContent" Relationship="Self.FK_ClientScreenContent_ClientScreens1" FromRole="ClientScreens" ToRole="ClientScreenContent" />
     <NavigationProperty Name="Colours" Relationship="Self.FK_ClientScreens_Colours1" FromRole="ClientScreens" ToRole="Colours" />
     <NavigationProperty Name="InstalledFonts" Relationship="Self.FK_ClientScreens_InstalledFonts1" FromRole="ClientScreens" ToRole="InstalledFonts" />
-    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ClientSettings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="SettingKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SettingValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_ClientSettings_ClientSettings" FromRole="ClientSettings" ToRole="Clients" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ClientSubMenus">
     <Key>
@@ -140,10 +165,23 @@
     <Property Name="ClientMenuID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="LinkReference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ClientContent" Relationship="Self.FK_ClientContent_ClientSubMenus" FromRole="ClientSubMenus" ToRole="ClientContent" />
     <NavigationProperty Name="ClientMenus" Relationship="Self.FK_ClientSubMenus_ClientMenus" FromRole="ClientSubMenus" ToRole="ClientMenus" />
-    <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <Property Name="PopupMessage" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ClientZendesk">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="ZendeskID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_ClientZendesk_Clients" FromRole="ClientZendesk" ToRole="Clients" />
+    <NavigationProperty Name="Zendesk" Relationship="Self.FK_ClientZendesk_Zendesk" FromRole="ClientZendesk" ToRole="Zendesk" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Colours">
     <Key>
@@ -160,6 +198,9 @@
     <Property Name="BackgroundGreen" Type="Int32" />
     <Property Name="BackgroundBlue" Type="Int32" />
     <NavigationProperty Name="ClientScreens" Relationship="Self.FK_ClientScreens_Colours1" FromRole="Colours" ToRole="ClientScreens" />
+    <Property Name="HexFont" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="HexBackground" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="HexLine" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ConnectionsLog">
     <Key>
@@ -169,6 +210,7 @@
     <Property Name="UUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ConnectionIdentifier" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="InstalledFonts">
     <Key>
@@ -186,9 +228,12 @@
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Filename" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Preview" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ClientContent" Relationship="Self.FK_ClientContent_Library1" FromRole="Library" ToRole="ClientContent" />
-    <Property Name="Keywords" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ClientSubContent" Relationship="CreatorModel.FK_ClientSubContent_ClientSubSubMenus" FromRole="Library" ToRole="ClientSubContent" />
+    <NavigationProperty Name="ClientCalendarLibrary" Relationship="CreatorModel.FK_ClientCalendarLibrary_Library" FromRole="Library" ToRole="ClientCalendarLibrary" />
   </EntityType>
   <EntityType Name="MobileConnections">
     <Key>
@@ -204,9 +249,9 @@
     <Property Name="Activation" Type="Boolean" />
     <Property Name="UUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="DateConnected" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Assessments" Relationship="Self.FK_Assessments_MobileConnections" FromRole="MobileConnections" ToRole="Assessments" />
     <NavigationProperty Name="ClientApps" Relationship="Self.FK_MobileConnections_ClientApps1" FromRole="MobileConnections" ToRole="ClientApps" />
     <NavigationProperty Name="UsageTracker" Relationship="Self.FK_UsageTracker_MobileConnections" FromRole="MobileConnections" ToRole="UsageTracker" />
-    <NavigationProperty Name="Assessments" Relationship="CreatorModel.FK_Assessments_MobileConnections" FromRole="MobileConnections" ToRole="Assessments" />
   </EntityType>
   <EntityType Name="TemplateSelection">
     <Key>
@@ -237,6 +282,15 @@
     <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MobileConnections" Relationship="Self.FK_UsageTracker_MobileConnections" FromRole="UsageTracker" ToRole="MobileConnections" />
   </EntityType>
+  <EntityType Name="Zendesk">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccountKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientZendesk" Relationship="Self.FK_ClientZendesk_Zendesk" FromRole="Zendesk" ToRole="ClientZendesk" />
+  </EntityType>
   <Association Name="FK_ClientApps_Apps">
     <End Role="Apps" Type="Self.Apps" Multiplicity="1" />
     <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="*" />
@@ -246,6 +300,18 @@
       </Principal>
       <Dependent Role="ClientApps">
         <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Assessments_MobileConnections">
+    <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="1" />
+    <End Role="Assessments" Type="Self.Assessments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MobileConnections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Assessments">
+        <PropertyRef Name="MobileConnectionsID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -369,6 +435,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ClientSettings_ClientSettings">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="ClientSettings" Type="Self.ClientSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientSettings">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientZendesk_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="ClientZendesk" Type="Self.ClientZendesk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientZendesk">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TrustedEmailDomains_Clients1">
     <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
     <End Role="TrustedEmailDomains" Type="Self.TrustedEmailDomains" Multiplicity="*" />
@@ -417,6 +507,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ClientZendesk_Zendesk">
+    <End Role="Zendesk" Type="Self.Zendesk" Multiplicity="1" />
+    <End Role="ClientZendesk" Type="Self.ClientZendesk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zendesk">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientZendesk">
+        <PropertyRef Name="ZendeskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UsageTracker_MobileConnections">
     <End Role="MobileConnections" Type="Self.MobileConnections" Multiplicity="1" />
     <End Role="UsageTracker" Type="Self.UsageTracker" Multiplicity="*" />
@@ -440,7 +542,9 @@
     <EntitySet Name="Clients" EntityType="Self.Clients" />
     <EntitySet Name="ClientScreenContent" EntityType="Self.ClientScreenContent" />
     <EntitySet Name="ClientScreens" EntityType="Self.ClientScreens" />
+    <EntitySet Name="ClientSettings" EntityType="Self.ClientSettings" />
     <EntitySet Name="ClientSubMenus" EntityType="Self.ClientSubMenus" />
+    <EntitySet Name="ClientZendesk" EntityType="Self.ClientZendesk" />
     <EntitySet Name="Colours" EntityType="Self.Colours" />
     <EntitySet Name="ConnectionsLog" EntityType="Self.ConnectionsLog" />
     <EntitySet Name="InstalledFonts" EntityType="Self.InstalledFonts" />
@@ -449,9 +553,14 @@
     <EntitySet Name="TemplateSelection" EntityType="Self.TemplateSelection" />
     <EntitySet Name="TrustedEmailDomains" EntityType="Self.TrustedEmailDomains" />
     <EntitySet Name="UsageTracker" EntityType="Self.UsageTracker" />
+    <EntitySet Name="Zendesk" EntityType="Self.Zendesk" />
     <AssociationSet Name="FK_ClientApps_Apps" Association="Self.FK_ClientApps_Apps">
       <End Role="Apps" EntitySet="Apps" />
       <End Role="ClientApps" EntitySet="ClientApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Assessments_MobileConnections" Association="Self.FK_Assessments_MobileConnections">
+      <End Role="MobileConnections" EntitySet="MobileConnections" />
+      <End Role="Assessments" EntitySet="Assessments" />
     </AssociationSet>
     <AssociationSet Name="FK_ClientContent_Categories1" Association="Self.FK_ClientContent_Categories1">
       <End Role="Categories" EntitySet="Categories" />
@@ -493,6 +602,14 @@
       <End Role="Clients" EntitySet="Clients" />
       <End Role="ClientRequests" EntitySet="ClientRequests" />
     </AssociationSet>
+    <AssociationSet Name="FK_ClientSettings_ClientSettings" Association="Self.FK_ClientSettings_ClientSettings">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ClientSettings" EntitySet="ClientSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientZendesk_Clients" Association="Self.FK_ClientZendesk_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+    </AssociationSet>
     <AssociationSet Name="FK_TrustedEmailDomains_Clients1" Association="Self.FK_TrustedEmailDomains_Clients1">
       <End Role="Clients" EntitySet="Clients" />
       <End Role="TrustedEmailDomains" EntitySet="TrustedEmailDomains" />
@@ -509,104 +626,273 @@
       <End Role="InstalledFonts" EntitySet="InstalledFonts" />
       <End Role="ClientScreens" EntitySet="ClientScreens" />
     </AssociationSet>
+    <AssociationSet Name="FK_ClientZendesk_Zendesk" Association="Self.FK_ClientZendesk_Zendesk">
+      <End Role="Zendesk" EntitySet="Zendesk" />
+      <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+    </AssociationSet>
     <AssociationSet Name="FK_UsageTracker_MobileConnections" Association="Self.FK_UsageTracker_MobileConnections">
       <End Role="MobileConnections" EntitySet="MobileConnections" />
       <End Role="UsageTracker" EntitySet="UsageTracker" />
     </AssociationSet>
-    <AssociationSet Name="FK_Assessments_MobileConnections" Association="CreatorModel.FK_Assessments_MobileConnections">
-      <End Role="MobileConnections" EntitySet="MobileConnections" />
-      <End Role="Assessments" EntitySet="Assessments" />
+    <EntitySet Name="ClientSubContent" EntityType="CreatorModel.ClientSubContent" />
+    <EntitySet Name="ClientSubMenuMenus" EntityType="CreatorModel.ClientSubMenuMenus" />
+    <EntitySet Name="ClientSubSubMenus" EntityType="CreatorModel.ClientSubSubMenus" />
+    <AssociationSet Name="FK_ClientSubMenuMenus_ClientMenus" Association="CreatorModel.FK_ClientSubMenuMenus_ClientMenus">
+      <End Role="ClientMenus" EntitySet="ClientMenus" />
+      <End Role="ClientSubMenuMenus" EntitySet="ClientSubMenuMenus" />
     </AssociationSet>
-    <EntitySet Name="Zendesk" EntityType="CreatorModel.Zendesk" />
-    <EntitySet Name="ClientZendesk" EntityType="CreatorModel.ClientZendesk" />
-    <AssociationSet Name="FK_ClientZendesk_Clients" Association="CreatorModel.FK_ClientZendesk_Clients">
+    <AssociationSet Name="FK_ClientSubContent_ClientSubSubMenus" Association="CreatorModel.FK_ClientSubContent_ClientSubSubMenus">
+      <End Role="Library" EntitySet="Library" />
+      <End Role="ClientSubContent" EntitySet="ClientSubContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubSubMenus_ClientSubMenuMenus" Association="CreatorModel.FK_ClientSubSubMenus_ClientSubMenuMenus">
+      <End Role="ClientSubMenuMenus" EntitySet="ClientSubMenuMenus" />
+      <End Role="ClientSubSubMenus" EntitySet="ClientSubSubMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubContent_Categories" Association="CreatorModel.FK_ClientSubContent_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="ClientSubContent" EntitySet="ClientSubContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubContent_ClientSubSubMenus1" Association="CreatorModel.FK_ClientSubContent_ClientSubSubMenus1">
+      <End Role="ClientSubSubMenus" EntitySet="ClientSubSubMenus" />
+      <End Role="ClientSubContent" EntitySet="ClientSubContent" />
+    </AssociationSet>
+    <EntitySet Name="BulkPushNotifications" EntityType="CreatorModel.BulkPushNotifications" />
+    <EntitySet Name="ClientCalendar" EntityType="CreatorModel.ClientCalendar" />
+    <EntitySet Name="ClientCalendarDetails" EntityType="CreatorModel.ClientCalendarDetails" />
+    <AssociationSet Name="FK_BulkPushNotifications_Clients" Association="CreatorModel.FK_BulkPushNotifications_Clients">
       <End Role="Clients" EntitySet="Clients" />
-      <End Role="ClientZendesk" EntitySet="ClientZendesk" />
+      <End Role="BulkPushNotifications" EntitySet="BulkPushNotifications" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClientZendesk_Zendesk" Association="CreatorModel.FK_ClientZendesk_Zendesk">
-      <End Role="Zendesk" EntitySet="Zendesk" />
-      <End Role="ClientZendesk" EntitySet="ClientZendesk" />
-    </AssociationSet>
-    <EntitySet Name="ClientSettings" EntityType="CreatorModel.ClientSettings" />
-    <AssociationSet Name="FK_ClientSettings_ClientSettings" Association="CreatorModel.FK_ClientSettings_ClientSettings">
+    <AssociationSet Name="FK_ClientCalendar_Clients" Association="CreatorModel.FK_ClientCalendar_Clients">
       <End Role="Clients" EntitySet="Clients" />
-      <End Role="ClientSettings" EntitySet="ClientSettings" />
+      <End Role="ClientCalendar" EntitySet="ClientCalendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientCalendarDetails_ClientCalendar" Association="CreatorModel.FK_ClientCalendarDetails_ClientCalendar">
+      <End Role="ClientCalendar" EntitySet="ClientCalendar" />
+      <End Role="ClientCalendarDetails" EntitySet="ClientCalendarDetails" />
+    </AssociationSet>
+    <EntitySet Name="ClientCalendarLibrary" EntityType="CreatorModel.ClientCalendarLibrary" />
+    <AssociationSet Name="FK_ClientCalendarLibrary_ClientCalendarLibrary" Association="CreatorModel.FK_ClientCalendarLibrary_ClientCalendarLibrary">
+      <End Role="ClientCalendarDetails" EntitySet="ClientCalendarDetails" />
+      <End Role="ClientCalendarLibrary" EntitySet="ClientCalendarLibrary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientCalendarLibrary_Library" Association="CreatorModel.FK_ClientCalendarLibrary_Library">
+      <End Role="Library" EntitySet="Library" />
+      <End Role="ClientCalendarLibrary" EntitySet="ClientCalendarLibrary" />
     </AssociationSet>
   </EntityContainer>
-  <Association Name="FK_Assessments_MobileConnections">
-    <End Type="CreatorModel.MobileConnections" Role="MobileConnections" Multiplicity="1" />
-    <End Type="CreatorModel.Assessments" Role="Assessments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MobileConnections">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Assessments">
-        <PropertyRef Name="MobileConnectionsID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Zendesk">
+  <EntityType Name="ClientSubContent">
+    <Key>
+      <PropertyRef Name="ClientSubContentID" />
+    </Key>
+    <Property Name="ClientSubContentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientSubSubMenuID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="LibraryID" Type="Int32" Nullable="false" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Library" Relationship="CreatorModel.FK_ClientSubContent_ClientSubSubMenus" FromRole="ClientSubContent" ToRole="Library" />
+    <NavigationProperty Name="Categories" Relationship="CreatorModel.FK_ClientSubContent_Categories" FromRole="ClientSubContent" ToRole="Categories" />
+    <NavigationProperty Name="ClientSubSubMenus" Relationship="CreatorModel.FK_ClientSubContent_ClientSubSubMenus1" FromRole="ClientSubContent" ToRole="ClientSubSubMenus" />
+  </EntityType>
+  <EntityType Name="ClientSubMenuMenus">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientMenuID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="AccountKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="ClientZendesk" Relationship="CreatorModel.FK_ClientZendesk_Zendesk" FromRole="Zendesk" ToRole="ClientZendesk" />
+    <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PopupMessage" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ClientMenus" Relationship="CreatorModel.FK_ClientSubMenuMenus_ClientMenus" FromRole="ClientSubMenuMenus" ToRole="ClientMenus" />
+    <NavigationProperty Name="ClientSubSubMenus" Relationship="CreatorModel.FK_ClientSubSubMenus_ClientSubMenuMenus" FromRole="ClientSubMenuMenus" ToRole="ClientSubSubMenus" />
   </EntityType>
-  <EntityType Name="ClientZendesk">
+  <EntityType Name="ClientSubSubMenus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientSubMenuMenusID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImageReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HeadingReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LinkReference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PopupMessage" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ClientSubMenuMenus" Relationship="CreatorModel.FK_ClientSubSubMenus_ClientSubMenuMenus" FromRole="ClientSubSubMenus" ToRole="ClientSubMenuMenus" />
+    <NavigationProperty Name="ClientSubContent" Relationship="CreatorModel.FK_ClientSubContent_ClientSubSubMenus1" FromRole="ClientSubSubMenus" ToRole="ClientSubContent" />
+  </EntityType>
+  <Association Name="FK_ClientSubMenuMenus_ClientMenus">
+    <End Type="CreatorModel.ClientMenus" Role="ClientMenus" Multiplicity="1" />
+    <End Type="CreatorModel.ClientSubMenuMenus" Role="ClientSubMenuMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientSubMenuMenus">
+        <PropertyRef Name="ClientMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubContent_ClientSubSubMenus">
+    <End Type="CreatorModel.Library" Role="Library" Multiplicity="1" />
+    <End Type="CreatorModel.ClientSubContent" Role="ClientSubContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Library">
+        <PropertyRef Name="LibraryID" />
+      </Principal>
+      <Dependent Role="ClientSubContent">
+        <PropertyRef Name="LibraryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubSubMenus_ClientSubMenuMenus">
+    <End Type="CreatorModel.ClientSubMenuMenus" Role="ClientSubMenuMenus" Multiplicity="1" />
+    <End Type="CreatorModel.ClientSubSubMenus" Role="ClientSubSubMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientSubMenuMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientSubSubMenus">
+        <PropertyRef Name="ClientSubMenuMenusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubContent_Categories">
+    <End Type="CreatorModel.Categories" Role="Categories" Multiplicity="1" />
+    <End Type="CreatorModel.ClientSubContent" Role="ClientSubContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="ClientSubContent">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubContent_ClientSubSubMenus1">
+    <End Type="CreatorModel.ClientSubSubMenus" Role="ClientSubSubMenus" Multiplicity="1" />
+    <End Type="CreatorModel.ClientSubContent" Role="ClientSubContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientSubSubMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientSubContent">
+        <PropertyRef Name="ClientSubSubMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BulkPushNotifications">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClientID" Type="Int32" Nullable="false" />
-    <Property Name="ZendeskID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Clients" Relationship="CreatorModel.FK_ClientZendesk_Clients" FromRole="ClientZendesk" ToRole="Clients" />
-    <NavigationProperty Name="Zendesk" Relationship="CreatorModel.FK_ClientZendesk_Zendesk" FromRole="ClientZendesk" ToRole="Zendesk" />
+    <Property Name="NotifcationDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FireBaseID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateSent" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Clients" Relationship="CreatorModel.FK_BulkPushNotifications_Clients" FromRole="BulkPushNotifications" ToRole="Clients" />
   </EntityType>
-  <Association Name="FK_ClientZendesk_Clients">
-    <End Type="CreatorModel.Clients" Role="Clients" Multiplicity="1" />
-    <End Type="CreatorModel.ClientZendesk" Role="ClientZendesk" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Clients">
-        <PropertyRef Name="ClientID" />
-      </Principal>
-      <Dependent Role="ClientZendesk">
-        <PropertyRef Name="ClientID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ClientZendesk_Zendesk">
-    <End Type="CreatorModel.Zendesk" Role="Zendesk" Multiplicity="1" />
-    <End Type="CreatorModel.ClientZendesk" Role="ClientZendesk" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Zendesk">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ClientZendesk">
-        <PropertyRef Name="ZendeskID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="ClientSettings">
+  <EntityType Name="ClientCalendar">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ClientID" Type="Int32" />
-    <Property Name="SettingKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SettingValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Clients" Relationship="CreatorModel.FK_ClientSettings_ClientSettings" FromRole="ClientSettings" ToRole="Clients" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="Day" Type="Int64" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Clients" Relationship="CreatorModel.FK_ClientCalendar_Clients" FromRole="ClientCalendar" ToRole="Clients" />
+    <NavigationProperty Name="ClientCalendarDetails" Relationship="CreatorModel.FK_ClientCalendarDetails_ClientCalendar" FromRole="ClientCalendar" ToRole="ClientCalendarDetails" />
   </EntityType>
-  <Association Name="FK_ClientSettings_ClientSettings">
-    <End Type="CreatorModel.Clients" Role="Clients" Multiplicity="0..1" />
-    <End Type="CreatorModel.ClientSettings" Role="ClientSettings" Multiplicity="*" />
+  <EntityType Name="ClientCalendarDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientCalendarID" Type="Int32" />
+    <Property Name="Event" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="Int64" />
+    <Property Name="EndTime" Type="Int64" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <Property Name="EventName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientCalendar" Relationship="CreatorModel.FK_ClientCalendarDetails_ClientCalendar" FromRole="ClientCalendarDetails" ToRole="ClientCalendar" />
+    <NavigationProperty Name="ClientCalendarLibrary" Relationship="CreatorModel.FK_ClientCalendarLibrary_ClientCalendarLibrary" FromRole="ClientCalendarDetails" ToRole="ClientCalendarLibrary" />
+  </EntityType>
+  <Association Name="FK_BulkPushNotifications_Clients">
+    <End Type="CreatorModel.Clients" Role="Clients" Multiplicity="1" />
+    <End Type="CreatorModel.BulkPushNotifications" Role="BulkPushNotifications" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Clients">
         <PropertyRef Name="ClientID" />
       </Principal>
-      <Dependent Role="ClientSettings">
+      <Dependent Role="BulkPushNotifications">
         <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendar_Clients">
+    <End Type="CreatorModel.Clients" Role="Clients" Multiplicity="1" />
+    <End Type="CreatorModel.ClientCalendar" Role="ClientCalendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientCalendar">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendarDetails_ClientCalendar">
+    <End Type="CreatorModel.ClientCalendar" Role="ClientCalendar" Multiplicity="0..1" />
+    <End Type="CreatorModel.ClientCalendarDetails" Role="ClientCalendarDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientCalendar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientCalendarDetails">
+        <PropertyRef Name="ClientCalendarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ClientCalendarLibrary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientCalendarDetailsID" Type="Int32" />
+    <Property Name="LibraryID" Type="Int32" />
+    <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ClientCalendarDetails" Relationship="CreatorModel.FK_ClientCalendarLibrary_ClientCalendarLibrary" FromRole="ClientCalendarLibrary" ToRole="ClientCalendarDetails" />
+    <NavigationProperty Name="Library" Relationship="CreatorModel.FK_ClientCalendarLibrary_Library" FromRole="ClientCalendarLibrary" ToRole="Library" />
+  </EntityType>
+  <Association Name="FK_ClientCalendarLibrary_ClientCalendarLibrary">
+    <End Type="CreatorModel.ClientCalendarDetails" Role="ClientCalendarDetails" Multiplicity="0..1" />
+    <End Type="CreatorModel.ClientCalendarLibrary" Role="ClientCalendarLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientCalendarDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientCalendarLibrary">
+        <PropertyRef Name="ClientCalendarDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendarLibrary_Library">
+    <End Type="CreatorModel.Library" Role="Library" Multiplicity="0..1" />
+    <End Type="CreatorModel.ClientCalendarLibrary" Role="ClientCalendarLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Library">
+        <PropertyRef Name="LibraryID" />
+      </Principal>
+      <Dependent Role="ClientCalendarLibrary">
+        <PropertyRef Name="LibraryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

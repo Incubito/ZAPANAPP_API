@@ -15,13 +15,17 @@ namespace CreatorAPI.Controllers
     {
         [Authorize]
         [Route("ScreenContentList")]
-        public IEnumerable<SimpleScreenContent> PostScreenContentList([FromHeader]string AppCode, [FromHeader]string CompanyCode)
+        public IEnumerable<SimpleScreenContent> PostScreenContentList([FromHeader]string AppCode, [FromHeader]string CompanyCode, [FromHeader]string DeviceSyncDate)
         {
+            string UpperCaseCC = CompanyCode.Trim().ToUpper();
+            DateTime LastSyncDate = DateTime.Parse(DeviceSyncDate);
             List<SimpleScreenContent> ListOfScreenContent = new List<SimpleScreenContent>();
 
             CreatorEntities db = new CreatorEntities();
-            List<ClientScreenContent> Listcsc = db.ClientScreenContent.Where(c => c.ClientScreens.ClientApps.Clients.Code == CompanyCode)
-                                                                       .Where(ca => ca.ClientScreens.ClientApps.Apps.AppCode == AppCode).ToList();
+            List<ClientScreenContent> Listcsc = db.ClientScreenContent.Where(c => c.ClientScreens.ClientApps.Clients.Code == UpperCaseCC)
+                                                                      .Where(ca => ca.ClientScreens.ClientApps.Apps.AppCode == AppCode)
+                                                                      .Where(csc => System.Data.Entity.SqlServer.SqlFunctions.DateDiff("MINUTE", csc.ChangeDate, LastSyncDate) < 0)
+                                                                      .ToList();
 
             foreach (ClientScreenContent cscitem in Listcsc)
             {
@@ -40,11 +44,42 @@ namespace CreatorAPI.Controllers
                 }
 
                 ss.Contents = Convert.ToBase64String(File.ReadAllBytes(CreatorAPI.Properties.Settings.Default.ServerPath + "\\" + cscitem.ImageReference));
+                ss.Updated = ((DateTime)cscitem.ChangeDate).ToString("yyyy-MM-dd HH:mm:ss");
 
                 ListOfScreenContent.Add(ss);
             }
 
             return ListOfScreenContent;
+        }
+
+        [Authorize]
+        [Route("Cleanup")]
+        public IEnumerable<ActiveList> PostCleanUp([FromHeader]string AppCode, [FromHeader]string CompanyCode)
+        {
+            string CurrentList = "";
+            string UpperCaseCC = CompanyCode.Trim().ToUpper();
+
+            CreatorEntities db = new CreatorEntities();
+            List<ActiveList> CleanupList = new List<ActiveList>();
+            List<ClientScreenContent> Listcsc = db.ClientScreenContent.Where(c => c.ClientScreens.ClientApps.Clients.Code == UpperCaseCC)
+                                                                      .Where(ca => ca.ClientScreens.ClientApps.Apps.AppCode == AppCode)
+                                                                      .ToList();
+            foreach (ClientScreenContent scitem in Listcsc)
+            {
+                CurrentList = CurrentList + scitem.ID + ",";
+            }
+
+            if (Listcsc.Count > 0)
+            {
+                CurrentList = "(" + CurrentList.Substring(0, CurrentList.Length - 1) + ")";
+            }
+
+            ActiveList lib = new ActiveList();
+            lib.List = CurrentList;
+
+            CleanupList.Add(lib);
+
+            return CleanupList;
         }
     }
 }

@@ -18,17 +18,26 @@ namespace CreatorAPI.Models
         public ClientMenus()
         {
             this.ClientSubMenus = new HashSet<ClientSubMenus>();
+            this.ClientSubMenuMenus = new HashSet<ClientSubMenuMenus>();
         }
     
         public int ID { get; set; }
         public int ClientAppID { get; set; }
         public string Name { get; set; }
         public string ImageReference { get; set; }
-        public string LinkReference { get; set; }
         public string HeadingReference { get; set; }
+        public string LinkReference { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
+        public string MenuAction { get; set; }
+        public Nullable<int> MenuOrder { get; set; }
+        public Nullable<bool> SideMenu { get; set; }
+        public Nullable<bool> BottomMenu { get; set; }
+        public Nullable<bool> ScrollPage { get; set; }
     
         public virtual ClientApps ClientApps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientSubMenus> ClientSubMenus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientSubMenuMenus> ClientSubMenuMenus { get; set; }
     }
 }

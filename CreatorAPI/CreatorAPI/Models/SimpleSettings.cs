@@ -10,5 +10,7 @@ namespace CreatorAPI.Models
         public string SettingKey { get; set; }
 
         public string SettingValue { get; set; }
+
+        public string Updated { get; set; }
     }
 }

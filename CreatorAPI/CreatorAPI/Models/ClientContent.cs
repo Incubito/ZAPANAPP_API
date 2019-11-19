@@ -18,6 +18,7 @@ namespace CreatorAPI.Models
         public int ClientSubMenuID { get; set; }
         public int CategoryID { get; set; }
         public int LibraryID { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
     
         public virtual Categories Categories { get; set; }
         public virtual ClientSubMenus ClientSubMenus { get; set; }

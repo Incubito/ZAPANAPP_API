@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="230d8eb6c7e74c8fbb81985239aba427" Name="Diagram1">
+        <EntityTypeShape EntityType="VALINFOModel.Candidate" Width="1.5" PointX="1.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.Client" Width="1.5" PointX="1.5" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.MieRequestItem" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.MieRequest" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.ProductPriceEntry" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VALINFOModel.VerificationProduct" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="VALINFOModel.FK_Candidates_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieRequests_Candidates" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_ProductPriceIntries_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieRequestItems_MieRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_MieRequestItems_VerificationProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="VALINFOModel.FK_ProductPriceIntries_VerificationProducts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CreatorAPI</RootNamespace>
     <AssemblyName>CreatorAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,9 @@
     <Reference Include="ICASCryptoGraphy">
       <HintPath>..\..\..\..\DLLs\Crypto\ICASCrypto\ICASCryptoGraphy\bin\Debug\ICASCryptoGraphy.dll</HintPath>
     </Reference>
+    <Reference Include="IncubitoCryptoGraphy">
+      <HintPath>..\..\..\..\DLLs\Crypto\IncubitoCrypto\IncubitoCryptoGraphy\bin\Debug\IncubitoCryptoGraphy.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -60,15 +64,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
@@ -119,6 +123,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -223,30 +228,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Connected Services\MieProducer\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\MieRequestWCF\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\MieWebservice\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\OurProducerServiceLive\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Constants.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AssessmentsController.cs" />
-    <Compile Include="Controllers\CandidateController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\ConnectionsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
@@ -258,60 +241,42 @@
     <Compile Include="Controllers\SubMenusController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
     <Compile Include="Controllers\XMLController.cs" />
-    <Compile Include="Controllers\ZenDeskController.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="ExternalModel\Candidate.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\Client.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\MieRequest.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\MieRequestItem.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\MieResult.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\ProductPriceEntry.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\ValInfoModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ValInfoModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\ValInfoModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\ValInfoModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ValInfoModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ExternalModel\VerificationProduct.cs">
-      <DependentUpon>ValInfoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AddInfoRequestModel.cs" />
+    <Compile Include="Models\ActiveList.cs" />
     <Compile Include="Models\Apps.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Assessments.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BulkPushNotifications.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CalendarDaily.cs" />
+    <Compile Include="Models\CalendarMonthly.cs" />
+    <Compile Include="Models\Candidate.cs">
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Categories.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClientApps.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientCalendar.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientCalendarDetails.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientCalendarLibrary.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientContent.cs">
@@ -335,7 +300,16 @@
     <Compile Include="Models\ClientSettings.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientSubContent.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientSubMenuMenus.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClientSubMenus.cs">
+      <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientSubSubMenus.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientZendesk.cs">
@@ -362,35 +336,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CreatorModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\EnvironmentDataDTOs.cs" />
+    <Compile Include="Models\DailyEvents.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InstalledFonts.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ItemTypeViewModel.cs" />
     <Compile Include="Models\Library.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogManager.cs" />
-    <Compile Include="Models\MieAgentsDTOs.cs" />
-    <Compile Include="Models\MieClientsDTOs.cs" />
-    <Compile Include="Models\MieItemTypes.cs" />
-    <Compile Include="Models\MIeLoginDTOs.cs" />
-    <Compile Include="Models\MieRequestDTOs.cs" />
-    <Compile Include="Models\MieTableDTOs.cs" />
+    <Compile Include="Models\MieRequest.cs">
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MieRequestItem.cs">
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MobileConnections.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProcessingResult.cs" />
+    <Compile Include="Models\ProductPriceEntry.cs">
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SimpleCalendar.cs" />
+    <Compile Include="Models\SimpleCalendarDetails.cs" />
+    <Compile Include="Models\SimpleCalendarLibrary.cs" />
     <Compile Include="Models\SimpleContent.cs" />
+    <Compile Include="Models\SimpleHelplineNr.cs" />
     <Compile Include="Models\SimpleLibrary.cs" />
     <Compile Include="Models\SimpleMenu.cs" />
     <Compile Include="Models\SimpleMobileConnection.cs" />
+    <Compile Include="Models\SimplePN.cs" />
     <Compile Include="Models\SimpleScreen.cs" />
     <Compile Include="Models\SimpleScreenContent.cs" />
     <Compile Include="Models\SimpleSettings.cs" />
     <Compile Include="Models\SimpleSubMenu.cs" />
-    <Compile Include="Models\SimpleZenDeskInfo.cs" />
     <Compile Include="Models\TemplateSelection.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
     </Compile>
@@ -399,6 +379,24 @@
     </Compile>
     <Compile Include="Models\UsageTracker.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VALINFOEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VALINFOEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VALINFOEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VALINFOEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VALINFOEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerificationProduct.cs">
+      <DependentUpon>VALINFOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zendesk.cs">
       <DependentUpon>CreatorModel.tt</DependentUpon>
@@ -411,243 +409,14 @@
     </Compile>
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="Services.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.FindSimilarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.GetGreetingResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.GetMetaInputResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.GetPrepaidPoolTotalsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.GetQuestionAnswersResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.GetQuestionnaireKeyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.GetSystemAnswersResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoAuthenticateResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoChangePasswordResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoCloneRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoForgotPasswordResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAddInfoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAddInfoSpecificResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAFISInputResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAFISMappingResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAgentListResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAgentNotificationsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAgentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetAgentsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetClientPropertiesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetClientsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetClientTreeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetCompanyInformationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetCompanyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetCompanyUnprotectedResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetCountriesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetDuplicateInquiriesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetHostedFingersResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetItemTypeGroupsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetItemTypeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetItemTypesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetParameterResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetParameterTextByCodeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetPrerequisitesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetRequestPropertiesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetRequestRedirectResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetRequestsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetStagedInquiryResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetTableResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetTablesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoGetZonesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoLoginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutAddInfoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutAgentNotificationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutAgentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutBranchResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutFingerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutRequestRedirectResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoPutRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoRequestReportResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.ksoUpdateAgentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.LoadFingerprintCaptureResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.SaveFingerprintCaptureResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.UpdateFingerprintCaptureHostingKeyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieProducer\CreatorAPI.MieProducer.UpdateFingerprintCaptureStatusResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\MieProducer\epcvRequest.disco" />
-    <None Include="Connected Services\MieProducer\configuration91.svcinfo" />
-    <None Include="Connected Services\MieProducer\configuration.svcinfo" />
-    <None Include="Connected Services\MieProducer\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\MieRequestWCF\CreatorAPI.MieRequestWCF.ItemType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieRequestWCF\CreatorAPI.MieRequestWCF.ItemTypeProxy.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieRequestWCF\CreatorAPI.MieRequestWCF.Table.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\MieProducer\epcvRequest.wsdl" />
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF.disco" />
-    <None Include="Connected Services\MieRequestWCF\configuration91.svcinfo" />
-    <None Include="Connected Services\MieRequestWCF\configuration.svcinfo" />
-    <None Include="Connected Services\MieRequestWCF\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\MieWebservice\CreatorAPI.MieWebservice.ItemType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieWebservice\CreatorAPI.MieWebservice.ItemTypeProxy.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MieWebservice\CreatorAPI.MieWebservice.Table.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF.disco" />
-    <None Include="Connected Services\MieWebservice\configuration91.svcinfo" />
-    <None Include="Connected Services\MieWebservice\configuration.svcinfo" />
-    <None Include="Connected Services\MieWebservice\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\OurProducerServiceLive\CreatorAPI.OurProducerServiceLive.KmiePutResultResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\OurProducerServiceLive\WebService.disco" />
-    <None Include="Connected Services\OurProducerServiceLive\configuration91.svcinfo" />
-    <None Include="Connected Services\OurProducerServiceLive\configuration.svcinfo" />
-    <None Include="Connected Services\OurProducerServiceLive\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="ExternalModel\ValInfoModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ValInfoModel.edmx</DependentUpon>
-      <LastGenOutput>ValInfoModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ExternalModel\ValInfoModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ValInfoModel.edmx</DependentUpon>
-      <LastGenOutput>ValInfoModel.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -660,6 +429,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CreatorModel.edmx</DependentUpon>
       <LastGenOutput>CreatorModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VALINFOEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VALINFOEntities.edmx</DependentUpon>
+      <LastGenOutput>VALINFOEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VALINFOEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VALINFOEntities.edmx</DependentUpon>
+      <LastGenOutput>VALINFOEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -689,42 +468,13 @@
     <Content Include="Models\CreatorModel.edmx.diagram">
       <DependentUpon>CreatorModel.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="ExternalModel\ValInfoModel.edmx">
+    <EntityDeploy Include="Models\VALINFOEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ValInfoModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>VALINFOEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ExternalModel\ValInfoModel.edmx.diagram">
-      <DependentUpon>ValInfoModel.edmx</DependentUpon>
+    <Content Include="Models\VALINFOEntities.edmx.diagram">
+      <DependentUpon>VALINFOEntities.edmx</DependentUpon>
     </Content>
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF.wsdl" />
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF1.wsdl" />
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieRequestWCF\epcvRequestWCF3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF.wsdl" />
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF1.wsdl" />
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\MieWebservice\epcvRequestWCF3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\OurProducerServiceLive\WebService.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -756,12 +506,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Candidate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Apps\" />
-    <Folder Include="Views\Candidate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -797,12 +545,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\MieProducer\" />
-    <WCFMetadataStorage Include="Connected Services\MieRequestWCF\" />
-    <WCFMetadataStorage Include="Connected Services\MieWebservice\" />
-    <WCFMetadataStorage Include="Connected Services\OurProducerServiceLive\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

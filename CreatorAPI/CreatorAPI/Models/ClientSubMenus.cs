@@ -24,8 +24,10 @@ namespace CreatorAPI.Models
         public int ClientMenuID { get; set; }
         public string Name { get; set; }
         public string ImageReference { get; set; }
-        public string LinkReference { get; set; }
         public string HeadingReference { get; set; }
+        public string LinkReference { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
+        public string PopupMessage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientContent> ClientContent { get; set; }

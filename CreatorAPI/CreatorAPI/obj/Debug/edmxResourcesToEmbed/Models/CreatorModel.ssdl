@@ -20,6 +20,19 @@
     <Property Name="Question" Type="int" />
     <Property Name="Answer" Type="int" />
   </EntityType>
+  <EntityType Name="BulkPushNotifications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="NotifcationDateTime" Type="datetime" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="FireBaseID" Type="varchar" MaxLength="50" />
+    <Property Name="DateSent" Type="datetime" />
+  </EntityType>
   <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="CategoryID" />
@@ -36,6 +49,37 @@
     <Property Name="AppID" Type="int" Nullable="false" />
     <Property Name="LinkReference" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="ClientCalendar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientID" Type="int" Nullable="false" />
+    <Property Name="Day" Type="bigint" />
+    <Property Name="ChangeDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ClientCalendarDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientCalendarID" Type="int" />
+    <Property Name="Event" Type="varchar" MaxLength="400" />
+    <Property Name="StartTime" Type="bigint" />
+    <Property Name="EndTime" Type="bigint" />
+    <Property Name="ChangeDate" Type="datetime" />
+    <Property Name="EventName" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="ClientCalendarLibrary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientCalendarDetailsID" Type="int" />
+    <Property Name="LibraryID" Type="int" />
+    <Property Name="ChangeDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="ClientContent">
     <Key>
       <PropertyRef Name="ID" />
@@ -44,6 +88,7 @@
     <Property Name="ClientSubMenuID" Type="int" Nullable="false" />
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="LibraryID" Type="int" Nullable="false" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ClientMenus">
     <Key>
@@ -52,9 +97,15 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientAppID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="SideMenu" Type="bit" />
+    <Property Name="BottomMenu" Type="bit" />
+    <Property Name="ScrollPage" Type="bit" />
+    <Property Name="MenuAction" Type="varchar" MaxLength="50" />
+    <Property Name="MenuOrder" Type="int" />
     <Property Name="ImageReference" Type="varchar(max)" />
     <Property Name="HeadingReference" Type="varchar(max)" />
     <Property Name="LinkReference" Type="varchar" MaxLength="150" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ClientRequests">
     <Key>
@@ -64,6 +115,7 @@
     <Property Name="ClientID" Type="int" Nullable="false" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="Contents" Type="varchar(max)" />
+    <Property Name="Received" Type="datetime" />
     <Property Name="Status" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Clients">
@@ -71,7 +123,7 @@
       <PropertyRef Name="ClientID" />
     </Key>
     <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="150" />
     <Property Name="Code" Type="varchar" MaxLength="50" />
     <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
     <Property Name="ContactNr" Type="varchar" MaxLength="50" />
@@ -82,6 +134,7 @@
     <Property Name="BillingAdress3" Type="varchar" MaxLength="50" />
     <Property Name="BillilngAdress4" Type="varchar" MaxLength="50" />
     <Property Name="LinkReference" Type="varchar(max)" />
+    <Property Name="OutOfCountry" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="ClientScreenContent">
     <Key>
@@ -93,6 +146,7 @@
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="ImageReference" Type="varchar(max)" />
     <Property Name="LinkReference" Type="varchar(max)" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ClientScreens">
     <Key>
@@ -115,6 +169,30 @@
     <Property Name="ClientID" Type="int" />
     <Property Name="SettingKey" Type="varchar" MaxLength="50" />
     <Property Name="SettingValue" Type="varchar" MaxLength="50" />
+    <Property Name="ChangeDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ClientSubContent">
+    <Key>
+      <PropertyRef Name="ClientSubContentID" />
+    </Key>
+    <Property Name="ClientSubContentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientSubSubMenuID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="LibraryID" Type="int" Nullable="false" />
+    <Property Name="ChangeDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ClientSubMenuMenus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientMenuID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="ImageReference" Type="varchar(max)" />
+    <Property Name="HeadingReference" Type="varchar(max)" />
+    <Property Name="LinkReference" Type="varchar" MaxLength="200" />
+    <Property Name="PopupMessage" Type="varchar" MaxLength="450" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ClientSubMenus">
     <Key>
@@ -126,6 +204,21 @@
     <Property Name="ImageReference" Type="varchar(max)" />
     <Property Name="HeadingReference" Type="varchar(max)" />
     <Property Name="LinkReference" Type="varchar" MaxLength="200" />
+    <Property Name="PopupMessage" Type="varchar" MaxLength="450" />
+    <Property Name="ChangeDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ClientSubSubMenus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientSubMenuMenusID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="ImageReference" Type="varchar(max)" />
+    <Property Name="HeadingReference" Type="varchar(max)" />
+    <Property Name="LinkReference" Type="varchar" MaxLength="200" />
+    <Property Name="PopupMessage" Type="varchar" MaxLength="450" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ClientZendesk">
     <Key>
@@ -134,6 +227,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientID" Type="int" Nullable="false" />
     <Property Name="ZendeskID" Type="int" Nullable="false" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Colours">
     <Key>
@@ -149,6 +243,9 @@
     <Property Name="BackgroundRed" Type="int" />
     <Property Name="BackgroundGreen" Type="int" />
     <Property Name="BackgroundBlue" Type="int" />
+    <Property Name="HexFont" Type="varchar" MaxLength="15" />
+    <Property Name="HexBackground" Type="varchar" MaxLength="15" />
+    <Property Name="HexLine" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="ConnectionsLog">
     <Key>
@@ -158,6 +255,7 @@
     <Property Name="UUID" Type="varchar(max)" />
     <Property Name="ConnectionIdentifier" Type="varchar" MaxLength="150" />
     <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Timestamp" Type="datetime" />
   </EntityType>
   <EntityType Name="InstalledFonts">
     <Key>
@@ -174,8 +272,9 @@
     <Property Name="Description" Type="varchar" MaxLength="50" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="Filename" Type="varchar" MaxLength="250" />
-    <Property Name="Keywords" Type="varchar" MaxLength="250" />
+    <Property Name="Keywords" Type="varchar(max)" />
     <Property Name="Preview" Type="varchar(max)" />
+    <Property Name="ChangeDate" Type="datetime" />
   </EntityType>
   <EntityType Name="MobileConnections">
     <Key>
@@ -238,6 +337,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_BulkPushNotifications_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="BulkPushNotifications" Type="Self.BulkPushNotifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="BulkPushNotifications">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ClientApps_Apps">
     <End Role="Apps" Type="Self.Apps" Multiplicity="1" />
     <End Role="ClientApps" Type="Self.ClientApps" Multiplicity="*" />
@@ -259,6 +370,54 @@
       </Principal>
       <Dependent Role="ClientApps">
         <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendar_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="ClientCalendar" Type="Self.ClientCalendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientCalendar">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendarDetails_ClientCalendar">
+    <End Role="ClientCalendar" Type="Self.ClientCalendar" Multiplicity="0..1" />
+    <End Role="ClientCalendarDetails" Type="Self.ClientCalendarDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientCalendar">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientCalendarDetails">
+        <PropertyRef Name="ClientCalendarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendarLibrary_ClientCalendarLibrary">
+    <End Role="ClientCalendarDetails" Type="Self.ClientCalendarDetails" Multiplicity="0..1" />
+    <End Role="ClientCalendarLibrary" Type="Self.ClientCalendarLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientCalendarDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientCalendarLibrary">
+        <PropertyRef Name="ClientCalendarDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientCalendarLibrary_Library">
+    <End Role="Library" Type="Self.Library" Multiplicity="0..1" />
+    <End Role="ClientCalendarLibrary" Type="Self.ClientCalendarLibrary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Library">
+        <PropertyRef Name="LibraryID" />
+      </Principal>
+      <Dependent Role="ClientCalendarLibrary">
+        <PropertyRef Name="LibraryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -382,6 +541,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ClientSubContent_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="ClientSubContent" Type="Self.ClientSubContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="ClientSubContent">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubContent_ClientSubSubMenus">
+    <End Role="ClientSubSubMenus" Type="Self.ClientSubSubMenus" Multiplicity="1" />
+    <End Role="ClientSubContent" Type="Self.ClientSubContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientSubSubMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientSubContent">
+        <PropertyRef Name="ClientSubSubMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubContent_Library">
+    <End Role="Library" Type="Self.Library" Multiplicity="1" />
+    <End Role="ClientSubContent" Type="Self.ClientSubContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Library">
+        <PropertyRef Name="LibraryID" />
+      </Principal>
+      <Dependent Role="ClientSubContent">
+        <PropertyRef Name="LibraryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubMenuMenus_ClientMenus">
+    <End Role="ClientMenus" Type="Self.ClientMenus" Multiplicity="1" />
+    <End Role="ClientSubMenuMenus" Type="Self.ClientSubMenuMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientSubMenuMenus">
+        <PropertyRef Name="ClientMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ClientSubMenus_ClientMenus">
     <End Role="ClientMenus" Type="Self.ClientMenus" Multiplicity="1" />
     <End Role="ClientSubMenus" Type="Self.ClientSubMenus" Multiplicity="*" />
@@ -391,6 +598,18 @@
       </Principal>
       <Dependent Role="ClientSubMenus">
         <PropertyRef Name="ClientMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientSubSubMenus_ClientSubMenuMenus">
+    <End Role="ClientSubMenuMenus" Type="Self.ClientSubMenuMenus" Multiplicity="1" />
+    <End Role="ClientSubSubMenus" Type="Self.ClientSubSubMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientSubMenuMenus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientSubSubMenus">
+        <PropertyRef Name="ClientSubMenuMenusID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -469,8 +688,12 @@
   <EntityContainer Name="CreatorModelStoreContainer">
     <EntitySet Name="Apps" EntityType="Self.Apps" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Assessments" EntityType="Self.Assessments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BulkPushNotifications" EntityType="Self.BulkPushNotifications" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientApps" EntityType="Self.ClientApps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientCalendar" EntityType="Self.ClientCalendar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientCalendarDetails" EntityType="Self.ClientCalendarDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientCalendarLibrary" EntityType="Self.ClientCalendarLibrary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientContent" EntityType="Self.ClientContent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientMenus" EntityType="Self.ClientMenus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientRequests" EntityType="Self.ClientRequests" Schema="dbo" store:Type="Tables" />
@@ -478,7 +701,10 @@
     <EntitySet Name="ClientScreenContent" EntityType="Self.ClientScreenContent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientScreens" EntityType="Self.ClientScreens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientSettings" EntityType="Self.ClientSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientSubContent" EntityType="Self.ClientSubContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientSubMenuMenus" EntityType="Self.ClientSubMenuMenus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientSubMenus" EntityType="Self.ClientSubMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientSubSubMenus" EntityType="Self.ClientSubSubMenus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientZendesk" EntityType="Self.ClientZendesk" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Colours" EntityType="Self.Colours" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ConnectionsLog" EntityType="Self.ConnectionsLog" Schema="dbo" store:Type="Tables" />
@@ -493,6 +719,10 @@
       <End Role="MobileConnections" EntitySet="MobileConnections" />
       <End Role="Assessments" EntitySet="Assessments" />
     </AssociationSet>
+    <AssociationSet Name="FK_BulkPushNotifications_Clients" Association="Self.FK_BulkPushNotifications_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="BulkPushNotifications" EntitySet="BulkPushNotifications" />
+    </AssociationSet>
     <AssociationSet Name="FK_ClientApps_Apps" Association="Self.FK_ClientApps_Apps">
       <End Role="Apps" EntitySet="Apps" />
       <End Role="ClientApps" EntitySet="ClientApps" />
@@ -500,6 +730,22 @@
     <AssociationSet Name="FK_ClientApps_Clients1" Association="Self.FK_ClientApps_Clients1">
       <End Role="Clients" EntitySet="Clients" />
       <End Role="ClientApps" EntitySet="ClientApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientCalendar_Clients" Association="Self.FK_ClientCalendar_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ClientCalendar" EntitySet="ClientCalendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientCalendarDetails_ClientCalendar" Association="Self.FK_ClientCalendarDetails_ClientCalendar">
+      <End Role="ClientCalendar" EntitySet="ClientCalendar" />
+      <End Role="ClientCalendarDetails" EntitySet="ClientCalendarDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientCalendarLibrary_ClientCalendarLibrary" Association="Self.FK_ClientCalendarLibrary_ClientCalendarLibrary">
+      <End Role="ClientCalendarDetails" EntitySet="ClientCalendarDetails" />
+      <End Role="ClientCalendarLibrary" EntitySet="ClientCalendarLibrary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientCalendarLibrary_Library" Association="Self.FK_ClientCalendarLibrary_Library">
+      <End Role="Library" EntitySet="Library" />
+      <End Role="ClientCalendarLibrary" EntitySet="ClientCalendarLibrary" />
     </AssociationSet>
     <AssociationSet Name="FK_ClientContent_Categories1" Association="Self.FK_ClientContent_Categories1">
       <End Role="Categories" EntitySet="Categories" />
@@ -541,9 +787,29 @@
       <End Role="Clients" EntitySet="Clients" />
       <End Role="ClientSettings" EntitySet="ClientSettings" />
     </AssociationSet>
+    <AssociationSet Name="FK_ClientSubContent_Categories" Association="Self.FK_ClientSubContent_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="ClientSubContent" EntitySet="ClientSubContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubContent_ClientSubSubMenus" Association="Self.FK_ClientSubContent_ClientSubSubMenus">
+      <End Role="ClientSubSubMenus" EntitySet="ClientSubSubMenus" />
+      <End Role="ClientSubContent" EntitySet="ClientSubContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubContent_Library" Association="Self.FK_ClientSubContent_Library">
+      <End Role="Library" EntitySet="Library" />
+      <End Role="ClientSubContent" EntitySet="ClientSubContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubMenuMenus_ClientMenus" Association="Self.FK_ClientSubMenuMenus_ClientMenus">
+      <End Role="ClientMenus" EntitySet="ClientMenus" />
+      <End Role="ClientSubMenuMenus" EntitySet="ClientSubMenuMenus" />
+    </AssociationSet>
     <AssociationSet Name="FK_ClientSubMenus_ClientMenus" Association="Self.FK_ClientSubMenus_ClientMenus">
       <End Role="ClientMenus" EntitySet="ClientMenus" />
       <End Role="ClientSubMenus" EntitySet="ClientSubMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientSubSubMenus_ClientSubMenuMenus" Association="Self.FK_ClientSubSubMenus_ClientSubMenuMenus">
+      <End Role="ClientSubMenuMenus" EntitySet="ClientSubMenuMenus" />
+      <End Role="ClientSubSubMenus" EntitySet="ClientSubSubMenus" />
     </AssociationSet>
     <AssociationSet Name="FK_ClientZendesk_Clients" Association="Self.FK_ClientZendesk_Clients">
       <End Role="Clients" EntitySet="Clients" />
